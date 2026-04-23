@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Be+Vietnam+Pro:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e312b",
+                        "on-secondary-container": "#735800",
+                        "on-primary-container": "#9ed07b",
+                        "surface-container-low": "#f3f5ea",
+                        "on-tertiary-fixed": "#1e1b1b",
+                        "surface": "#f9faf0",
+                        "primary-container": "#2f5a12",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#265008",
+                        "outline-variant": "#c2c9b8",
+                        "tertiary-fixed-dim": "#ccc5c5",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d9dbd1",
+                        "secondary-container": "#fdcf5a",
+                        "on-background": "#1a1d16",
+                        "surface-variant": "#e2e3d9",
+                        "on-secondary-fixed-variant": "#5a4400",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#edefe5",
+                        "tertiary": "#3c3839",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#4a4646",
+                        "inverse-primary": "#a2d57e",
+                        "outline": "#73796b",
+                        "secondary-fixed": "#ffdf97",
+                        "surface-container-highest": "#e2e3d9",
+                        "on-surface-variant": "#42493c",
+                        "background": "#f9faf0",
+                        "secondary": "#775a00",
+                        "on-secondary-fixed": "#251a00",
+                        "surface-bright": "#f9faf0",
+                        "on-primary-fixed": "#0a2100",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e9df",
+                        "on-surface": "#1a1d16",
+                        "secondary-fixed-dim": "#edc14d",
+                        "primary-fixed": "#bdf298",
+                        "primary": "#1b4200",
+                        "surface-tint": "#3d6920",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#a2d57e",
+                        "on-tertiary-container": "#c8c1c1",
+                        "inverse-on-surface": "#f0f2e7",
+                        "tertiary-container": "#534f4f",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e8e1e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "element-gap": "24px",
+                        "section-gap": "80px",
+                        "container-padding": "24px",
+                        "unit": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h1": ["Noto Serif"],
+                        "h3": ["Noto Serif"],
+                        "h2": ["Noto Serif"],
+                        "body-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(253, 207, 90, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-lg border-b border-amber-200/20 shadow-sm flex justify-between items-center px-8 py-5">
+<div class="font-serif text-2xl font-bold tracking-tight text-emerald-900">Neighbourhood Cocktails</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-serif text-emerald-800/80 hover:text-amber-500 transition-colors duration-300" href="#">Experience</a>
+<a class="font-serif text-emerald-800/80 hover:text-amber-500 transition-colors duration-300" href="#">Menu</a>
+<a class="font-serif text-emerald-800/80 hover:text-amber-500 transition-colors duration-300" href="#">Packages</a>
+<a class="font-serif text-amber-600 border-b-2 border-amber-500 pb-1" href="#">Book Now</a>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Luxury Mobile Bar Hero" class="w-full h-full object-cover brightness-50" data-alt="luxury cocktail bar setup with crystal glassware and artisanal ingredients in a dimly lit sophisticated moody lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyWxE_3MBy221M0tUklpNimZU8pG555GFSjjNc8YZ8JjEySNuOp_vRELbqY-LT76Jyiq4X61KwCF4dZYFz-oO6YrdDmx10KzImk_w79k7ovw_b82K87qdw2YMiGzGQm0xl0GfrhI9cmiL0Ozx4vOYNeaQkPsKUj8by-PTnLEC3MbtfshXpTDoXTfyEsYekDVbnq4TENEHp02befwev2SeZr_ME6ZqjyqjiChtsHuHSSQHRU3M-hXFJ5un15cs881eDL524SHA51Q8"/>
+</div>
+<div class="relative z-10 text-center max-w-4xl px-container-padding">
+<h1 class="font-h1 text-h1 text-white mb-6">Artistry in Every Sip.</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-10 max-w-2xl mx-auto italic">Bespoke mobile mixology for the world's most discerning hosts and memorable celebrations.</p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-caps hover:bg-primary-container transition-all scale-95 active:opacity-80">Book Event</button>
+<button class="glass-card text-emerald-900 px-10 py-4 rounded-full font-label-caps hover:bg-white/90 transition-all border border-secondary-container/30">Explore the Experience</button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</section>
+<!-- Our Services -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-secondary uppercase tracking-[0.2em]">Exclusivity Redefined</span>
+<h2 class="font-h2 text-h2 text-primary mt-4">Our Bespoke Services</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-10 rounded-xl flex flex-col gap-6 text-center group hover:shadow-xl transition-shadow">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="celebration">celebration</span>
+<h3 class="font-h3 text-h3">Weddings</h3>
+<p class="text-on-surface-variant font-body-md">Tailored cocktail menus that reflect your love story, served with elegance and grace.</p>
+</div>
+<div class="glass-card p-10 rounded-xl flex flex-col gap-6 text-center group hover:shadow-xl transition-shadow">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="apartment">apartment</span>
+<h3 class="font-h3 text-h3">Corporate</h3>
+<p class="text-on-surface-variant font-body-md">Impress clients and celebrate milestones with our sophisticated mobile bar presence.</p>
+</div>
+<div class="glass-card p-10 rounded-xl flex flex-col gap-6 text-center group hover:shadow-xl transition-shadow">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="school">school</span>
+<h3 class="font-h3 text-h3">Masterclasses</h3>
+<p class="text-on-surface-variant font-body-md">Interactive mixology sessions for intimate groups seeking to master the craft.</p>
+</div>
+</div>
+</section>
+<!-- Signature Collection (Bento Style) -->
+<section class="py-section-gap bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-container-padding">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="font-label-caps text-secondary uppercase">Curated Selection</span>
+<h2 class="font-h2 text-h2 text-primary mt-2">The Signature Collection</h2>
+</div>
+<button class="font-label-caps text-primary border-b border-primary pb-1">View Full Menu</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 h-[800px]">
+<div class="md:col-span-2 md:row-span-2 relative rounded-xl overflow-hidden group">
+<img alt="Signature Cocktail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="vibrant pink cocktail with a lime garnish in a gold rimmed glass set on a marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhn8yOHKQUKbKTNnUImdKo6BzOGJVmIr55Hi7KLV3Khaz1aZwfXiBg0UGzfa3jbAPv3PoG2h0aeneNXs9JrYXCq_bY3NtfRd9rdsG6CnyULVzOjCj1ho9q8ovJNTsGq2wXKwbMqaV4LQaLekEe7H2aChLYi4mI8IVtjf5vbJBuj4M7OUoGfFpLi1etX4eSBgg1mOeyUMk-DMHCIfsoRixdnoYdbCSkEjqN_ez8ayBLOrnWrN1T0hc1lPYTQgn4DhS_3tmJvpnFEi4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-emerald-950/80 to-transparent flex flex-col justify-end p-8">
+<span class="text-secondary-fixed font-label-caps">Botanical</span>
+<h3 class="text-white font-h3 text-h3">Emerald Spritz</h3>
+</div>
+</div>
+<div class="md:col-span-2 relative rounded-xl overflow-hidden group">
+<img alt="Signature Cocktail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="amber colored cocktail with ice and orange peel garnish in a crystal old fashioned glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHz-PlczwxIx13jbQciRtCGAxxHicHD3-mzaxVp0WpC0iwJbWkWm4PpWcHoV0-shUEGDL3CPgRrb_h4GbsBsZqz6W4X1EhpvbfhkVkdt2fOATg7O7M1GWOz64GKG9f9onbW_GA9DAtktT92I1ttSctzEE9ClY93DudeENGSx2ZEy4tGjzfhVWDYQ28Lon7CLVR_g_nGEPOJrWSEV7gm2-f4yVxbMT8aFfoiA6aL0MhlrNAFM-UM_9mZVTLfYoKAzJ-1CXLuxMOiNk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-emerald-950/60 to-transparent flex flex-col justify-end p-8">
+<span class="text-secondary-fixed font-label-caps">Smoky</span>
+<h3 class="text-white font-h3 text-h3">Velvet Old Fashioned</h3>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden group">
+<img alt="Signature Cocktail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="close up of a martini with three olives in a chilled elegant glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAPwgF7diZ4Y28Mzozc8Tht7Fd3gNce5m5aNK4jo4Pydb46gfEGxyH2l-CwcGNTgljbPV8bBRgBuDypayhaTJcs1jzlvs-mzeRv5DsG98aLPYqHv_BPovkHOg5Om5ByGYht8Up2K1YSWaqMcsujzFRts-L3Z2wZUBeL04ekPhQMjFhKUlafkHQOKEnRjgB46D3kONqniqkki8x9N6C7nDIOU0qh6kwekuqTAov_1yP4gEkp7P0DG2OEz_WBGWmgSHXSy2GXqTpg0"/>
+</div>
+<div class="relative rounded-xl overflow-hidden group">
+<img alt="Signature Cocktail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="selection of colorful tropical cocktails in various glasses lined up on a bar top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKZZcwds-tMEuaZqddtDN0UWdbHjPHuPMhNlN-FtVQLwQQr86oG875_uzITezrYHdmSo38nEFfuxw-Dgue-RujwSJhSWNk2Oy0ysaslxjfyShrhgOSfaXBegF4cpq-tzeYPBtmwNmkfXQxLh9RaZybbZZlRLfX9_xn5-66DVoAi9JTb-ZIfuJcu9NjnS1LJ5G5s90cpU4Y5treuuR9DubFMAGMM6BRRrWsRfZFShzkX1dPiX3w-LGqyzbwDcOUTUjA8L7VjlbxuUY"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Testimonial -->
+<section class="py-section-gap px-container-padding text-center">
+<div class="max-w-3xl mx-auto">
+<span class="material-symbols-outlined text-secondary text-5xl mb-8" data-icon="format_quote" data-weight="fill">format_quote</span>
+<blockquote class="font-h2 text-h2 italic text-emerald-900 mb-10 leading-relaxed">
+                "Neighbourhood Cocktails transformed our anniversary into an ethereal experience. Their attention to detail and the sheer quality of the mixology was unlike anything we've seen before."
+            </blockquote>
+<cite class="font-label-caps text-on-surface-variant not-italic tracking-widest">— ELEANOR VANDERBILT, PRIVATE CLIENT</cite>
+</div>
+</section>
+<!-- Visual Storytelling -->
+<section class="overflow-hidden py-10">
+<div class="flex gap-4 animate-scroll-horizontal">
+<img alt="Story 1" class="w-72 h-96 object-cover rounded-lg flex-shrink-0" data-alt="bartender pouring a crystal clear liquid into a glass with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0By4Bm5y1Gqtq_vlI1k0OB2b7nAgPf8BSzA58JaikNNOwKwq5Gy2jtORfgVeGusQHEy-6cv_W-v0ci9BBwcrQ93XWfZpKAXCsW4dL1OlYjAVO6PxANRxfrPfWm1YcgP64DRvoRTe54jG_ZK2CqqPF8YjDOP_hMGmEDrFhnR_R1Gf_F3XNegP2TMeboBHHesgSQlrkQxmIiRi31ld0-5GKXYrpEpT0HjCtBZN8QxqUYdMJZ4IaqRIsUjqxLC5A0Ks0mCeji9mEAQo"/>
+<img alt="Story 2" class="w-72 h-96 object-cover rounded-lg flex-shrink-0" data-alt="a beautifully decorated outdoor garden party bar at twilight with fairy lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-s4Y4f6umJuFT2CETnzPQCsaQkxA21LcSy5GPsiAsOA5Ase3kCiw1zGjfYQRiqGCpr-Weq5B5dUkWBkERoSPOyLwmJwTkpbrkf4Pny3P7p8QlqFr3Njw4WsrE6Nvu0TZhke71SgDOD8WoTe1Oq3wdk3gCEGed9bC-QH7Mc3_eAGa5UgwseUHeo7tzg9pTflj-ElEA7tSxRG6L52lOvv6VnFQF9g9AvW9tmvVT1qBSW5dyFH1c6DEsiMpzK00-rVdf6JpYv_brVsQ"/>
+<img alt="Story 3" class="w-72 h-96 object-cover rounded-lg flex-shrink-0" data-alt="close up of fresh botanical ingredients like rosemary and lemon on a bar counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYcuR73c9kFsV_-muLchwOqpS0uDsY_TzSQcww2VyNdCZir2sxLE5JE0gBjRqRRy-yqCksUQnQemRBYrjCcNxnr7qcuuSJGClWqxXUVMW08iVsVda7z0jwn5brFk2w9RDsPzvSKdUGsNE-nEHBqs0oBytF8z50karnHpTzxvYQoCcmbgumAsHfKtubNYmxJIyJ5ls2FsMnXWFAFZYdzdufQ5mbRntz0eogrO-ozZ6aHhmC878SFyhB9UGV0Q7IW8UbX9Y6slA5bUA"/>
+<img alt="Story 4" class="w-72 h-96 object-cover rounded-lg flex-shrink-0" data-alt="elegant guests holding cocktails and laughing in a high-end luxury setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3MroPWw0dC_d5AnbQ1uWTP3iKkafMWk_6yETe6SWWDzX1YCyxjZMGIXJZD-SzfyLftDZKQMZE5jrG_ZmpZ2ebq1W-vRzppBT2PcXoUTzKgBDd9BW6LDcLkn8x2yAROE-ptf3X0Y72f_XJH8liGhTLuq49EUKjK0CC_b8TWKfavICiVgJzqYwahXpyIOXtrjsbXRDtMxmbJ_9Dl1Tbp1Qt_vsrUzdZgcZIig5hn4BPRZP8BKji662zEmiHx-om7nngy9ER9i-FV-E"/>
+<img alt="Story 5" class="w-72 h-96 object-cover rounded-lg flex-shrink-0" data-alt="top down view of an artisanal cocktail being garnished with a flower" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDGJyj5OO4SNELmxxabmlmK1zTkXk6cD6o-w-lpQdxAUJaYfXv4ji7IkDcXFvNMJ5PGi1ArWUhKfKuqyIjohJ6gqk7oxtCtbUuZEsrSTa8-HGn3VWxTWT4g8a2SOqwcvau6-G6dOFHwAu2x38XwHX_QHhISgwxBUamAvbDQILyCVCjmh61KHvGMHYsIFeLY6uhCQLsHgdpPxdkXroiqc7gRrwxkNB85jaddohuAKQUVkG5qY0wN4pZdWKztHDJxaBM2SobZUq5Ubo"/>
+</div>
+</section>
+<!-- Latest from Substack -->
+<section class="py-section-gap px-container-padding max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+<div>
+<span class="font-label-caps text-secondary uppercase">Spirituous Thoughts</span>
+<h2 class="font-h2 text-h2 text-primary mt-2">Latest from Substack</h2>
+</div>
+<button class="bg-surface-container-high px-6 py-3 rounded-full font-label-caps text-emerald-950 flex items-center gap-2">
+                Subscribe <span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+<div class="flex overflow-x-auto gap-8 pb-10 scrollbar-hide">
+<div class="flex-shrink-0 w-80 glass-card rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden">
+<img alt="Blog 1" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="dark atmospheric photo of spirits bottles in a cellar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG7mgINF8ZFg5SCB3pT4O6PyZONXsOX9f9pn43C2qWd9Rl-5w5U1makaJc6YcPS68zGw3_JlCKNNcBwU75yyF0NLe8BXm4cuBphcFqzn_pDj7WJ-gao0QJR89p7mw97qeWYCA-o4L3wwASsjQvQhKlZJf2y8Dp2VzKiAf-TlWHX7lt7fn_KDKiTXGjXEKw2PlIdWCjQClIxwQ-o76kMPblKzNxAiYiA3eZFuYe5qEaKDZDT9BJ2l-GekpQOCJdO5bLPiXsw5PrpPo"/>
+</div>
+<div class="p-6">
+<span class="font-label-caps text-[10px] text-on-surface-variant">OCT 12, 2026</span>
+<h4 class="font-h3 text-xl mt-2 mb-4">The Secret History of the Negroni</h4>
+<p class="text-on-surface-variant text-sm mb-4">Uncovering the origins of Florence's most famous export...</p>
+<a class="text-secondary font-label-caps text-[11px] uppercase" href="#">Read More</a>
+</div>
+</div>
+<div class="flex-shrink-0 w-80 glass-card rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden">
+<img alt="Blog 2" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="sparkling glassware arranged beautifully on a tray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9oHUEMs5yBdfRQSXgVV-f2f0oTLO4rObRLD80vQdGovHxsl7vJulW3Q0VsFGPiXDJbPvGMvtL1NidLeOvQNu3CLo8jeJjQa755h_htmQW-QHj4-2I0JeM0G4N3doZK0YU_by56OADsgGdD5blmhhiMHG-irR_Ojbdh2babZoUVVm9mclHtgUtpunwGjdWjpg3Yw-wiqROMBZqVQ7mISWIR99x8Ypi2bzRw0-MlRBzIHnp1eA1um-5AJLNM9CNCC72OjwwThtIv1g"/>
+</div>
+<div class="p-6">
+<span class="font-label-caps text-[10px] text-on-surface-variant">OCT 05, 2026</span>
+<h4 class="font-h3 text-xl mt-2 mb-4">Crystal Clear: Glassware Guide</h4>
+<p class="text-on-surface-variant text-sm mb-4">Why the shape of your glass matters more than you think...</p>
+<a class="text-secondary font-label-caps text-[11px] uppercase" href="#">Read More</a>
+</div>
+</div>
+<div class="flex-shrink-0 w-80 glass-card rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden">
+<img alt="Blog 3" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="a variety of fresh garden herbs and spices for cocktails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzym9O5RozGmBn6ISJQTnAG89_rvRW-VrHhMiSgFLo9UlFn38_EqO9yDZ9BpNIYwzzMz9O1FXArRP_sA5LJuIk1MUGvQzUJwZT32YEhOCm2z0zyhGbnb_8a10v_qYB8s8wAUfnrBillnpgiPKZ87V-lqaGT8LVMg_LAhwveHlC2rCgA47LpRmOzkHgpV0muT8a1x_FaSsQFoGlvAWLrQWeNW_F2K7evI81WYOhYk7teA88TLoggzJDWcXLj7_AXJRrFdvZSO9thdc"/>
+</div>
+<div class="p-6">
+<span class="font-label-caps text-[10px] text-on-surface-variant">SEP 28, 2026</span>
+<h4 class="font-h3 text-xl mt-2 mb-4">Foraging for Flavors</h4>
+<p class="text-on-surface-variant text-sm mb-4">Incorporating wild botanicals into your home bar routine...</p>
+<a class="text-secondary font-label-caps text-[11px] uppercase" href="#">Read More</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Us -->
+<section class="py-section-gap px-container-padding bg-emerald-950 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[400px]" data-icon="local_bar">local_bar</span>
+</div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="font-h2 text-h1 mb-6">Begin Your Journey</h2>
+<p class="font-body-lg text-emerald-100/80 mb-12 italic">Whether an intimate gathering or a grand affair, we are here to curate your perfect menu.</p>
+<div class="flex flex-col items-center gap-8">
+<button class="bg-secondary-container text-on-secondary-container px-12 py-5 rounded-full font-label-caps text-lg flex items-center gap-3 hover:scale-105 transition-transform active:scale-95 shadow-xl">
+<span class="material-symbols-outlined">chat</span>
+                    Inquire on WhatsApp
+                </button>
+<div class="flex gap-12 mt-4">
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">mail</span>
+<span class="text-sm font-label-caps">concierge@neighbourhoodCocktails.com</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">location_on</span>
+<span class="text-sm font-label-caps">Nairobi | Kenya</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-stone-50 py-12 border-t border-stone-200">
+<div class="max-w-7xl mx-auto px-8 flex flex-col items-center gap-6">
+<div class="font-serif text-lg font-semibold text-emerald-900">Neighbourhood Cocktails Bespoke Spirits</div>
+<nav class="flex gap-8">
+<a class="font-serif italic text-sm text-stone-500 hover:text-emerald-700 transition-colors" href="#">Privacy</a>
+<a class="font-serif italic text-sm text-stone-500 hover:text-emerald-700 transition-colors" href="#">Terms</a>
+<a class="font-serif italic text-sm text-stone-500 hover:text-emerald-700 transition-colors" href="#">Concierge</a>
+<a class="font-serif italic text-sm text-amber-600 underline" href="#">WhatsApp</a>
+</nav>
+<div class="font-serif italic text-sm text-emerald-900/60">© 2026 Neighbourhood Cocktails Bespoke Spirits. All Rights Reserved.</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-white/80 backdrop-blur-xl border-t border-stone-200 z-50 shadow-2xl">
+<div class="flex flex-col items-center justify-center text-amber-600 font-bold">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill">home</span>
+<span class="font-serif text-[10px] uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined" data-icon="local_bar">local_bar</span>
+<span class="font-serif text-[10px] uppercase tracking-widest mt-1">Drinks</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-serif text-[10px] uppercase tracking-widest mt-1">Reserve</span>
+</div>
+<div class="flex flex-col items-center justify-center text-emerald-900/50">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-serif text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>
