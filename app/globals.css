@@ -83,6 +83,11 @@ textarea {
   object-fit: contain;
 }
 
+.site-header .brand-logo {
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(16, 39, 30, 0.22);
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -120,6 +125,41 @@ textarea {
   color: var(--cream);
   background: var(--orange);
   border-color: var(--orange);
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: clamp(18px, 3vw, 34px);
+  bottom: clamp(18px, 3vw, 34px);
+  z-index: 30;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  border: 1px solid rgba(246, 239, 227, 0.72);
+  border-radius: 50%;
+  color: var(--cream);
+  background:
+    linear-gradient(145deg, rgba(31, 77, 58, 0.98), rgba(16, 39, 30, 0.98)),
+    var(--green);
+  box-shadow: 0 18px 44px rgba(16, 39, 30, 0.34), 0 0 0 7px rgba(200, 169, 106, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.floating-whatsapp svg {
+  width: 31px;
+  height: 31px;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+  color: var(--gold);
+  box-shadow: 0 22px 52px rgba(16, 39, 30, 0.42), 0 0 0 9px rgba(201, 106, 61, 0.18);
+}
+
+.floating-whatsapp:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .hero {
@@ -175,7 +215,7 @@ h1 {
 .script {
   color: var(--gold);
   font-family: "Pacifico", cursive;
-  font-weight: 400;
+  font-weight: 200;
   letter-spacing: 0;
   text-transform: none;
 }

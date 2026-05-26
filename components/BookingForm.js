@@ -88,42 +88,27 @@ export function BookingForm() {
 
       <div className="form-section">
         <h2>Bar configuration</h2>
-        <p className="option-title">Service style</p>
-        <div className="choice-grid">
-          <label className="choice">
-            <input type="radio" name="service-style" value="open-bar" defaultChecked />
-            <span>Open bar</span>
-          </label>
-          <label className="choice">
-            <input type="radio" name="service-style" value="cash-bar" />
-            <span>Cash bar</span>
-          </label>
-          <label className="choice">
-            <input type="radio" name="service-style" value="vouchers" />
-            <span>Vouchers</span>
-          </label>
-        </div>
-      </div>
-
-      <div className="form-section">
-        <h2>Drink preferences</h2>
-        <div className="check-grid">
-          <label className="check">
-            <input type="checkbox" name="preferences" value="classic-cocktails" />
-            <span>Classic cocktails</span>
-          </label>
-          <label className="check">
-            <input type="checkbox" name="preferences" value="botanical" />
-            <span>Botanical infusions</span>
-          </label>
-          <label className="check">
-            <input type="checkbox" name="preferences" value="mocktails" />
-            <span>Alcohol-free options</span>
-          </label>
-          <label className="check">
-            <input type="checkbox" name="preferences" value="spirits" />
-            <span>Artisanal spirits</span>
-          </label>
+        <div className="form-grid">
+          <div className="field">
+            <label htmlFor="service-style">Service style</label>
+            <select id="service-style" name="service-style" defaultValue="open-bar">
+              <option value="open-bar">Open bar</option>
+              <option value="cash-bar">Cash bar</option>
+              <option value="vouchers">Vouchers</option>
+              <option value="hosted-bar">Hosted bar</option>
+              <option value="consultation-needed">Help me choose</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="preferences">Drink preferences</label>
+            <select id="preferences" name="preferences" defaultValue="classic-cocktails">
+              <option value="classic-cocktails">Classic cocktails</option>
+              <option value="botanical">Botanical infusions</option>
+              <option value="mocktails">Alcohol-free options</option>
+              <option value="spirits">Artisanal spirits</option>
+              <option value="signature-menu">Custom signature menu</option>
+            </select>
+          </div>
         </div>
         <div className="field full" style={{ marginTop: 18 }}>
           <label htmlFor="notes">Special requests</label>
