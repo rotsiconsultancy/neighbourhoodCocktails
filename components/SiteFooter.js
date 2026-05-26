@@ -33,6 +33,12 @@ export function SiteFooter() {
           <SiSubstack size={20} style={{ verticalAlign: "middle", marginRight: 4 }} aria-label="Substack"/>
           {/* Substack */}
         </Link>
+        <Link href="/gallery" aria-label="View event gallery">
+          Gallery
+        </Link>
+        <Link href="/faq" aria-label="Read frequently asked questions">
+          FAQ
+        </Link>
         <Link href="/booking" aria-label="Book a cocktail experience">
           Book
         </Link>

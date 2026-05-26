@@ -4,8 +4,8 @@ import Link from "next/link";
 const navItems = [
   { href: "/#events", label: "Events" },
   { href: "/#experience", label: "Experience" },
-  { href: "/#substack", label: "Substack" },
-  { href: "/#gallery", label: "Gallery" }
+  { href: "/gallery", label: "Gallery" },
+  { href: "/faq", label: "FAQ" }
 ];
 
 export function SiteHeader() {
