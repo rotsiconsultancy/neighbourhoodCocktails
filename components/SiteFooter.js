@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiSubstack } from "react-icons/si";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-// import { BiSubstack } from "react-icons/bi";
-// import { FaSubstack } from "react-icons/fa";
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -17,6 +15,7 @@ export function SiteFooter() {
             width={304}
             height={128}
             alt="The Neighbourhood Cocktails"
+            priority
           />
         </Link>
         <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
