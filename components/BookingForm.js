@@ -4,12 +4,48 @@ import { useState } from "react";
 
 export function BookingForm() {
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setStatus(
-      "Your request outline is ready. Send these details through Instagram, LinkedIn, or your preferred contact channel to complete the booking request."
-    );
+
+    const formData = new FormData(event.currentTarget);
+
+    setIsSubmitting(true);
+    setStatus("Sending your booking request...");
+
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          date: formData.get("date"),
+          location: formData.get("location"),
+          guests: formData.get("guests"),
+          eventType: formData.get("event-type"),
+          serviceStyle: formData.get("service-style"),
+          preferences: formData.getAll("preferences"),
+          notes: formData.get("notes")
+        })
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || "We could not send your request. Please try again.");
+      }
+
+      event.currentTarget.reset();
+      setStatus("Your booking request has been sent. We will get back to you within 24 hours.");
+    } catch (error) {
+      setStatus(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -100,13 +136,9 @@ export function BookingForm() {
       </div>
 
       <div className="submit-row">
-        {/* <button className="button primary" type="submit">
-          Prepare Request */}
-        {/* </button> */}
-          {/* <a className="button primary" href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer">
-            Contact Us
-          </a> */}
-          <p className="contact-note">Prepare your request and we will get back to you within 24 hours.</p>
+        <button className="button primary" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Booking Request"}
+        </button>
         <p className="form-note">Use this outline to start the conversation, then we will shape the right package around your event.</p>
       </div>
       <p className="status-note" role="status" aria-live="polite">
@@ -114,12 +146,4 @@ export function BookingForm() {
       </p>
     </form>
   );
-// }
-//         <p className="form-note">Use this outline to start the conversation, then we will shape the right package around your event.</p>
-//       </div>
-//       <p className="status-note" role="status" aria-live="polite">
-//         {status}
-//       </p>
-//     </form>
-//   );
 }

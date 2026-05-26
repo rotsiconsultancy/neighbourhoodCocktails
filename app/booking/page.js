@@ -15,8 +15,6 @@ export default function BookingPage() {
       <main className="booking-page">
         <section className="booking-hero">
           <p className="eyebrow">Booking request</p>
-          {/* <h1>Start your Neighbourhood bar experience.</h1>
-          <p>Tell us the basics: date, guest count, location, and the kind of drinks experience you want. Share as much as you know today; the finer details can be shaped in the first conversation.</p> */}
         </section>
 
         <section className="booking-layout" aria-label="Booking form and service promise">

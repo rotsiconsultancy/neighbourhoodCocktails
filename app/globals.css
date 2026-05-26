@@ -691,9 +691,27 @@ h1 {
 
 .submit-row .button,
 .button.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--orange);
+  border-radius: 999px;
+  padding: 14px 22px;
   border-color: var(--orange);
   color: var(--cream);
   background: var(--orange);
+  cursor: pointer;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.submit-row .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+  transform: none;
 }
 
 .form-note,
