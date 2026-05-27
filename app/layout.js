@@ -4,8 +4,8 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 export const metadata = {
   metadataBase: new URL("https://neighbourhoodcocktails.com"),
   title: {
-    default: "The Neighbourhood Cocktails | Event Bar Experiences",
-    template: "%s | The Neighbourhood Cocktails"
+    default: "The Neighbourhood Cocktails",
+    template: "The Neighbourhood Cocktails"
   },
   description:
     "Cocktail-led experiences for weddings, private events, corporate gatherings, and masterclasses.",
@@ -13,7 +13,15 @@ export const metadata = {
     title: "The Neighbourhood Cocktails",
     description:
       "Warm, polished cocktail service for hosts who want the drinks, setup, and atmosphere handled with care.",
-    images: ["/images/green-cream.jpg"]
+    images: ["/images/green-cream.jpg","/images/black.jpg"],
+    url: "https://neighbourhoodcocktails.com",
+    siteName: "The Neighbourhood Cocktails",
+    type: "website"
+  },
+  icons: {
+    icon: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/images/logo.svg", type: "image/svg+xml" }]
   }
 };
 

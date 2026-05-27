@@ -110,9 +110,9 @@ export default function HomePage() {
               <p>We handle the cocktail experience with style: menu planning, bar setup, drink service, presentation, and the kind of atmosphere that makes guests remember the night.</p>
               <div className="hero-actions" style={{ marginTop: 32 }}>
                 <Link href="/booking" className="btn primary">
-                  Get an Event Quote
+                  Get an Event Quote  
                 </Link>
-                <Link href="#gallery" className="btn">
+                <Link href="/gallery" className="btn">
                   See The Vibe
                 </Link>
               </div>
