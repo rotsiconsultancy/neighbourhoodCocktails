@@ -11,8 +11,9 @@ export function SiteFooter() {
         <Link href="/" aria-label="The Neighbourhood Cocktails home">
           <Image
             className="brand-logo"
-            src="/images/green-cream.jpg"
-            width={304}
+            // src="/images/green-cream.jpg"
+            src="/images/logo.svg"
+            width={350}
             height={128}
             alt="The Neighbourhood Cocktails"
             priority

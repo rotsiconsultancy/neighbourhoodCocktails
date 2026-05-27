@@ -30,7 +30,7 @@ export function SiteHeader() {
         ))}
       </nav>
       <Link className="nav-cta" href="/booking">
-        Plan Your Event
+        Book Our Services
       </Link>
     </nav>
   );
