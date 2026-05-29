@@ -1495,3 +1495,264 @@ h1 {
     width: 100%;
   }
 }
+
+/* ==========================================
+   FEEDBACK PAGE STYLES (BREVO INTEGRATION)
+   ========================================== */
+
+.feedback-page {
+  max-width: 100%;
+  overflow-x: clip;
+  min-height: 100vh;
+  padding: 150px 6vw 90px;
+  color: var(--cream);
+  background:
+    linear-gradient(90deg, rgba(16, 39, 30, 0.94), rgba(31, 77, 58, 0.78), rgba(16, 39, 30, 0.46)),
+    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+}
+
+.feedback-hero {
+  max-width: 960px;
+  margin-bottom: 48px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedback-hero h1 {
+  font-family: "Pacifico", cursive, Georgia, serif;
+  font-size: 3.5rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.feedback-hero p {
+  color: rgba(246, 239, 227, 0.86);
+  font-size: 1.18rem;
+  line-height: 1.6;
+}
+
+.feedback-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.feedback-panel {
+  border: 1px solid rgba(246, 239, 227, 0.24);
+  border-radius: 28px;
+  padding: 40px;
+  background: rgba(16, 39, 30, 0.65);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+/* Rating Stars */
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 8px;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: rgba(246, 239, 227, 0.2);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s;
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+.star-btn.active {
+  color: var(--gold);
+  filter: drop-shadow(0 0 8px rgba(200, 169, 106, 0.6));
+}
+
+.rating-label {
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 600;
+  height: 20px;
+}
+
+/* Recommend Yes/No Switch */
+.recommend-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.recommend-btn {
+  background: rgba(246, 239, 227, 0.08);
+  border: 1px solid rgba(246, 239, 227, 0.2);
+  border-radius: 999px;
+  padding: 14px;
+  color: var(--cream);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.recommend-btn:hover {
+  background: rgba(246, 239, 227, 0.15);
+  transform: translateY(-2px);
+}
+
+.recommend-btn.active-yes {
+  background: var(--green);
+  border-color: var(--gold);
+  color: var(--cream);
+  box-shadow: 0 0 16px rgba(31, 77, 58, 0.4);
+}
+
+.recommend-btn.active-no {
+  background: var(--red);
+  border-color: var(--cream);
+  color: var(--cream);
+  box-shadow: 0 0 16px rgba(182, 70, 70, 0.4);
+}
+
+/* Checkboxes & Subfields */
+.pref-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.pref-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(246, 239, 227, 0.08);
+  border: 1px solid rgba(246, 239, 227, 0.2);
+  border-radius: 999px;
+  color: var(--cream);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pref-label:hover {
+  background: rgba(246, 239, 227, 0.15);
+}
+
+.pref-checkbox {
+  display: none;
+}
+
+.pref-label.checked {
+  background: var(--green);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(31, 77, 58, 0.3);
+}
+
+.subfields-container {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.slide-down-field {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-down-field.visible {
+  max-height: 120px;
+  opacity: 1;
+  margin-top: 4px;
+}
+
+/* Success state styles */
+.success-card {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-card svg {
+  color: var(--gold);
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 10px rgba(200, 169, 106, 0.4));
+}
+
+.success-card h2 {
+  font-size: 2.2rem;
+  color: var(--cream);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.success-card p {
+  color: rgba(246, 239, 227, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.btn-home {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(200, 169, 106, 0.3);
+}
+
+@media (max-width: 768px) {
+  .feedback-page {
+    padding: 120px 4vw 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .feedback-panel {
+    padding: 24px 16px;
+  }
+  .pref-grid {
+    grid-template-columns: 1fr;
+  }
+  .feedback-hero h1 {
+    font-size: 2.6rem;
+  }
+  .recommend-buttons {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+

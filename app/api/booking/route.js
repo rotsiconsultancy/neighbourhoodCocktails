@@ -62,12 +62,16 @@ async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }
   return response.json();
 }
 
-async function saveBrevoContact({ email, name }) {
+async function saveBrevoContact({ email, name, eventDate, location, guests, eventType, serviceStyle, preferences, notes }) {
   const listId = Number(process.env.BREVO_CONTACT_LIST_ID);
 
   if (!listId) {
     return;
   }
+
+  const nameParts = name.trim().split(/\s+/);
+  const firstName = nameParts[0] || "";
+  const lastName = nameParts.slice(1).join(" ") || "";
 
   try {
     await fetch(BREVO_CONTACTS_URL, {
@@ -80,7 +84,15 @@ async function saveBrevoContact({ email, name }) {
       body: JSON.stringify({
         email,
         attributes: {
-          FIRSTNAME: name
+          FIRSTNAME: firstName,
+          LASTNAME: lastName,
+          EVENT_DATE: eventDate || "",
+          LOCATION: location || "",
+          GUEST_COUNT: guests ? parseInt(guests, 10) : null,
+          EVENT_TYPE: eventType || "",
+          SERVICE_STYLE: serviceStyle || "",
+          DRINK_PREFERENCES: Array.isArray(preferences) ? preferences.join(", ") : (preferences || ""),
+          SPECIAL_NOTES: notes || ""
         },
         listIds: [listId],
         updateEnabled: true
@@ -194,7 +206,17 @@ export async function POST(request) {
       textContent: `Hi ${name},\n\nThanks for reaching out to The Neighbourhood Cocktails. We have your request for ${eventDate} and will get back to you within 24 hours.`
     });
 
-    await saveBrevoContact({ email, name });
+    await saveBrevoContact({
+      email,
+      name,
+      eventDate,
+      location,
+      guests,
+      eventType,
+      serviceStyle,
+      preferences,
+      notes
+    });
   } catch (error) {
     console.error(error);
     return Response.json({ error: "We could not send your request right now. Please try again." }, { status: 502 });
