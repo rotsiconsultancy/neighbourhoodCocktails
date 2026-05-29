@@ -45,7 +45,7 @@ export default function HomePage() {
           </h1>
           <p>From intimate celebrations to polished corporate gatherings, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.</p>
           <div className="hero-actions">
-            <Link href="/booking" className="btn primary">
+            <Link href="/booking" className="btn secondary">
               Book Our Bar
             </Link>
             <Link href="#events" className="btn">
@@ -109,7 +109,7 @@ export default function HomePage() {
               <p>The Neighbourhood is built for moments where people gather - weddings, brand events, intimate dinners, team celebrations, and private parties that need a little more soul.</p>
               <p>We handle the cocktail experience with style: menu planning, bar setup, drink service, presentation, and the kind of atmosphere that makes guests remember the night.</p>
               <div className="hero-actions" style={{ marginTop: 32 }}>
-                <Link href="/booking" className="btn primary">
+                <Link href="/booking" className="btn secondary">
                   Get an Event Quote  
                 </Link>
                 <Link href="/gallery" className="btn">

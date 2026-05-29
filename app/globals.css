@@ -6,6 +6,7 @@
   --orange: #c96a3d;
   --gold: #c8a96a;
   --red: #b64646;
+  --brand-red: #c8a96a;
   --dark: #10271e;
   --white: #fffaf2;
   --shadow: 0 24px 70px rgba(16, 39, 30, 0.22);
@@ -195,9 +196,15 @@ textarea {
 }
 
 .btn.primary {
-  color: var(--cream);
+  color: var(--brand-red);
   background: var(--orange);
   border-color: var(--orange);
+}
+
+.btn.secondary {
+  transform: translateY(-2px);
+  color: var(--green);
+  background: var(--cream);
 }
 
 .floating-whatsapp {
@@ -536,7 +543,7 @@ h1 {
 }
 
 .substack-source {
-  color: var(--orange);
+  color: var(--white);
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 0.78rem;
   font-weight: 900;
