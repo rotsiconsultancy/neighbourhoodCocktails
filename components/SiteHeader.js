@@ -9,7 +9,8 @@ import { SiSubstack } from "react-icons/si";
 const navItems = [
   { href: "/#events", label: "Our Services" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/faq", label: "FAQ" }
+  { href: "/faq", label: "FAQ" },
+  { href: "/feedback", label: "Feedback" },
 ];
 
 const socialItems = [
