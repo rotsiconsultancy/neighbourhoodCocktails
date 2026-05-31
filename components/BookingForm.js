@@ -159,11 +159,13 @@ export function BookingForm() {
         <button className="button primary" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send Booking Request"}
         </button>
-        <p className="form-note">Use this outline to start the conversation, then we will shape the right package around your event.</p>
+        {/* <p className="form-note">Use this outline to start the conversation, then we will shape the right package around your event.</p> */}
       </div>
-      <p className="status-note" role="status" aria-live="polite">
-        {status}
-      </p>
+      {isSubmitting && submittedSuccessfully && (
+        <p className="status-note" role="status" aria-live="polite">
+          {status}
+        </p>
+      )}
     </form>
   );
 }
