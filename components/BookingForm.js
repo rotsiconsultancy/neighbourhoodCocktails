@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export function BookingForm() {
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
+    const form = event.currentTarget;
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
 
     setIsSubmitting(true);
     setStatus("Sending your booking request...");
@@ -39,13 +43,44 @@ export function BookingForm() {
         throw new Error(result.error || "We could not send your request. Please try again.");
       }
 
-      event.currentTarget.reset();
+      const customerName = formData.get("name") || "";
+      setSubmittedName(customerName);
+      form.reset();
+      setSubmittedSuccessfully(true);
       setStatus("Your booking request has been sent. We will get back to you within 24 hours.");
     } catch (error) {
       setStatus(error.message);
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  if (submittedSuccessfully) {
+    return (
+      <div className="booking-panel success-card">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="72"
+          height="72"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        <h2>Thank you, {submittedName.split(" ")[0]}!</h2>
+        <p>
+          Your booking request has been successfully sent. We've received your details and our team will get back to you within 24 hours to shape the perfect experience for your event.
+        </p>
+        <Link href="/" className="btn-home">
+          Back to home
+        </Link>
+      </div>
+    );
   }
 
   return (

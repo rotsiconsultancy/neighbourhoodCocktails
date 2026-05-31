@@ -187,24 +187,26 @@ export async function POST(request) {
     </html>`;
 
   try {
-    await sendBrevoEmail({
-      to: [{ email: process.env.BOOKING_RECIPIENT_EMAIL, name: "The Neighbourhood Cocktails" }],
-      replyTo: { email, name },
-      subject: `New booking request from ${name}`,
-      htmlContent: adminHtml,
-      textContent: adminText
-    });
+    if(process.env.BREVO_API_KEY && process.env.BREVO_IS_EMAIL_ENABLED === "true"){
+      await sendBrevoEmail({
+        to: [{ email: process.env.BOOKING_RECIPIENT_EMAIL, name: "The Neighbourhood Cocktails" }],
+        replyTo: { email, name },
+        subject: `New booking request from ${name}`,
+        htmlContent: adminHtml,
+        textContent: adminText
+      });
 
-    await sendBrevoEmail({
-      to: [{ email, name }],
-      replyTo: {
-        email: process.env.BOOKING_RECIPIENT_EMAIL,
-        name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails"
-      },
-      subject: "We received your booking request",
-      htmlContent: confirmationHtml,
-      textContent: `Hi ${name},\n\nThanks for reaching out to The Neighbourhood Cocktails. We have your request for ${eventDate} and will get back to you within 24 hours.`
-    });
+      await sendBrevoEmail({
+        to: [{ email, name }],
+        replyTo: {
+          email: process.env.BOOKING_RECIPIENT_EMAIL,
+          name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails"
+        },
+        subject: "We received your booking request",
+        htmlContent: confirmationHtml,
+        textContent: `Hi ${name},\n\nThanks for reaching out to The Neighbourhood Cocktails. We have your request for ${eventDate} and will get back to you within 24 hours.`
+      });
+    }
 
     await saveBrevoContact({
       email,
