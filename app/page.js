@@ -40,8 +40,11 @@ export default function HomePage() {
       <header className="hero">
         <div className="hero-content">
           <div className="eyebrow">Private events &bull; Weddings &bull; Corporate experiences &bull; Masterclasses</div>
-          <h1>
+          {/* <h1>
             Host your next <span className="script">unforgettable</span> event.
+          </h1> */}
+          <h1>
+            You make the memories. <span className="script">We bring the cocktails.H</span>
           </h1>
           <p>From intimate celebrations to polished corporate gatherings, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.</p>
           <div className="hero-actions">
@@ -58,7 +61,7 @@ export default function HomePage() {
       <main>
         <section className="section" id="events">
           <div className="section-header">
-            <h2>Events made to feel personal.</h2>
+            <h2 style={{ color: "var(--orange)" }}>Events made to feel personal.</h2>
             <p className="section-intro">Whether you need full-service cocktail catering, a curated drinks experience, or an interactive class, we shape the setup around your people, your space, and your occasion.</p>
           </div>
 
