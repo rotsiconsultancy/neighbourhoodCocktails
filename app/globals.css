@@ -344,6 +344,8 @@ h1 {
   line-height: 0.9;
   letter-spacing: 0;
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .section-intro {
@@ -583,6 +585,8 @@ h1 {
   font-size: 1.75rem;
   line-height: 1;
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .substack-post-card p {
@@ -643,6 +647,7 @@ h1 {
 .booking-form input,
 .booking-form select {
   width: 100%;
+  min-width: 0;
   border: none;
   border-radius: 999px;
   outline: none;
@@ -1421,8 +1426,12 @@ h1 {
   }
 
   .hero {
-    min-height: 86vh;
-    padding-top: 112px;
+    min-height: auto;
+    padding: 120px 6vw 100px;
+  }
+
+  .hero::after {
+    height: 100px;
   }
 
   h1 {
@@ -1434,7 +1443,7 @@ h1 {
   }
 
   .section h2 {
-    font-size: 2.55rem;
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
   }
 
   .page-hero {
@@ -1442,11 +1451,33 @@ h1 {
   }
 
   .page-hero.compact {
-    min-height: 62vh;
+    min-height: auto;
+    padding: 132px 6vw 60px;
   }
 
   .page-hero h1 {
     font-size: 3rem;
+  }
+
+  .substack-post-card h3 {
+    font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+  }
+
+  .story-img {
+    min-height: 350px;
+  }
+
+  .story-badge {
+    width: 140px;
+    height: 140px;
+    font-size: 1.4rem;
+    right: 15px;
+    bottom: 20px;
+  }
+
+  .booking-page,
+  .feedback-page {
+    background-attachment: scroll !important;
   }
 
   .faq-sidebar h2,

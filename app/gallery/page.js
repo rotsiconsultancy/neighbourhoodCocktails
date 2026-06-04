@@ -74,13 +74,13 @@ export default function GalleryPage() {
       <main className="inner-page gallery-page">
         <section className="page-hero compact">
           <p className="eyebrow">Gallery</p>
-          <h3>Scenes from the neighbourhood.</h3>
+          <h1>Scenes from the neighbourhood.</h1>
           <p>
             A closer look at the bar setups, cocktail details, and event moments that shape
             The Neighbourhood experience.
           </p>
           <div className="hero-actions">
-            <Link href="/booking" className="btn primary">
+            <Link href="/booking" className="btn secondary">
               Plan Your Event
             </Link>
             <Link href="/faq" className="btn">

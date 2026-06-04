@@ -44,7 +44,7 @@ export default function HomePage() {
             Host your next <span className="script">unforgettable</span> event.
           </h1> */}
           <h1>
-            You make the memories. <span className="script">We bring the cocktails.H</span>
+            You make the memories. <span className="script">We bring the cocktails.</span>
           </h1>
           <p>From intimate celebrations to polished corporate gatherings, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.</p>
           <div className="hero-actions">

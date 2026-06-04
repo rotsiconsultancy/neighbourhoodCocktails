@@ -103,7 +103,7 @@ export default function FAQPage() {
             you send a request.
           </p>
           <div className="hero-actions">
-            <Link href="/booking" className="btn primary">
+            <Link href="/booking" className="btn secondary">
               Start a Booking Request
             </Link>
             <Link href="/gallery" className="btn">
