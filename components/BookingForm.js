@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export function BookingForm() {
@@ -8,6 +8,23 @@ export function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
   const [submittedName, setSubmittedName] = useState("");
+  const [notesText, setNotesText] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const selected = sessionStorage.getItem("selected_cocktails");
+      if (selected) {
+        try {
+          const cocktails = JSON.parse(selected);
+          if (cocktails && cocktails.length > 0) {
+            setNotesText(`Hello! I have pre-selected the following drinks for my event menu:\n- ${cocktails.join("\n- ")}\n\n`);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -150,6 +167,8 @@ export function BookingForm() {
           <textarea
             id="notes"
             name="notes"
+            value={notesText}
+            onChange={(e) => setNotesText(e.target.value)}
             placeholder="Allergies, preferred spirits, event theme, or anything else we should know."
           />
         </div>

@@ -1787,3 +1787,814 @@ h1 {
   }
 }
 
+/* ==========================================
+   SERVICES & COCKTAILS PAGE STYLES
+   ========================================== */
+
+.services-page {
+  background: var(--cream);
+}
+
+.services-pillars-section {
+  background: var(--cream);
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.pillar-row.reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.pillar-row.reverse .pillar-image-container {
+  order: 2;
+}
+
+.pillar-row.reverse .pillar-copy-container {
+  order: 1;
+}
+
+.pillar-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(16, 39, 30, 0.15);
+  aspect-ratio: 4 / 3;
+}
+
+.pillar-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.pillar-row:hover .pillar-image-container img {
+  transform: scale(1.03);
+}
+
+.pillar-copy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pillar-copy-container h2 {
+  font-size: 2.8rem;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 1.05;
+}
+
+.pillar-copy-container p {
+  color: rgba(31, 77, 58, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.btn-service-action {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-service-action:hover {
+  color: var(--green);
+  padding-left: 6px;
+}
+
+/* --- Pretty Toggle Bar --- */
+.cocktails-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.pretty-toggle-bar {
+  position: relative;
+  display: flex;
+  background: rgba(31, 77, 58, 0.08);
+  border: 1px solid rgba(31, 77, 58, 0.15);
+  border-radius: 999px;
+  padding: 6px;
+  min-width: 380px;
+  height: 58px;
+  z-index: 1;
+}
+
+.toggle-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--green);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.toggle-btn.active {
+  color: var(--white);
+}
+
+.toggle-slider-bubble {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  width: calc(50% - 5px);
+  border-radius: 999px;
+  background: var(--green);
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+}
+
+.pretty-toggle-bar.spirits-active .toggle-slider-bubble {
+  transform: translateX(0);
+  background: var(--green);
+}
+
+.pretty-toggle-bar.mocktails-active .toggle-slider-bubble {
+  transform: translateX(100%);
+  background: var(--orange);
+}
+
+/* --- Vibe Selector --- */
+.vibe-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+  margin-bottom: 48px;
+}
+
+.vibe-chip {
+  background: transparent;
+  border: 1px solid rgba(31, 77, 58, 0.2);
+  color: rgba(31, 77, 58, 0.75);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vibe-chip:hover {
+  background: rgba(31, 77, 58, 0.05);
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+
+.vibe-chip.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(31, 77, 58, 0.25);
+}
+
+/* --- Cocktail Premium Cards --- */
+.cocktail-grid-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.cocktail-card-premium {
+  background: var(--white);
+  border: 1px solid rgba(31, 77, 58, 0.1);
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(16, 39, 30, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cocktail-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 65px rgba(16, 39, 30, 0.12);
+  border-color: rgba(31, 77, 58, 0.2);
+}
+
+.cocktail-card-premium.selected {
+  border-color: var(--orange);
+  box-shadow: 0 20px 55px rgba(201, 106, 61, 0.15);
+}
+
+.cocktail-media-carousel {
+  position: relative;
+  aspect-ratio: 1.25 / 1;
+  overflow: hidden;
+  background: rgba(16, 39, 30, 0.05);
+}
+
+.cocktail-media-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(246, 239, 227, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.carousel-arrow:hover {
+  background: var(--white);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.cocktail-media-carousel:hover .carousel-arrow {
+  opacity: 1;
+}
+
+.carousel-arrow.prev {
+  left: 12px;
+}
+
+.carousel-arrow.next {
+  right: 12px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(246, 239, 227, 0.5);
+  transition: all 0.25s ease;
+}
+
+.carousel-dot.active {
+  width: 16px;
+  border-radius: 4px;
+  background: var(--white);
+}
+
+.cocktail-card-body-premium {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tasting-notes-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tasting-note-badge {
+  background: rgba(31, 77, 58, 0.06);
+  color: var(--green);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.cocktail-card-body-premium h3 {
+  font-size: 1.75rem;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.cocktail-desc {
+  color: rgba(31, 77, 58, 0.78);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.ingredients-block {
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+}
+
+.ingredients-block strong {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.ingredients-block p {
+  color: rgba(31, 77, 58, 0.9);
+}
+
+/* Taste Profile Progress Bars */
+.taste-profile-block {
+  margin-top: auto;
+  border-top: 1px dashed rgba(31, 77, 58, 0.15);
+  padding-top: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flavor-row {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  align-items: center;
+  font-size: 0.78rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.flavor-progress-bar {
+  height: 6px;
+  background: rgba(31, 77, 58, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cocktail-card-premium.selected .bar-fill {
+  background: var(--orange);
+}
+
+.btn-select-drink {
+  width: 100%;
+  border: 1px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  border-radius: 999px;
+  padding: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-select-drink:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.btn-select-drink.added {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(201, 106, 61, 0.2);
+}
+
+.btn-select-drink.added:hover {
+  background: rgba(201, 106, 61, 0.85);
+}
+
+/* --- Persistent Menu Builder Panel --- */
+.menu-builder-panel {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 720px;
+  background: rgba(16, 39, 30, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(246, 239, 227, 0.15);
+  border-radius: 28px;
+  padding: 18px 24px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  animation: slideUpPanel 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+@keyframes slideUpPanel {
+  from {
+    transform: translate(-50%, 100px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.menu-builder-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-header h3 {
+  color: var(--cream);
+  font-size: 1.05rem;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.badge-count {
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-drinks-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  max-height: 80px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.selected-drinks-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.selected-drinks-list::-webkit-scrollbar-thumb {
+  background: rgba(246, 239, 227, 0.3);
+  border-radius: 999px;
+}
+
+.selected-drinks-list li {
+  background: rgba(246, 239, 227, 0.12);
+  border: 1px solid rgba(246, 239, 227, 0.2);
+  color: var(--cream);
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-remove-drink {
+  background: transparent;
+  border: none;
+  color: rgba(246, 239, 227, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 0.74rem;
+  transition: color 0.2s ease;
+}
+
+.btn-remove-drink:hover {
+  color: var(--orange);
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  border-top: 1px solid rgba(246, 239, 227, 0.1);
+  padding-top: 10px;
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  color: rgba(246, 239, 227, 0.6);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.btn-clear:hover {
+  color: var(--white);
+}
+
+.btn-book-with-menu {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(201, 106, 61, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-book-with-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(201, 106, 61, 0.45);
+  background: rgba(201, 106, 61, 0.9);
+}
+
+/* --- Bar Aesthetics Gallery Section --- */
+.center-intro {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.aesthetics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.aesthetic-card {
+  background: var(--cream);
+  border-radius: 34px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.aesthetic-img-wrapper {
+  aspect-ratio: 1.25 / 1;
+  overflow: hidden;
+  border-radius: 34px;
+  box-shadow: 0 12px 36px rgba(16, 39, 30, 0.08);
+}
+
+.aesthetic-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.aesthetic-card:hover .aesthetic-img-wrapper img {
+  transform: scale(1.03);
+}
+
+.aesthetic-copy {
+  padding: 20px 8px;
+}
+
+.aesthetic-copy h3 {
+  font-size: 1.35rem;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.aesthetic-copy p {
+  color: rgba(31, 77, 58, 0.8);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+/* --- Inclusions Card Section --- */
+.inclusions-section {
+  padding-bottom: 140px;
+}
+
+.inclusions-card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  background: var(--green);
+  border-radius: 44px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.inclusions-copy {
+  padding: 70px;
+  color: var(--cream);
+}
+
+.inclusions-copy h2 {
+  font-size: 2.8rem;
+  color: var(--cream);
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  line-height: 1.05;
+}
+
+.inclusions-copy p {
+  color: rgba(246, 239, 227, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.inclusions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.inclusion-item h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.inclusion-item p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(246, 239, 227, 0.75);
+  margin-bottom: 0;
+}
+
+.inclusions-visual-panel {
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 1100px) {
+  .pillar-row {
+    gap: 40px;
+  }
+  .pillar-copy-container h2 {
+    font-size: 2.30rem;
+  }
+  .cocktail-grid-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .inclusions-copy {
+    padding: 48px;
+  }
+}
+
+@media (max-width: 920px) {
+  .pillar-row,
+  .pillar-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .pillar-row.reverse .pillar-image-container {
+    order: 1;
+  }
+  .pillar-row.reverse .pillar-copy-container {
+    order: 2;
+  }
+  .cocktails-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .pretty-toggle-bar {
+    width: 100%;
+    min-width: 0;
+  }
+  .aesthetics-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .inclusions-card {
+    grid-template-columns: 1fr;
+  }
+  .inclusions-visual-panel {
+    height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-pillars-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .pillars-list {
+    gap: 60px;
+  }
+  .pillar-image-container {
+    border-radius: 28px;
+  }
+  .pillar-copy-container h2 {
+    font-size: 1.85rem;
+  }
+  .cocktail-grid-showcase {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .vibe-container {
+    margin-top: 24px;
+    margin-bottom: 30px;
+  }
+  .cocktail-card-premium {
+    border-radius: 28px;
+  }
+  .cocktail-card-body-premium {
+    padding: 20px 22px 24px;
+  }
+  .inclusions-copy {
+    padding: 30px 20px;
+  }
+  .inclusions-copy h2 {
+    font-size: 2rem;
+  }
+  .inclusions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .menu-builder-panel {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 14px 18px;
+    border-radius: 22px;
+  }
+  .panel-header h3 {
+    font-size: 0.94rem;
+  }
+  .selected-drinks-list li {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+}
+
