@@ -1435,7 +1435,7 @@ h1 {
   }
 
   h1 {
-    font-size: 3.2rem;
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
   }
 
   .section {
@@ -1456,7 +1456,7 @@ h1 {
   }
 
   .page-hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 7.5vw, 3rem);
   }
 
   .substack-post-card h3 {

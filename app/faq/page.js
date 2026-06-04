@@ -142,7 +142,7 @@ export default function FAQPage() {
         <section className="section faq-cta">
           <p className="eyebrow">Still planning?</p>
           <h2>Tell us the event details and we will shape the right setup.</h2>
-          <Link href="/booking" className="btn primary">
+          <Link href="/booking" className="btn secondary">
             Request a Quote
           </Link>
         </section>
