@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { CocktailsShowcase } from "@/components/CocktailsShowcase";
 
 export const metadata = {
   title: "Services & Cocktails | Bespoke Mobile Bar Hire",
@@ -104,13 +103,9 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Interactive Cocktails Showcase (Embed) */}
-        {/* <CocktailsShowcase /> */}
-
         {/* Bar Aesthetics Gallery */}
         <section className="section bar-aesthetics-section">
           <div className="section-header center">
-            <span className="eyebrow">The Aesthetics</span>
             <h2>Mobile Bars That Fit The Room</h2>
             <p className="section-intro center-intro">
               Our mobile bar counters are designed to complement your venue's styling, not compromise it. Choose from our curated catalog of physical bar setups.

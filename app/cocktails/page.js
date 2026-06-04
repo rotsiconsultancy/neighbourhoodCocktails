@@ -4,16 +4,32 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { CocktailsShowcase } from "@/components/CocktailsShowcase";
 
 export const metadata = {
-  title: "Services & Cocktails | Bespoke Mobile Bar Hire",
-  description: "Explore our professional mobile bar catering services for weddings, corporate activations, private parties, and mixology classes. Curate your event menu from our signature craft cocktails and premium mocktails."
+  title: "Our Cocktail Offerings | meticulously crafted offerings for unforgettable events and occasions.",
+  description: "Discover our handcrafted cocktails, designed to elevate any occasion. From classic favorites to innovative creations, we have the perfect drink for every moment."
 };
 
 
-export default function ServicesPage() {
+export default function CocktailsPage() {
   return (
     <>
       <SiteHeader />
       <main className="inner-page services-page">
+        {/* Page Hero */}
+         <section className="page-hero compact">
+          <p className="eyebrow">Our Cocktail Offerings</p>
+          <h1>Bespoke Mobile Bar & Catering.</h1>
+          <p>
+            We bring a fully equipped craft cocktail bar, premium ingredients, and professional hospitality directly to your venue. Every detail is shaped around your event's vibe.
+          </p>
+          <div className="hero-actions">
+            <Link href="/booking" className="btn secondary">
+              Start Your Booking
+            </Link>
+            <a href="#cocktails" className="btn">
+              Explore Drinks Menu
+            </a>
+          </div>
+        </section>
         {/* Interactive Cocktails Showcase (Embed) */}
         <CocktailsShowcase />
 
