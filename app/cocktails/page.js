@@ -22,7 +22,7 @@ export default function CocktailsPage() {
             We bring a fully equipped craft cocktail bar, premium ingredients, and professional hospitality directly to your venue. Every detail is shaped around your event's vibe.
           </p>
           <div className="hero-actions">
-            <Link href="/booking" className="btn secondary">
+            <Link href="/booking" className="btn primary1">
               Start Your Booking
             </Link>
             <a href="#cocktails" className="btn">
@@ -63,7 +63,7 @@ export default function CocktailsPage() {
               </div>
 
               <div style={{ marginTop: 42 }}>
-                <Link href="/booking" className="btn secondary">
+                <Link href="/booking" className="btn primary1">
                   Customize Your Package
                 </Link>
               </div>

@@ -103,7 +103,7 @@ export default function FAQPage() {
             you send a request.
           </p>
           <div className="hero-actions">
-            <Link href="/booking" className="btn secondary">
+            <Link href="/booking" className="btn primary1">
               Start a Booking Request
             </Link>
             <Link href="/gallery" className="btn">
@@ -142,7 +142,7 @@ export default function FAQPage() {
         <section className="section faq-cta">
           <p className="eyebrow">Still planning?</p>
           <h2>Tell us the event details and we will shape the right setup.</h2>
-          <Link href="/booking" className="btn secondary">
+          <Link href="/booking" className="btn primary1">
             Request a Quote
           </Link>
         </section>

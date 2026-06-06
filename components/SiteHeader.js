@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FaBars, FaInstagram, FaLinkedin, FaTimes } from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
 
-const navItems = [
+export const navItems = [
   { href: "/services", label: "Our Services" },
   { href: "/cocktails", label: "Our Cocktail Offerings" },
   { href: "/gallery", label: "Gallery" },
@@ -14,7 +14,7 @@ const navItems = [
   { href: "/feedback", label: "Feedback" },
 ];
 
-const socialItems = [
+export const socialItems = [
   {
     href: "https://www.instagram.com/neighbourhood_cocktails",
     label: "Instagram",
@@ -44,7 +44,8 @@ export function SiteHeader() {
       <Link className="brand" href="/" aria-label="The Neighbourhood Cocktails home">
         <Image
           className="brand-logo"
-          src="/images/logo.svg"
+          // src="/images/logo.svg"
+          src="/images/logo_bg_f6efe3.svg"
           width={350}
           height={128}
           alt="The Neighbourhood Cocktails"

@@ -162,7 +162,7 @@ export default function ServicesPage() {
               </div>
 
               <div style={{ marginTop: 42 }}>
-                <Link href="/booking" className="btn secondary">
+                <Link href="/booking" className="btn primary1">
                   Customize Your Package
                 </Link>
               </div>
