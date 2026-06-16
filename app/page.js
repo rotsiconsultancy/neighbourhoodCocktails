@@ -39,7 +39,7 @@ export default function HomePage() {
 
       <header className="hero">
         <div className="hero-content">
-          <div className="eyebrow">Private events &bull; Weddings &bull; Corporate experiences &bull; Masterclasses</div>
+          {/* <div className="eyebrow">Private events &bull; Weddings &bull; Corporate experiences &bull; Masterclasses</div> */}
           {/* <h1>
             Host your next <span className="script">unforgettable</span> event.
           </h1> */}
@@ -131,7 +131,7 @@ export default function HomePage() {
 
           <div className="gallery-grid">
             <div className="tall" style={{ backgroundImage: "url('/images/gallery/1.png')" }} />
-            <div style={{ backgroundImage: "url('/images/gallery/2.jpg')" }} />
+            <div style={{ backgroundImage: "url('/images/gallery/2.jpg?auto=format&fit=crop&w=1000&q=80')" }} />
             <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80')" }} />
             <div className="wide" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80')" }} />
           </div>

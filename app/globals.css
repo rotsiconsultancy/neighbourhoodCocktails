@@ -709,11 +709,14 @@ h1 {
   padding: 48px 6vw;
   color: var(--cream);
   background: var(--dark);
+  /* background: #ffffff; */
 }
 
 .site-footer p {
   margin-top: 16px;
-  color: rgba(246, 239, 227, 0.68);
+  /* color: rgba(246, 239, 227, 0.68); */
+  color: #ffffff;
+  /* color: var(--dark); */
 }
 
 .footer-links {
