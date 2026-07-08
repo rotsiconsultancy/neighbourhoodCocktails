@@ -1,5 +1,25 @@
+import nodemailer from "nodemailer";
+
 const BREVO_SEND_EMAIL_URL = "https://api.brevo.com/v3/smtp/email";
 const BREVO_CONTACTS_URL = "https://api.brevo.com/v3/contacts";
+
+function getSmtpConfig() {
+  const host = process.env.BREVO_SMTP_HOST || process.env.SMTP_HOST || "smtp-relay.brevo.com";
+  const port = Number(process.env.BREVO_SMTP_PORT || process.env.SMTP_PORT || 587);
+  const user = process.env.BREVO_SMTP_LOGIN || process.env.SMTP_USER;
+  const pass = process.env.BREVO_SMTP_API_KEY || process.env.SMTP_PASS;
+
+  if (!user || !pass) {
+    return null;
+  }
+
+  return {
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass }
+  };
+}
 
 function cleanValue(value, maxLength = 500) {
   if (typeof value !== "string") {
@@ -62,6 +82,44 @@ async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }
   return response.json();
 }
 
+async function sendSmtpEmail({ to, subject, htmlContent, textContent, replyTo }) {
+  const smtpConfig = getSmtpConfig();
+
+  if (!smtpConfig) {
+    throw new Error("SMTP is not configured. Set BREVO_SMTP_LOGIN and BREVO_SMTP_API_KEY.");
+  }
+
+  const transporter = nodemailer.createTransport(smtpConfig);
+
+  return transporter.sendMail({
+    from: {
+      name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails",
+      address: process.env.BREVO_SENDER_EMAIL
+    },
+    to: to.map((recipient) => ({
+      name: recipient.name,
+      address: recipient.email
+    })),
+    replyTo: replyTo
+      ? {
+          name: replyTo.name,
+          address: replyTo.email
+        }
+      : undefined,
+    subject,
+    html: htmlContent,
+    text: textContent
+  });
+}
+
+async function sendBookingEmail(message) {
+  if (getSmtpConfig()) {
+    return sendSmtpEmail(message);
+  }
+
+  return sendBrevoEmail(message);
+}
+
 async function saveBrevoContact({ email, name, eventDate, location, guests, eventType, serviceStyle, preferences, notes }) {
   const listId = Number(process.env.BREVO_CONTACT_LIST_ID);
 
@@ -104,8 +162,14 @@ async function saveBrevoContact({ email, name, eventDate, location, guests, even
 }
 
 export async function POST(request) {
-  if (!process.env.BREVO_API_KEY || !process.env.BREVO_SENDER_EMAIL || !process.env.BOOKING_RECIPIENT_EMAIL) {
+  const isEmailEnabled = process.env.BREVO_IS_EMAIL_ENABLED === "true";
+
+  if (!process.env.BREVO_SENDER_EMAIL || !process.env.BOOKING_RECIPIENT_EMAIL) {
     return Response.json({ error: "Email service is not configured." }, { status: 500 });
+  }
+
+  if (isEmailEnabled && !getSmtpConfig() && !process.env.BREVO_API_KEY) {
+    return Response.json({ error: "Email service is not configured. Set SMTP credentials or BREVO_API_KEY." }, { status: 500 });
   }
 
   const body = await request.json().catch(() => null);
@@ -187,8 +251,9 @@ export async function POST(request) {
     </html>`;
 
   try {
-    if(process.env.BREVO_API_KEY && process.env.BREVO_IS_EMAIL_ENABLED === "true"){
-      await sendBrevoEmail({
+    if(isEmailEnabled){
+      console.log("Sending booking request emails...");
+      await sendBookingEmail({
         to: [{ email: process.env.BOOKING_RECIPIENT_EMAIL, name: "The Neighbourhood Cocktails" }],
         replyTo: { email, name },
         subject: `New booking request from ${name}`,
@@ -196,7 +261,9 @@ export async function POST(request) {
         textContent: adminText
       });
 
-      await sendBrevoEmail({
+      console.log("Sending booking confirmation email to user...");
+
+      await sendBookingEmail({
         to: [{ email, name }],
         replyTo: {
           email: process.env.BOOKING_RECIPIENT_EMAIL,
@@ -208,6 +275,7 @@ export async function POST(request) {
       });
     }
 
+    console.log("Saving booking request to Brevo contacts...");
     await saveBrevoContact({
       email,
       name,
@@ -219,6 +287,7 @@ export async function POST(request) {
       preferences,
       notes
     });
+    console.log("Booking request processed successfully.");
   } catch (error) {
     console.error(error);
     return Response.json({ error: "We could not send your request right now. Please try again." }, { status: 502 });

@@ -38,6 +38,20 @@ export default function HomePage() {
       <SiteHeader />
 
       <header className="hero">
+        <div className="hero-slideshow" aria-hidden="true">
+          <div
+            className="hero-slide"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1617524455617-ce1e266aa810?auto=format&fit=crop&w=1800&q=80')" }}
+          />
+          <div
+            className="hero-slide"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1654074517750-f854f7c27d62?w=1800&auto=format&fit=crop&q=80')" }}
+          />
+          <div
+            className="hero-slide"
+            style={{ backgroundImage: "url('/images/gallery/6.png')" }}
+          />
+        </div>
         <div className="hero-content">
           {/* <div className="eyebrow">Private events &bull; Weddings &bull; Corporate experiences &bull; Masterclasses</div> */}
           {/* <h1>
@@ -67,7 +81,7 @@ export default function HomePage() {
 
           <div className="cocktail-grid">
             <article className="cocktail-card">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Wedding celebration" />
+              <img src="https://images.unsplash.com/photo-1751814288253-53b10f9083d2?w=500&auto=format&fit=crop&q=60" alt="Wedding celebration" />
               <div className="cocktail-copy">
                 <h3>Weddings</h3>
                 <p>Elegant cocktail bars, welcome drinks, signature couple menus, and service that keeps the celebration flowing.</p>
@@ -78,7 +92,7 @@ export default function HomePage() {
             </article>
 
             <article className="cocktail-card">
-              <img src="/images/gallery/6.png" alt="Corporate event" />
+              <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=500&auto=format&fit=crop&q=60" alt="Corporate event" />
               <div className="cocktail-copy">
                 <h3>Corporate Events</h3>
                 <p>Professional bar experiences for launches, team socials, client nights, end-year parties, and brand activations.</p>
@@ -89,7 +103,7 @@ export default function HomePage() {
             </article>
 
             <article className="cocktail-card">
-              <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=900&q=80" alt="Cocktail masterclass" />
+              <img src="https://images.unsplash.com/photo-1623408859815-22534357b3db?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocktail masterclass" />
               <div className="cocktail-copy">
                 <h3>Masterclasses</h3>
                 <p>Hands-on cocktail sessions for teams, friends, brands, and curious drink lovers who want the craft behind the glass.</p>
