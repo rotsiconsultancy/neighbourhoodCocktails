@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://neighbourhoodcocktails.com/sitemap.xml",
+    sitemap: "https://www.neighbourhoodcocktails.com/sitemap.xml",
   };
 }

@@ -1,7 +1,7 @@
 import { servicesData, cocktailsData } from "@/lib/data";
 
 export default function sitemap() {
-  const baseUrl = "https://neighbourhoodcocktails.com";
+  const baseUrl = "https://www.neighbourhoodcocktails.com";
 
   const staticRoutes = [
     { url: baseUrl,                      changeFrequency: "weekly",  priority: 1.0 },

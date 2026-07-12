@@ -4,7 +4,15 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata = {
   title: "Your Experience",
-  description: "Leave feedback on your cocktail experience with The Neighbourhood Cocktails. We appreciate your insights."
+  description: "Leave feedback on your cocktail experience with The Neighbourhood Cocktails. We appreciate your insights.",
+  alternates: {
+    canonical: "/feedback",
+  },
+  openGraph: {
+    title: "Your Experience | The Neighbourhood Cocktails",
+    description: "Leave feedback on your cocktail experience with The Neighbourhood Cocktails. We appreciate your insights.",
+    url: "/feedback",
+  },
 };
 
 export default function FeedbackPage() {

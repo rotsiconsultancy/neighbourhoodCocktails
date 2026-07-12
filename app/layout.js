@@ -2,10 +2,10 @@ import "./globals.css";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export const metadata = {
-  metadataBase: new URL("https://neighbourhoodcocktails.com"),
+  metadataBase: new URL("https://www.neighbourhoodcocktails.com"),
   title: {
     default: "The Neighbourhood Cocktails",
-    template: "The Neighbourhood Cocktails"
+    template: "%s | The Neighbourhood Cocktails"
   },
   description:
     "Cocktail-led experiences for weddings, private events, corporate gatherings, and masterclasses.",
@@ -14,7 +14,7 @@ export const metadata = {
     description:
       "Warm, polished cocktail service for hosts who want the drinks, setup, and atmosphere handled with care.",
     images: ["/images/green-cream.jpg","/images/black.jpg"],
-    url: "https://neighbourhoodcocktails.com",
+    url: "https://www.neighbourhoodcocktails.com",
     siteName: "The Neighbourhood Cocktails",
     type: "website"
   },

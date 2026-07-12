@@ -45,7 +45,7 @@ export function SiteFooter() {
         </Link>
       </nav>
       <p className="footer-meta">&copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.</p>
-      <p className="footer-meta">Built by <Link href="https://www.instagram.com/rotsilabs" target="_blank" rel="noopener noreferrer">ROTSI LABS</Link>.</p>
+      <p className="footer-meta">Built by <Link href="https://www.instagram.com/rotsilabs" target="_blank" rel="noopener noreferrer">Malaika Studios</Link>.</p>
     </footer>
   );
 }
