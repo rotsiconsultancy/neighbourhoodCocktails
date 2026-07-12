@@ -4,9 +4,10 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { servicesData } from "@/lib/data";
 
 export const metadata = {
-  title: "Services | Bespoke Mobile Bar Hire",
+  title: "Mobile Bar Hire for Events in Nairobi",
   description:
     "Explore our professional mobile bar catering services for weddings, corporate activations, private parties, and mixology classes. Curate your event menu from our signature craft cocktails and premium mocktails.",
+  alternates: { canonical: "/services" },
 };
 
 const barAesthetics = [

@@ -2,6 +2,12 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
+export const metadata = {
+  title: "Mobile Bar Hire & Cocktail Catering in Nairobi",
+  description: "Mobile bar hire and cocktail catering in Nairobi for weddings, corporate events, private parties, mocktail service, and cocktail masterclasses.",
+  alternates: { canonical: "/" }
+};
+
 const substackPosts = [
   {
     href: "https://pastaaffair.substack.com/p/the-negroni-italys-most-uncompromising",

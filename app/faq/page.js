@@ -3,8 +3,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata = {
-  title: "FAQ",
-  description: "Common questions about booking The Neighbourhood Cocktails for events."
+  title: "Mobile Bar Hire FAQ",
+  description: "Answers about mobile bar hire, cocktail catering, event packages, mocktails, setup, guest counts, and booking in Nairobi.",
+  alternates: { canonical: "/faq" }
 };
 
 const faqGroups = [

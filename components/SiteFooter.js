@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { SiSubstack } from "react-icons/si";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -7,45 +6,62 @@ export function SiteFooter() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="site-footer">
-      <div>
-        <Link href="/" aria-label="The Neighbourhood Cocktails home">
-          <Image
-            className="brand-logo"
-            // src="/images/green-cream.jpg"
-            src="/images/logo.svg"
-            width={350}
-            height={128}
-            alt="The Neighbourhood Cocktails"
-            priority
-          />
-        </Link>
-        <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
+      <div className="footer-main">
+        <div className="footer-brand">
+          <Link href="/" aria-label="The Neighbourhood Cocktails home">
+            <img
+              className="brand-logo"
+              src="/images/logo_transparent_trimmed.svg"
+              width={814}
+              height={446}
+              alt="The Neighbourhood Cocktails"
+            />
+          </Link>
+          <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
+          <div className="footer-social-block">
+            <p className="footer-label">Follow us</p>
+            <nav className="footer-social" aria-label="Social links">
+              <Link href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FaInstagram aria-hidden="true" />
+              </Link>
+              <Link href="https://www.linkedin.com/company/the-neighbourhood-cocktails" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FaLinkedin aria-hidden="true" />
+              </Link>
+              <Link href="https://substack.com/@theneighbourhoodc" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+                <SiSubstack aria-hidden="true" />
+              </Link>
+            </nav>
+          </div>
+        </div>
+
+        <div className="footer-discovery">
+          <p className="footer-label">Plan your event</p>
+          <nav aria-label="Event planning services">
+            <Link href="/wedding-mobile-bar-nairobi">Wedding mobile bar</Link>
+            <Link href="/corporate-cocktail-catering-nairobi">Corporate cocktail catering</Link>
+            <Link href="/private-party-bartenders-nairobi">Private party bartenders</Link>
+            <Link href="/cocktail-masterclass-nairobi">Cocktail masterclasses</Link>
+            <Link href="/mocktail-bar-events-nairobi">Mocktail bar for events</Link>
+            <Link href="/brand-activation-bar-service">Brand activation bar service</Link>
+            <Link href="/event-drinks-packages">Event drinks packages</Link>
+          </nav>
+        </div>
+
+        <div className="footer-links">
+          <p className="footer-label">Explore</p>
+          <nav aria-label="Footer links">
+            <Link href="/services">Services</Link>
+            <Link href="/gallery">Gallery</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/booking">Book our services</Link>
+          </nav>
+        </div>
       </div>
-      <nav className="footer-links" aria-label="Footer links">
-        <Link href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer">
-          <FaInstagram size={20} style={{ verticalAlign: "middle", marginRight: 4 }} aria-label="Instagram"/>
-          {/* Instagram */}
-        </Link>
-        <Link href="https://www.linkedin.com/company/the-neighbourhood-cocktails" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin size={20} style={{ verticalAlign: "middle", marginRight: 4 }}  aria-label="LinkedIn"/>
-          {/* LinkedIn */}
-        </Link>
-        <Link href="https://substack.com/@theneighbourhoodc" target="_blank" rel="noopener noreferrer">
-          <SiSubstack size={20} style={{ verticalAlign: "middle", marginRight: 4 }} aria-label="Substack"/>
-          {/* Substack */}
-        </Link>
-        <Link href="/gallery" aria-label="View event gallery">
-          Gallery
-        </Link>
-        <Link href="/faq" aria-label="Read frequently asked questions">
-          FAQ
-        </Link>
-        <Link href="/booking" aria-label="Book a cocktail experience">
-          Book
-        </Link>
-      </nav>
-      <p className="footer-meta">&copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.</p>
-      <p className="footer-meta">Built by <Link href="https://www.instagram.com/rotsilabs" target="_blank" rel="noopener noreferrer">Malaika Studios</Link>.</p>
+
+      <div className="footer-bottom">
+        <p>&copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.</p>
+        <p>Built by <Link href="https://malaikastudios.rotsi.co.ke" target="_blank" rel="noopener noreferrer">Malaika Studios</Link>.</p>
+      </div>
     </footer>
   );
 }

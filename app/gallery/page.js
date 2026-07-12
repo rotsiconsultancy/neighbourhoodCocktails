@@ -4,8 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata = {
-  title: "Gallery",
-  description: "Browse cocktail bars, event setups, and hosting moments by The Neighbourhood Cocktails."
+  title: "Mobile Bar Event Gallery",
+  description: "Browse mobile bar setups, cocktail service, event styling, and hosting moments by The Neighbourhood Cocktails in Nairobi.",
+  alternates: { canonical: "/gallery" }
 };
 
 const galleryImages = [

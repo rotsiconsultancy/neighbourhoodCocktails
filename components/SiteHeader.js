@@ -7,6 +7,7 @@ import { FaBars, FaInstagram, FaLinkedin, FaTimes } from "react-icons/fa";
 import { SiSubstack } from "react-icons/si";
 
 export const navItems = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Our Services" },
   { href: "/cocktails", label: "Our Cocktail Offerings" },
   { href: "/gallery", label: "Gallery" },
@@ -45,9 +46,9 @@ export function SiteHeader() {
         <Image
           className="brand-logo"
           // src="/images/logo.svg"
-          src="/images/logo_bg_f6efe3.svg"
-          width={350}
-          height={128}
+          src="/images/logo_transparent_trimmed.svg"
+          width={814}
+          height={446}
           alt="The Neighbourhood Cocktails"
           priority
         />

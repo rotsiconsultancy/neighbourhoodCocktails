@@ -13,8 +13,9 @@ export async function generateMetadata({ params }) {
   const service = servicesData.find((s) => s.id === slug);
   if (!service) return {};
   return {
-    title: `${service.title} | The Neighbourhood Cocktails`,
+    title: service.title,
     description: service.description,
+    alternates: { canonical: `/services/${service.id}` },
   };
 }
 

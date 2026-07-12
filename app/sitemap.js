@@ -1,4 +1,5 @@
 import { servicesData, cocktailsData } from "@/lib/data";
+import { seoLandingPages } from "@/lib/seoLandingPages";
 
 export default function sitemap() {
   const baseUrl = "https://www.neighbourhoodcocktails.com";
@@ -27,5 +28,12 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...cocktailRoutes];
+  const seoRoutes = seoLandingPages.map((page) => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...cocktailRoutes, ...seoRoutes];
 }

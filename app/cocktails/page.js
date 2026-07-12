@@ -4,8 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { CocktailsShowcase } from "@/components/CocktailsShowcase";
 
 export const metadata = {
-  title: "Our Cocktail Offerings | meticulously crafted offerings for unforgettable events and occasions.",
-  description: "Discover our handcrafted cocktails, designed to elevate any occasion. From classic favorites to innovative creations, we have the perfect drink for every moment."
+  title: "Cocktail Menus for Events in Nairobi",
+  description: "Explore signature cocktails, premium classics, and thoughtful mocktails for weddings, corporate events, private parties, and masterclasses in Nairobi.",
+  alternates: { canonical: "/cocktails" }
 };
 
 

@@ -4,8 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata = {
-  title: "Book the Bar",
-  description: "Start a bespoke cocktail bar booking request with The Neighbourhood Cocktails."
+  title: "Request a Mobile Cocktail Bar Quote in Nairobi",
+  description: "Request a tailored quote for mobile bar hire, cocktail catering, bartenders, mocktails, or a cocktail masterclass in Nairobi.",
+  alternates: { canonical: "/booking" }
 };
 
 export default function BookingPage() {
