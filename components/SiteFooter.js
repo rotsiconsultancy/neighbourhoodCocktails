@@ -12,31 +12,26 @@ export function SiteFooter() {
             <img
               className="brand-logo"
               src="/images/logo_transparent_trimmed.svg"
-              width={814}
-              height={446}
+              width={600}
+              height={380}
               alt="The Neighbourhood Cocktails"
             />
           </Link>
           <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
-          <div className="footer-social-block">
-            <p className="footer-label">Follow us</p>
-            <nav className="footer-social" aria-label="Social links">
-              <Link href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <FaInstagram aria-hidden="true" />
-              </Link>
-              <Link href="https://www.linkedin.com/company/the-neighbourhood-cocktails" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FaLinkedin aria-hidden="true" />
-              </Link>
-              <Link href="https://substack.com/@theneighbourhoodc" target="_blank" rel="noopener noreferrer" aria-label="Substack">
-                <SiSubstack aria-hidden="true" />
-              </Link>
-            </nav>
-          </div>
+          <address className="footer-address">
+            Based at Hackhouse Africa<br />
+            124 Manyani East Road, Nairobi, Kenya<br />
+            Serving Westlands, Kilimani, Lavington &amp; nearby Nairobi areas<br />
+            <a href="https://www.google.com/maps/search/?api=1&query=Hackhouse+Africa%2C+124+Manyani+East+Road%2C+Nairobi" target="_blank" rel="noopener noreferrer">
+              Get directions
+            </a>
+          </address>
         </div>
 
         <div className="footer-discovery">
           <p className="footer-label">Plan your event</p>
           <nav aria-label="Event planning services">
+            <Link href="/mobile-bar-hire-westlands-kilimani">Westlands &amp; Kilimani mobile bar</Link>
             <Link href="/wedding-mobile-bar-nairobi">Wedding mobile bar</Link>
             <Link href="/corporate-cocktail-catering-nairobi">Corporate cocktail catering</Link>
             <Link href="/private-party-bartenders-nairobi">Private party bartenders</Link>
@@ -55,6 +50,20 @@ export function SiteFooter() {
             <Link href="/faq">FAQ</Link>
             <Link href="/booking">Book our services</Link>
           </nav>
+          <div className="footer-social-block">
+            <p className="footer-label">Follow us</p>
+            <nav className="footer-social" aria-label="Social links">
+              <Link href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FaInstagram aria-hidden="true" />
+              </Link>
+              <Link href="https://www.linkedin.com/company/the-neighbourhood-cocktails" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FaLinkedin aria-hidden="true" />
+              </Link>
+              <Link href="https://substack.com/@theneighbourhoodc" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+                <SiSubstack aria-hidden="true" />
+              </Link>
+            </nav>
+          </div>
         </div>
       </div>
 

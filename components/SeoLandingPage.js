@@ -10,7 +10,7 @@ export function SeoLandingPage({ page }) {
         "@type": "Service",
         name: page.title,
         serviceType: page.title,
-        areaServed: { "@type": "City", name: "Nairobi" },
+        areaServed: (page.areaServed || ["Nairobi"]).map((name) => ({ "@type": "Place", name })),
         provider: {
           "@type": "LocalBusiness",
           name: "The Neighbourhood Cocktails",

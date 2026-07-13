@@ -845,6 +845,19 @@ h1 {
   line-height: 1.65;
 }
 
+.footer-address {
+  margin-top: 22px;
+  color: rgba(16, 39, 30, 0.62);
+  font-size: 0.88rem;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.footer-address a {
+  color: var(--orange);
+  font-weight: 700;
+}
+
 .footer-label {
   margin: 0 0 18px;
   color: var(--orange);
@@ -872,13 +885,25 @@ h1 {
 }
 
 .footer-social-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
   margin-top: 38px;
+}
+
+.footer-social-block .footer-label {
+  margin: 0;
 }
 
 .footer-social {
   display: flex;
   gap: 18px;
   color: rgba(16, 39, 30, 0.72);
+}
+
+.footer-links .footer-social {
+  display: flex;
+  grid-template-columns: none;
 }
 
 .footer-social a {
@@ -951,6 +976,54 @@ h1 {
   gap: 24px;
   align-items: start;
   min-width: 0;
+}
+
+.booking-location {
+  display: grid;
+  max-width: 1180px;
+  margin: 72px auto 0;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 48px;
+  align-items: stretch;
+  border-top: 1px solid rgba(246, 239, 227, 0.24);
+  padding-top: 72px;
+}
+
+.booking-location-copy h2 {
+  max-width: 430px;
+  margin-top: 12px;
+  color: var(--cream);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.booking-location-copy > p:not(.eyebrow) {
+  max-width: 470px;
+  margin-top: 20px;
+  color: rgba(246, 239, 227, 0.78);
+  line-height: 1.7;
+}
+
+.booking-location-copy address {
+  margin: 22px 0;
+  color: var(--cream);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.booking-location-map {
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid rgba(246, 239, 227, 0.24);
+  border-radius: 4px;
+  background: rgba(246, 239, 227, 0.12);
+}
+
+.booking-location-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
 }
 
 .booking-panel,
@@ -1567,6 +1640,10 @@ h1 {
     justify-content: flex-start;
   }
 
+  .booking-location {
+    grid-template-columns: 1fr;
+  }
+
   .cocktail-grid,
   .gallery-grid,
   .substack-posts {
@@ -1674,6 +1751,17 @@ h1 {
 
   .footer-brand .brand-logo {
     width: 190px;
+  }
+
+  .booking-location {
+    margin-top: 48px;
+    gap: 32px;
+    padding-top: 48px;
+  }
+
+  .booking-location-map,
+  .booking-location-map iframe {
+    min-height: 280px;
   }
 
   .hero {

@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata = {
   title: "Mobile Bar Hire & Cocktail Catering in Nairobi",
-  description: "Mobile bar hire and cocktail catering in Nairobi for weddings, corporate events, private parties, mocktail service, and cocktail masterclasses.",
+  description: "Mobile bar hire and cocktail catering in Westlands, Kilimani, Lavington, and across Nairobi for weddings, corporate events, private parties, mocktail service, and cocktail masterclasses.",
   alternates: { canonical: "/" }
 };
 
@@ -66,12 +66,12 @@ export default function HomePage() {
           <h1>
             You make the memories. <span className="script">We bring the cocktails.</span>
           </h1>
-          <p>From intimate celebrations to polished corporate gatherings, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.</p>
+          <p>From intimate celebrations in Kilimani to polished corporate gatherings in Westlands, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.</p>
           <div className="hero-actions">
             <Link href="/booking" className="btn secondary">
               Book Our Bar
             </Link>
-            <Link href="#events" className="btn">
+            <Link href="/services" className="btn">
               Explore Our Other Services
             </Link>
           </div>

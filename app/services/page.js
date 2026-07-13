@@ -6,7 +6,7 @@ import { servicesData } from "@/lib/data";
 export const metadata = {
   title: "Mobile Bar Hire for Events in Nairobi",
   description:
-    "Explore our professional mobile bar catering services for weddings, corporate activations, private parties, and mixology classes. Curate your event menu from our signature craft cocktails and premium mocktails.",
+    "Explore mobile bar catering for weddings, corporate activations, private parties, and mixology classes across Westlands, Kilimani, Lavington, and Nairobi.",
   alternates: { canonical: "/services" },
 };
 
