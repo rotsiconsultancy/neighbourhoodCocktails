@@ -831,10 +831,17 @@ h1 {
 }
 
 .footer-brand .brand-logo {
-  width: 215px;
+  width: min(215px, 48%);
   height: auto;
-  max-width: 100%;
+  max-width: 215px;
   mix-blend-mode: multiply;
+}
+
+.footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .footer-brand > p {
@@ -1750,7 +1757,7 @@ h1 {
   }
 
   .footer-brand .brand-logo {
-    width: 190px;
+    width: min(190px, 48%);
   }
 
   .booking-location {

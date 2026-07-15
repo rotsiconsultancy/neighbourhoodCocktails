@@ -8,13 +8,20 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <Link href="/" aria-label="The Neighbourhood Cocktails home">
+          <Link className="footer-logo-row" href="/" aria-label="The Neighbourhood Cocktails home">
             <img
               className="brand-logo"
               src="/images/logo_transparent_trimmed.svg"
               width={600}
-              height={380}
+              height={300}
               alt="The Neighbourhood Cocktails"
+            />
+            <img
+              className="brand-logo"
+              src="/images/Qurative-black.png"
+              width={600}
+              height={400}
+              alt="Qurative"
             />
           </Link>
           <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
