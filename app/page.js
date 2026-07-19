@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getHomePage } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Mobile Bar Hire & Cocktail Catering in Nairobi",
@@ -38,25 +39,18 @@ const substackPosts = [
   }
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pageData = await getHomePage();
+  const articles = pageData.articlePosts?.length ? pageData.articlePosts : substackPosts;
   return (
     <>
       <SiteHeader />
 
       <header className="hero">
         <div className="hero-slideshow" aria-hidden="true">
-          <div
-            className="hero-slide"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1617524455617-ce1e266aa810?auto=format&fit=crop&w=1800&q=80')" }}
-          />
-          <div
-            className="hero-slide"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1654074517750-f854f7c27d62?w=1800&auto=format&fit=crop&q=80')" }}
-          />
-          <div
-            className="hero-slide"
-            style={{ backgroundImage: "url('/images/gallery/6.png')" }}
-          />
+          {pageData.heroSlides.map((slide) => (
+            <div key={slide.image} className="hero-slide" style={{ backgroundImage: `url('${slide.image}')` }} />
+          ))}
         </div>
         <div className="hero-content">
           {/* <div className="eyebrow">Private events &bull; Weddings &bull; Corporate experiences &bull; Masterclasses</div> */}
@@ -86,44 +80,22 @@ export default function HomePage() {
           </div>
 
           <div className="cocktail-grid">
-            <article className="cocktail-card">
-              <img src="https://images.unsplash.com/photo-1751814288253-53b10f9083d2?w=500&auto=format&fit=crop&q=60" alt="Wedding celebration" />
-              <div className="cocktail-copy">
-                <h3>Weddings</h3>
-                <p>Elegant cocktail bars, welcome drinks, signature couple menus, and service that keeps the celebration flowing.</p>
-                <Link href="/booking" className="price">
-                  Request package
-                </Link>
-              </div>
-            </article>
-
-            <article className="cocktail-card">
-              <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=500&auto=format&fit=crop&q=60" alt="Corporate event" />
-              <div className="cocktail-copy">
-                <h3>Corporate Events</h3>
-                <p>Professional bar experiences for launches, team socials, client nights, end-year parties, and brand activations.</p>
-                <Link href="/booking" className="price">
-                  Book consultation
-                </Link>
-              </div>
-            </article>
-
-            <article className="cocktail-card">
-              <img src="https://images.unsplash.com/photo-1623408859815-22534357b3db?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocktail masterclass" />
-              <div className="cocktail-copy">
-                <h3>Masterclasses</h3>
-                <p>Hands-on cocktail sessions for teams, friends, brands, and curious drink lovers who want the craft behind the glass.</p>
-                <Link href="/booking" className="price">
-                  Plan a class
-                </Link>
-              </div>
-            </article>
+            {pageData.eventCards.map((card) => (
+              <article className="cocktail-card" key={card.title}>
+                <img src={card.image} alt={card.alt || card.title} />
+                <div className="cocktail-copy">
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                  <Link href={card.href || "/booking"} className="price">{card.ctaLabel || "Learn more"}</Link>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="section story" id="experience">
           <div className="story-wrap">
-            <div className="story-img">
+            <div className="story-img" style={pageData.storyImage ? { backgroundImage: `url('${pageData.storyImage}')` } : undefined}>
               <div className="story-badge">We bring the bar.</div>
             </div>
             <div>
@@ -150,10 +122,7 @@ export default function HomePage() {
           </div>
 
           <div className="gallery-grid">
-            <div className="tall" style={{ backgroundImage: "url('/images/gallery/1.png')" }} />
-            <div style={{ backgroundImage: "url('/images/gallery/2.jpg?auto=format&fit=crop&w=1000&q=80')" }} />
-            <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80')" }} />
-            <div className="wide" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80')" }} />
+            {pageData.galleryImages.map((item) => <div key={item.image} role="img" aria-label={item.alt || "Neighbourhood Cocktails event"} style={{ backgroundImage: `url('${item.image}')` }} />)}
           </div>
         </section>
 
@@ -165,7 +134,7 @@ export default function HomePage() {
 
           <div className="substack-layout">
             <div className="substack-posts">
-              {substackPosts.map((post) => (
+              {articles.map((post) => (
                 <article className="substack-post-card" key={post.title}>
                   <Link className="substack-media" href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`Read ${post.title} on Substack`}>
                     <img src={post.image} alt={post.alt} />

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getGalleryImages } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Mobile Bar Event Gallery",
@@ -68,7 +69,8 @@ const galleryImages = [
   }
 ];
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const managedGalleryImages = await getGalleryImages();
   return (
     <>
       <SiteHeader />
@@ -91,7 +93,7 @@ export default function GalleryPage() {
         </section>
 
         <section className="section gallery-showcase" aria-label="Event gallery">
-          <GalleryLightbox images={galleryImages} />
+          <GalleryLightbox images={managedGalleryImages} />
         </section>
       </main>
       <SiteFooter />

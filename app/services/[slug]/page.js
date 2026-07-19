@@ -2,15 +2,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { servicesData } from "@/lib/data";
+import { getService, getServices } from "@/sanity/lib/content";
 
 export async function generateStaticParams() {
+  const servicesData = await getServices();
   return servicesData.map((s) => ({ slug: s.id }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.id === slug);
+  const service = await getService(slug);
   if (!service) return {};
   return {
     title: service.title,
@@ -21,9 +22,10 @@ export async function generateMetadata({ params }) {
 
 export default async function ServicePage({ params }) {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.id === slug);
+  const service = await getService(slug);
   if (!service) notFound();
 
+  const servicesData = await getServices();
   const otherServices = servicesData.filter((s) => s.id !== slug);
 
   return (

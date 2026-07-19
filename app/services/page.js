@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { servicesData } from "@/lib/data";
+import { getServices } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Mobile Bar Hire for Events in Nairobi",
@@ -28,7 +28,8 @@ const barAesthetics = [
   },
 ];
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const servicesData = await getServices();
   return (
     <>
       <SiteHeader />

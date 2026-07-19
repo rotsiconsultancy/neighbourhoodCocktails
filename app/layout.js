@@ -1,7 +1,10 @@
 import "./globals.css";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { getSiteSettings } from "@/sanity/lib/content";
 
-export const metadata = {
+const baseMetadata = {
   metadataBase: new URL("https://www.neighbourhoodcocktails.com"),
   title: {
     default: "The Neighbourhood Cocktails",
@@ -25,12 +28,25 @@ export const metadata = {
   }
 };
 
-export default function RootLayout({ children }) {
+export async function generateMetadata() {
+  const settings = await getSiteSettings();
+  return {
+    ...baseMetadata,
+    openGraph: {
+      ...baseMetadata.openGraph,
+      images: settings.defaultShareImages?.length ? settings.defaultShareImages : baseMetadata.openGraph.images,
+    },
+  };
+}
+
+export default async function RootLayout({ children }) {
+  const isDraft = (await draftMode()).isEnabled;
   return (
     <html lang="en">
       <body>
         {children}
         <FloatingWhatsApp />
+        {isDraft ? <VisualEditing /> : null}
       </body>
     </html>
   );

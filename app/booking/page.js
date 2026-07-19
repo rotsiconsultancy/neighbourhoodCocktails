@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BookingForm } from "@/components/BookingForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getHomePage } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Request a Mobile Cocktail Bar Quote in Nairobi",
@@ -34,7 +35,8 @@ const locationSchema = {
   }
 };
 
-export default function BookingPage() {
+export default async function BookingPage() {
+  const pageData = await getHomePage();
   return (
     <>
       <SiteHeader />
@@ -50,10 +52,11 @@ export default function BookingPage() {
           <aside className="promise-panel">
             <Image
               className="promise-media"
-              src="/images/gallery/5.png"
+              src={pageData.bookingImage}
               width={900}
               height={520}
               alt="Cocktail service setup with warm lighting"
+              unoptimized={pageData.bookingImage.startsWith("http")}
             />
             <p className="eyebrow">Our promise</p>
             <h2>A bar that fits the room.</h2>

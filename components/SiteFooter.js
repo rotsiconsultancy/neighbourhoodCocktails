@@ -1,35 +1,41 @@
 import Link from "next/link";
 import { SiSubstack } from "react-icons/si";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { getSiteSettings } from "@/sanity/lib/content";
 
-export function SiteFooter() {
+export async function SiteFooter() {
   const currentYear = new Date().getFullYear();
+  const settings = await getSiteSettings();
   return (
     <footer className="site-footer">
       <div className="footer-main">
-        <div className="footer-brand">
-          <Link className="footer-logo-row" href="/" aria-label="The Neighbourhood Cocktails home">
+        <div className="footer-logos">
+          <Link className="footer-logo-link" href="/" aria-label="The Neighbourhood Cocktails home">
             <img
-              className="brand-logo"
-              src="/images/logo_transparent_trimmed.svg"
+              className="footer-brand-logo"
+              src={settings.primaryLogo}
               width={600}
               height={300}
               alt="The Neighbourhood Cocktails"
             />
+          </Link>
+
+          <Link className="footer-logo-link" href={settings.partnerUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit Qurative">
             <img
-              className="brand-logo"
-              src="/images/Qurative-black.png"
+              className="footer-partner-logo"
+              src={settings.partnerLogo}
               width={600}
               height={400}
               alt="Qurative"
             />
           </Link>
-          <p>Cocktail-led experiences for weddings, brands, teams, and private celebrations.</p>
+        </div>
+
+        <div className="footer-about">
+          <p>{settings.tagline}</p>
           <address className="footer-address">
-            Based at Hackhouse Africa<br />
-            124 Manyani East Road, Nairobi, Kenya<br />
-            Serving Westlands, Kilimani, Lavington &amp; nearby Nairobi areas<br />
-            <a href="https://www.google.com/maps/search/?api=1&query=Hackhouse+Africa%2C+124+Manyani+East+Road%2C+Nairobi" target="_blank" rel="noopener noreferrer">
+            {settings.addressLines.map((line) => <span key={line}>{line}<br /></span>)}
+            <a href={settings.directionsUrl} target="_blank" rel="noopener noreferrer">
               Get directions
             </a>
           </address>
@@ -60,13 +66,13 @@ export function SiteFooter() {
           <div className="footer-social-block">
             <p className="footer-label">Follow us</p>
             <nav className="footer-social" aria-label="Social links">
-              <Link href="https://www.instagram.com/neighbourhood_cocktails" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Link href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram aria-hidden="true" />
               </Link>
-              <Link href="https://www.linkedin.com/company/the-neighbourhood-cocktails" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Link href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FaLinkedin aria-hidden="true" />
               </Link>
-              <Link href="https://substack.com/@theneighbourhoodc" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+              <Link href={settings.substackUrl} target="_blank" rel="noopener noreferrer" aria-label="Substack">
                 <SiSubstack aria-hidden="true" />
               </Link>
             </nav>

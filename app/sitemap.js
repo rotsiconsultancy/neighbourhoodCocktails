@@ -1,7 +1,8 @@
-import { servicesData, cocktailsData } from "@/lib/data";
+import { getCocktails, getServices } from "@/sanity/lib/content";
 import { seoLandingPages } from "@/lib/seoLandingPages";
 
-export default function sitemap() {
+export default async function sitemap() {
+  const [servicesData, cocktailsData] = await Promise.all([getServices(), getCocktails()]);
   const baseUrl = "https://www.neighbourhoodcocktails.com";
 
   const staticRoutes = [

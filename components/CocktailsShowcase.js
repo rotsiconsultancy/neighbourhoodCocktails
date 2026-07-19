@@ -10,7 +10,6 @@ import {
   FaTimes,
   FaLock,
 } from "react-icons/fa";
-import { cocktailsData } from "@/lib/data";
 
 const vibesData = [
   { id: "all", label: "All Vibes" },
@@ -20,7 +19,7 @@ const vibesData = [
   { id: "garden", label: "Garden & Floral Spritz" },
 ];
 
-export function CocktailsShowcase() {
+export function CocktailsShowcase({ cocktails }) {
   const [isAlcoholic, setIsAlcoholic] = useState(true);
   const [activeVibe, setActiveVibe] = useState("all");
   const [selectedCocktails, setSelectedCocktails] = useState([]);
@@ -64,7 +63,7 @@ export function CocktailsShowcase() {
   };
 
   // Filter logic
-  const filteredCocktails = cocktailsData.filter((cocktail) => {
+  const filteredCocktails = cocktails.filter((cocktail) => {
     const matchesType =
       cocktail.type === (isAlcoholic ? "alcoholic" : "non-alcoholic");
     const matchesVibe =

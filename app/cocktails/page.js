@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CocktailsShowcase } from "@/components/CocktailsShowcase";
+import { getCocktails } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Cocktail Menus for Events in Nairobi",
@@ -10,7 +11,8 @@ export const metadata = {
 };
 
 
-export default function CocktailsPage() {
+export default async function CocktailsPage() {
+  const cocktails = await getCocktails();
   return (
     <>
       <SiteHeader />
@@ -32,7 +34,7 @@ export default function CocktailsPage() {
           </div>
         </section>
         {/* Interactive Cocktails Showcase (Embed) */}
-        <CocktailsShowcase />
+        <CocktailsShowcase cocktails={cocktails} />
 
         {/* Standard Inclusions Section */}
         <section className="section inclusions-section">
