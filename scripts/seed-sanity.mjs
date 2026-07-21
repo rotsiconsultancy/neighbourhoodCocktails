@@ -14,14 +14,40 @@ const client = createClient({ projectId, dataset, token, apiVersion: "2026-07-19
 const cache = new Map();
 const keyed = (items) => items.map((item, index) => ({ ...item, _key: `item-${index + 1}` }));
 
+async function downloadRemoteImage(source, attempts = 3) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(source, { signal: AbortSignal.timeout(30000) });
+      if (!response.ok) {
+        const error = new Error(`HTTP ${response.status}`);
+        if (response.status < 500 && response.status !== 408 && response.status !== 429) throw error;
+        lastError = error;
+      } else {
+        return response;
+      }
+    } catch (error) {
+      lastError = error;
+    }
+
+    if (attempt < attempts) {
+      console.warn(`Image download attempt ${attempt}/${attempts} failed for ${source}. Retrying...`);
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+    }
+  }
+
+  throw new Error(`Unable to download ${source} after ${attempts} attempts`, { cause: lastError });
+}
+
 async function uploadImage(source, alt) {
+  if (!source) throw new Error(`Missing image source for "${alt}".`);
   if (cache.has(source)) return { ...cache.get(source), alt };
   let body;
   let filename = path.basename(source);
   let contentType;
   if (/^https?:\/\//.test(source)) {
-    const response = await fetch(source);
-    if (!response.ok) throw new Error(`Unable to download ${source}: ${response.status}`);
+    const response = await downloadRemoteImage(source);
     body = Buffer.from(await response.arrayBuffer());
     contentType = response.headers.get("content-type") || undefined;
     filename = path.basename(new URL(source).pathname) || "remote-image.jpg";
@@ -77,7 +103,7 @@ const eventCards = [
   ["Masterclasses", "Hands-on cocktail sessions for teams, friends, brands, and curious drink lovers who want the craft behind the glass.", "Plan a class", "https://images.unsplash.com/photo-1623408859815-22534357b3db?q=80&w=1172&auto=format&fit=crop", "Cocktail masterclass"],
 ];
 const articles = [
-  ["The Negroni: Italy's Most Uncompromising Cocktail", "Featured note", "What Nonna Lulu has been drinking since before you were born.", "By Flavia Diamante on Pasta Affair.", "https://pastaaffair.substack.com/p/the-negroni-italys-most-uncompromising", "https://images.unsplash.com/photo-1551751299-1b51cab2694c?auto=format&fit=crop&w=900&q=80", "Negroni cocktail with citrus garnish"],
+  ["The Negroni: Italy's Most Uncompromising Cocktail", "Featured note", "What Nonna Lulu has been drinking since before you were born.", "By Flavia Diamante on Pasta Affair.", "https://pastaaffair.substack.com/p/the-negroni-italys-most-uncompromising", "/images/gallery/3.png", "Negroni cocktail with citrus garnish"],
   ["Today is going to be a hot one here,", "Cocktail note", "A triple recipe feature for outdoor sips and snacks.", "By Rachel Hardacre.", "https://substack.com/@ontheacre/note/c-264810988", "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80", "Refreshing cocktail with citrus and herbs"],
   ["The Mango Mussolini Martini by Slade Wentworth", "Cocktail note", "Tyranny is a sober subject. Tonight we drink.", "", "https://dadbriefs.com/p/the-mango-mussolini-martini", "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80", "Cocktail with herbs and citrus on a bar"],
 ];
