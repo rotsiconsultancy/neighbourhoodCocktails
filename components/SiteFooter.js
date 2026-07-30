@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiSubstack } from "react-icons/si";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { getSiteSettings } from "@/sanity/lib/content";
+import { PrivacyChoicesButton } from "@/components/PrivacyChoicesButton";
 
 export async function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -82,6 +83,10 @@ export async function SiteFooter() {
 
       <div className="footer-bottom">
         <p>&copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.</p>
+        <p className="footer-legal-links">
+          <Link href="/privacy">Privacy notice</Link>
+          <PrivacyChoicesButton />
+        </p>
         <p>Built by <Link href="https://malaikastudios.rotsi.co.ke" target="_blank" rel="noopener noreferrer">Malaika Studios</Link>.</p>
       </div>
     </footer>

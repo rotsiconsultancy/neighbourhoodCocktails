@@ -2,6 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import {
+  CONSENT_GRANTED,
+  getMarketingConsent,
+} from "@/lib/marketingConsent";
+import {
+  readMetaCookie,
+  trackMetaEvent,
+} from "@/lib/metaPixel";
 
 export function BookingForm() {
   const [status, setStatus] = useState("");
@@ -31,6 +39,12 @@ export function BookingForm() {
     const form = event.currentTarget;
 
     const formData = new FormData(form);
+    const eventType = formData.get("event-type");
+    const marketingConsent = getMarketingConsent() === CONSENT_GRANTED;
+    const metaEventId =
+      typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `lead-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
     setIsSubmitting(true);
     setStatus("Sending your booking request...");
@@ -47,10 +61,18 @@ export function BookingForm() {
           date: formData.get("date"),
           location: formData.get("location"),
           guests: formData.get("guests"),
-          eventType: formData.get("event-type"),
+          eventType,
           serviceStyle: formData.get("service-style"),
           preferences: formData.getAll("preferences"),
-          notes: formData.get("notes")
+          notes: formData.get("notes"),
+          meta: marketingConsent
+            ? {
+                consent: true,
+                eventId: metaEventId,
+                fbp: readMetaCookie("_fbp"),
+                fbc: readMetaCookie("_fbc"),
+              }
+            : null,
         })
       });
 
@@ -59,6 +81,15 @@ export function BookingForm() {
       if (!response.ok) {
         throw new Error(result.error || "We could not send your request. Please try again.");
       }
+
+      trackMetaEvent(
+        "Lead",
+        {
+          content_name: "Booking Request",
+          content_category: eventType || "Event enquiry",
+        },
+        metaEventId
+      );
 
       const customerName = formData.get("name") || "";
       setSubmittedName(customerName);
@@ -178,7 +209,11 @@ export function BookingForm() {
         <button className="button primary" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send Booking Request"}
         </button>
-        {/* <p className="form-note">Use this outline to start the conversation, then we will shape the right package around your event.</p> */}
+        <p className="form-note">
+          We use these details to respond to your enquiry. See our{" "}
+          <Link href="/privacy">privacy notice</Link>. Marketing measurement is
+          used only if you accepted it in your privacy choices.
+        </p>
       </div>
       {isSubmitting && submittedSuccessfully && (
         <p className="status-note" role="status" aria-live="polite">

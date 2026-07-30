@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { sendMetaLeadEvent } from "@/lib/metaConversions";
 
 const BREVO_SEND_EMAIL_URL = "https://api.brevo.com/v3/smtp/email";
 const BREVO_CONTACTS_URL = "https://api.brevo.com/v3/contacts";
@@ -189,6 +190,10 @@ export async function POST(request) {
   const preferences = Array.isArray(body.preferences)
     ? body.preferences.map((preference) => cleanValue(preference, 80)).filter(Boolean)
     : [];
+  const metaEventId = cleanValue(body.meta?.eventId, 120);
+  const hasMarketingConsent = body.meta?.consent === true;
+  const fbp = cleanValue(body.meta?.fbp, 255);
+  const fbc = cleanValue(body.meta?.fbc, 255);
 
   if (!name || !email || !eventDate) {
     return Response.json({ error: "Name, email, and event date are required." }, { status: 400 });
@@ -291,6 +296,26 @@ export async function POST(request) {
   } catch (error) {
     console.error(error);
     return Response.json({ error: "We could not send your request right now. Please try again." }, { status: 502 });
+  }
+
+  if (hasMarketingConsent && metaEventId) {
+    const forwardedFor = request.headers.get("x-forwarded-for") || "";
+    const clientIpAddress = forwardedFor.split(",")[0].trim();
+    const clientUserAgent = cleanValue(request.headers.get("user-agent"), 500);
+    try {
+      await sendMetaLeadEvent({
+        email,
+        eventId: metaEventId,
+        eventType,
+        sourceUrl: new URL("/booking", request.url).toString(),
+        clientIpAddress,
+        clientUserAgent,
+        fbp,
+        fbc,
+      });
+    } catch (error) {
+      console.warn("Meta lead event could not be sent", error);
+    }
   }
 
   return Response.json({ ok: true });
