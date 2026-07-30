@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getServices } from "@/sanity/lib/content";
+import { getServiceUrl } from "@/lib/serviceUrls";
 
 export const metadata = {
   title: "Mobile Bar Hire for Events in Nairobi",
@@ -65,7 +66,7 @@ export default async function ServicesPage() {
                 className={`pillar-row ${idx % 2 !== 0 ? "reverse" : ""}`}
               >
                 <Link
-                  href={`/services/${pillar.id}`}
+                  href={getServiceUrl(pillar.id)}
                   className="pillar-image-container"
                 >
                   <img src={pillar.image} alt={pillar.alt} />
@@ -73,14 +74,14 @@ export default async function ServicesPage() {
                 <div className="pillar-copy-container">
                   <span className="eyebrow">{pillar.eyebrow}</span>
                   <h2>
-                    <Link href={`/services/${pillar.id}`} className="pillar-title-link">
+                    <Link href={getServiceUrl(pillar.id)} className="pillar-title-link">
                       {pillar.title}
                     </Link>
                   </h2>
                   <p>{pillar.description}</p>
                   <div className="pillar-actions">
                     <Link
-                      href={`/services/${pillar.id}`}
+                      href={getServiceUrl(pillar.id)}
                       className="btn secondary"
                     >
                       Learn More

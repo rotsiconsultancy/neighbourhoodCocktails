@@ -1,5 +1,6 @@
 import { getCocktails, getServices } from "@/sanity/lib/content";
 import { seoLandingPages } from "@/lib/seoLandingPages";
+import { isCanonicalServiceRoute } from "@/lib/serviceUrls";
 
 export default async function sitemap() {
   const [servicesData, cocktailsData] = await Promise.all([getServices(), getCocktails()]);
@@ -16,12 +17,14 @@ export default async function sitemap() {
     { url: `${baseUrl}/privacy`,         changeFrequency: "yearly",  priority: 0.3 },
   ].map((route) => ({ ...route, lastModified: new Date() }));
 
-  const serviceRoutes = servicesData.map((s) => ({
-    url: `${baseUrl}/services/${s.id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
+  const serviceRoutes = servicesData
+    .filter((service) => isCanonicalServiceRoute(service.id))
+    .map((service) => ({
+      url: `${baseUrl}/services/${service.id}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    }));
 
   const cocktailRoutes = cocktailsData.map((c) => ({
     url: `${baseUrl}/cocktails/${c.id}`,

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getService, getServices } from "@/sanity/lib/content";
+import { getServiceUrl, isCanonicalServiceRoute } from "@/lib/serviceUrls";
 
 export async function generateStaticParams() {
   const servicesData = await getServices();
@@ -13,15 +14,19 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const service = await getService(slug);
   if (!service) return {};
+  const canonical = getServiceUrl(service.id);
   return {
     title: service.title,
     description: service.description,
-    alternates: { canonical: `/services/${service.id}` },
+    alternates: { canonical },
   };
 }
 
 export default async function ServicePage({ params }) {
   const { slug } = await params;
+  if (!isCanonicalServiceRoute(slug)) {
+    permanentRedirect(getServiceUrl(slug));
+  }
   const service = await getService(slug);
   if (!service) notFound();
 
@@ -128,7 +133,7 @@ export default async function ServicePage({ params }) {
           </div>
           <div className="service-related-grid">
             {otherServices.map((s) => (
-              <Link key={s.id} href={`/services/${s.id}`} className="service-related-card">
+              <Link key={s.id} href={getServiceUrl(s.id)} className="service-related-card">
                 <div
                   className="service-related-img"
                   style={{ backgroundImage: `url('${s.image}')` }}
