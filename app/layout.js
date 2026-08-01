@@ -45,6 +45,9 @@ export default async function RootLayout({ children }) {
   const isDraft = (await draftMode()).isEnabled;
   return (
     <html lang="en">
+      <head>
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="cMTXt+R12kJEXx6AqZHyGA" async></script>
+      </head>
       <body>
         <MetaPixel />
         {children}
