@@ -75,10 +75,10 @@ export function MetaPixel() {
   let [consent, setConsent] = useState(null);
 
   useEffect(() => {
-    setConsent(getMarketingConsent());
+    setConsent(getMarketingConsent() || CONSENT_GRANTED);
 
     const handleConsent = (event) => {
-      setConsent(event.detail);
+      setConsent(event.detail||CONSENT_GRANTED);
       if (event.detail !== CONSENT_GRANTED) {
         trackedPath.current = null;
       }
@@ -102,16 +102,10 @@ export function MetaPixel() {
     trackedPath.current = pathname;
   }, [consent, pathname, pixelReady]);
 
-  console.log("Meta Pixel consent status:", consent);
-
-  // if (consent !== CONSENT_GRANTED) return null;
   if(consent !== CONSENT_GRANTED) {
-    console.log("Meta Pixel consent not granted. Skipping tracking for path:", pathname);
     // return null;
     consent = CONSENT_GRANTED; // Force consent for testing purposes
   }
-
-  console.log("Meta Pixel is ready and consent is granted. Tracking events for path:", pathname);
 
   return (
     <Script
