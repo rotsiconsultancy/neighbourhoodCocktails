@@ -27,7 +27,24 @@ export const galleryQuery = `*[_type == "galleryImage" && visible != false] | or
 }`;
 
 export const homePageQuery = `*[_type == "homePage"][0] {
-  heroSlides, eventCards, storyImage, galleryImages, articlePosts, bookingImage, _updatedAt
+  heroSlides, eventCards, storyImage, galleryImages, articlePosts, bookingImage,
+  heroHeading, heroScriptSpan, heroBody,
+  eventsHeading, eventsIntro,
+  experienceEyebrow, experienceHeading, experiencePara1, experiencePara2, experienceBadge,
+  galleryHeading, galleryIntro,
+  substackHeading, substackIntro,
+  bookingEyebrow, bookingHeading, bookingBody,
+  _updatedAt
+}`;
+
+export const servicesPageQuery = `*[_type == "servicesPage"][0] {
+  heroEyebrow, heroHeading, heroBody,
+  aestheticsHeading, aestheticsIntro,
+  barAesthetics[]{ name, desc, "image": image },
+  inclusionsEyebrow, inclusionsHeading, inclusionsBody,
+  inclusionItems[]{ title, body },
+  "inclusionsImage": inclusionsImage,
+  _updatedAt
 }`;
 
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {

@@ -6,6 +6,7 @@ const tagsByType = {
   homePage: ["home-page"],
   galleryImage: ["gallery"],
   service: ["services"],
+  servicesPage: ["services-page"],
   cocktail: ["cocktails"],
 };
 

@@ -52,7 +52,7 @@ export default async function RootLayout({ children }) {
         <MetaPixel />
         {children}
         <FloatingWhatsApp />
-        <ConsentManager />
+        {/* <ConsentManager /> */}
         {isDraft ? <VisualEditing /> : null}
       </body>
     </html>

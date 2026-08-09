@@ -52,6 +52,35 @@ export const homePage = defineType({
       })],
     }),
     defineField({ name: "bookingImage", title: "Booking page promise image", type: "managedImage" }),
+
+    // ── Hero Section ──────────────────────────────────────────────────
+    defineField({ name: "heroHeading",    title: "Hero heading (plain text)",       description: "The bold part of the H1 — e.g. 'You make the memories.'",      type: "string" }),
+    defineField({ name: "heroScriptSpan", title: "Hero script span (styled text)",  description: "The script-font part of the H1 — e.g. 'We bring the cocktails.'", type: "string" }),
+    defineField({ name: "heroBody",       title: "Hero body paragraph",             type: "text",   rows: 3 }),
+
+    // ── Events Section ────────────────────────────────────────────────
+    defineField({ name: "eventsHeading", title: "Events section heading", type: "string" }),
+    defineField({ name: "eventsIntro",   title: "Events section intro",   type: "text", rows: 3 }),
+
+    // ── Experience / Story Section ────────────────────────────────────
+    defineField({ name: "experienceEyebrow",  title: "Experience eyebrow",         type: "string" }),
+    defineField({ name: "experienceHeading",  title: "Experience heading",         type: "string" }),
+    defineField({ name: "experiencePara1",    title: "Experience paragraph 1",     type: "text", rows: 3 }),
+    defineField({ name: "experiencePara2",    title: "Experience paragraph 2",     type: "text", rows: 3 }),
+    defineField({ name: "experienceBadge",    title: "Experience badge text",      type: "string" }),
+
+    // ── Gallery Section ───────────────────────────────────────────────
+    defineField({ name: "galleryHeading", title: "Gallery section heading", type: "string" }),
+    defineField({ name: "galleryIntro",   title: "Gallery section intro",   type: "text", rows: 2 }),
+
+    // ── Substack / Articles Section ───────────────────────────────────
+    defineField({ name: "substackHeading", title: "Articles section heading", type: "string" }),
+    defineField({ name: "substackIntro",   title: "Articles section intro",   type: "text", rows: 2 }),
+
+    // ── Booking CTA Section ───────────────────────────────────────────
+    defineField({ name: "bookingEyebrow", title: "Booking CTA eyebrow", type: "string" }),
+    defineField({ name: "bookingHeading", title: "Booking CTA heading", type: "string" }),
+    defineField({ name: "bookingBody",    title: "Booking CTA body",    type: "text", rows: 3 }),
   ],
   preview: { prepare: () => ({ title: "Home page" }) },
 });

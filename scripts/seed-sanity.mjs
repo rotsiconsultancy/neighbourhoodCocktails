@@ -115,6 +115,37 @@ await client.createOrReplace({
   articlePosts: keyed(await Promise.all(articles.map(async ([title, source, text, byline, href, image, alt]) => ({ title, source, text, byline, href, image: await uploadImage(image, alt) })))),
   storyImage: await uploadImage("/images/gallery/4.png", "Neighbourhood Cocktails event experience"),
   bookingImage: await uploadImage("/images/gallery/5.png", "Cocktail service setup with warm lighting"),
+  heroHeading: "You make the memories.", heroScriptSpan: "We bring the cocktails.",
+  heroBody: "From intimate celebrations in Kilimani to polished corporate gatherings in Westlands, The Neighbourhood creates cocktail-led experiences that feel warm, stylish, and genuinely memorable.",
+  eventsHeading: "Events made to feel personal.", eventsIntro: "Whether you need full-service cocktail catering, a curated drinks experience, or an interactive class, we shape the setup around your people, your space, and your occasion.",
+  experienceEyebrow: "The Neighbourhood Experience", experienceHeading: "Not just drinks. A full hosting experience.",
+  experiencePara1: "The Neighbourhood is built for moments where people gather - weddings, brand events, intimate dinners, team celebrations, and private parties that need a little more soul.",
+  experiencePara2: "We handle the cocktail experience with style: menu planning, bar setup, drink service, presentation, and the kind of atmosphere that makes guests remember the night.",
+  experienceBadge: "We bring the bar.",
+  galleryHeading: "Built for beautiful gatherings.", galleryIntro: "A taste of the setups, details, drinks, and atmosphere that shape every Neighbourhood experience.",
+  substackHeading: "Tales from the neighbourhood", substackIntro: "Actual Substack reads, hosting ideas, cocktail culture, event guides, and behind-the-scenes thoughts from the people behind the bar.",
+  bookingEyebrow: "Plan your event", bookingHeading: "Tell us what you're hosting.", bookingBody: "Share the basics and we'll help shape the right cocktail experience - whether it's a wedding, corporate event, masterclass, private dinner, or full-on celebration.",
+});
+
+await client.createOrReplace({
+  _id: "servicesPage", _type: "servicesPage",
+  heroEyebrow: "Our Services", heroHeading: "Bespoke Mobile Bar & Catering.",
+  heroBody: "We bring a fully equipped craft cocktail bar, premium ingredients, and professional hospitality directly to your venue. Every detail is shaped around your event's vibe.",
+  aestheticsHeading: "Mobile Bars That Fit The Room", aestheticsIntro: "Our mobile bar counters are designed to complement your venue's styling, not compromise it. Choose from our curated catalog of physical bar setups.",
+  barAesthetics: keyed(await Promise.all([
+    { name: "The Rustic Oak Bar", desc: "Warm wood grains and ambient lighting. Perfect for rustic weddings, outdoor events, and cozy private gatherings.", image: "/images/gallery/1.png" },
+    { name: "The Minimalist Cream Bar", desc: "Clean lines and bright, neutral aesthetics. Fits beautifully into modern indoor spaces, art studios, and contemporary parties.", image: "/images/gallery/5.png" },
+    { name: "The Custom Corporate Bar", desc: "A sleek black panel bar designed for custom branding overlays, logos, and high-visibility corporate socials.", image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80" }
+  ].map(async (bar) => ({ ...bar, image: await uploadImage(bar.image, bar.name) })))),
+  inclusionsEyebrow: "The Full Package", inclusionsHeading: "What is included in every setup?",
+  inclusionsBody: "We handle the logistics so you can focus on your guests. Every Neighbourhood bar hire includes these standard premium inclusions:",
+  inclusionItems: keyed([
+    { title: "Menu Consultation", body: "Custom beverage menu curation matching your theme and preferences." },
+    { title: "Premium Glassware", body: "Proper glassware (coupes, collins, rocks) to suit each custom drink." },
+    { title: "Mixologists & Servers", body: "Experienced, friendly staff fully dedicated to hospitality." },
+    { title: "Bar Logistics", body: "We supply the ice, shakers, garnishes, custom syrups, and cleanup." }
+  ]),
+  inclusionsImage: await uploadImage("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80", "Cocktail ingredients setup"),
 });
 
 await client.createOrReplace({
