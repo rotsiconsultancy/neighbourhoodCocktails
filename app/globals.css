@@ -4491,13 +4491,119 @@ h1 {
   color: var(--cream);
 }
 
+/* Centered & Compact Calculator Header */
+.centered-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calc-title-compact {
+  font-size: 2.2rem !important;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--cream);
+  margin: 8px auto 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* COST FAQ SECTION STYLES                                                    */
+/* -------------------------------------------------------------------------- */
+.cost-faq-section {
+  max-width: 920px;
+  margin: 48px auto 0;
+  padding: 36px 40px;
+  background: var(--white);
+  border: 1px solid rgba(31, 77, 58, 0.15);
+  border-radius: 32px;
+  box-shadow: 0 16px 48px rgba(16, 39, 30, 0.06);
+}
+
+.cost-faq-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.cost-faq-header h3 {
+  font-size: 1.8rem;
+  color: var(--green);
+  margin-top: 6px;
+  text-align: center;
+}
+
+.cost-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cost-faq-item {
+  border: 1px solid rgba(31, 77, 58, 0.12);
+  border-radius: 20px;
+  padding: 20px 24px;
+  background: rgba(246, 239, 227, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cost-faq-item:hover {
+  background: rgba(246, 239, 227, 0.85);
+  border-color: rgba(200, 169, 106, 0.5);
+}
+
+.cost-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.cost-faq-question h4 {
+  font-size: 1.08rem;
+  color: var(--green);
+  font-weight: 700;
+  margin: 0;
+}
+
+.faq-toggle-icon {
+  color: var(--orange);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.cost-faq-answer {
+  margin-top: 14px;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(31, 77, 58, 0.85);
+  border-top: 1px solid rgba(31, 77, 58, 0.08);
+  padding-top: 12px;
+}
+
 @media (max-width: 768px) {
   .calculator-card {
     padding: 28px 20px;
     border-radius: 24px;
   }
-  .calculator-header h2 {
-    font-size: 1.9rem;
+  .calc-title-compact {
+    font-size: 1.6rem !important;
+  }
+  .calculator-subtitle {
+    font-size: 0.92rem;
+  }
+  .cost-faq-section {
+    padding: 24px 20px;
+    border-radius: 24px;
+    margin-top: 36px;
+  }
+  .cost-faq-header h3 {
+    font-size: 1.4rem;
+  }
+  .cost-faq-question h4 {
+    font-size: 0.98rem;
   }
   .feedback-card-inner {
     padding: 28px 22px;
@@ -4506,7 +4612,14 @@ h1 {
     font-size: 1.05rem;
   }
   .total-amount {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+  }
+  .drinks-toggle-grid {
+    grid-template-columns: 1fr;
+  }
+  .range-presets {
+    flex-wrap: wrap;
   }
 }
+
 

@@ -34,6 +34,28 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
     return () => clearInterval(interval);
   }, [testimonials, isPaused]);
 
+  const getSocialLink = (item) => {
+    if (item.socialUrl && item.socialUrl.startsWith("http")) {
+      return item.socialUrl;
+    }
+    const cleanHandle = (item.socialHandle || "").replace(/^@/, "").trim();
+    if (!cleanHandle) return "#";
+
+    switch (item.socialPlatform?.toLowerCase()) {
+      case "instagram":
+        return `https://instagram.com/${cleanHandle}`;
+      case "linkedin":
+        return `https://linkedin.com/in/${cleanHandle}`;
+      case "twitter":
+      case "x":
+        return `https://x.com/${cleanHandle}`;
+      case "facebook":
+        return `https://facebook.com/${cleanHandle}`;
+      default:
+        return `https://instagram.com/${cleanHandle}`;
+    }
+  };
+
   if (!testimonials || testimonials.length === 0) return null;
 
   const nextSlide = () => {
@@ -110,11 +132,11 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
 
                   {(item.socialHandle || item.socialUrl) && (
                     <a
-                      href={item.socialUrl || "https://instagram.com"}
+                      href={getSocialLink(item)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-badge"
-                      aria-label={`${item.socialPlatform || "Social"} link for ${item.name}`}
+                      aria-label={`${item.socialPlatform || "Social"} profile for ${item.name}`}
                     >
                       <span className="social-icon">
                         {getSocialIcon(item.socialPlatform)}

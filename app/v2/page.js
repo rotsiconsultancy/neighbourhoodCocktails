@@ -1,20 +1,18 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { CostCalculator } from "@/components/CostCalculator";
 import { CustomerFeedbackCarousel } from "@/components/CustomerFeedbackCarousel";
-import { getHomePage, getPricingConfig, getTestimonials } from "@/sanity/lib/content";
+import { getHomePage, getTestimonials } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Mobile Bar Hire & Cocktail Catering in Nairobi (V2 Preview)",
-  description: "Preview version of The Neighbourhood Cocktails homepage featuring our interactive cost calculator and guest feedback.",
+  description: "Preview version of The Neighbourhood Cocktails homepage featuring guest feedback.",
   alternates: { canonical: "/v2" },
 };
 
 export default async function HomePageV2() {
-  const [pageData, pricingConfig, testimonials] = await Promise.all([
+  const [pageData, testimonials] = await Promise.all([
     getHomePage(),
-    getPricingConfig(),
     getTestimonials(),
   ]);
   const articles = pageData.articlePosts;
@@ -110,14 +108,6 @@ export default async function HomePageV2() {
           </div>
         </section>
 
-        {/* Customer Feedback / Testimonials Section */}
-        <CustomerFeedbackCarousel testimonials={testimonials} />
-
-        {/* Interactive Cost Calculator Section */}
-        <section className="section calculator-section">
-          <CostCalculator pricingConfig={pricingConfig} />
-        </section>
-
         {/* Gallery Section */}
         <section className="section" id="gallery">
           <div className="section-header">
@@ -139,6 +129,9 @@ export default async function HomePageV2() {
             ))}
           </div>
         </section>
+
+        {/* Customer Feedback / Testimonials Section - positioned immediately below Gallery */}
+        <CustomerFeedbackCarousel testimonials={testimonials} />
 
         {/* Notes / Substack Section */}
         <section className="section notes-section" id="substack">
