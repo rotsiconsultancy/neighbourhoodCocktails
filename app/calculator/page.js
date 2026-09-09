@@ -20,7 +20,7 @@ export default async function CalculatorPage() {
           <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "8px" }}>
             Event Budget Estimator
           </p>
-          <h1 style={{ fontSize: "3.8rem", textTransform: "uppercase" }}>Calculate Your Drinks Budget</h1>
+          <h1 style={{ fontSize: "3.8rem", textTransform: "uppercase", justifyContent: "center" }}>Calculate Your Drinks Budget</h1>
           <p style={{ maxWidth: "640px", margin: "16px auto 0", opacity: 0.88, fontSize: "1.1rem", lineHeight: 1.6 }}>
             Customize your guest count, event duration, and preferred drink menus to get an instant estimate tailored for your Nairobi event.
           </p>
