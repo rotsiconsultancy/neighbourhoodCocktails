@@ -51,3 +51,14 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   primaryLogo, partnerLogo, partnerUrl, tagline, addressLines, directionsUrl,
   instagramUrl, linkedinUrl, substackUrl, defaultShareImages, _updatedAt
 }`;
+
+export const pricingConfigQuery = `*[_type == "pricingConfig"][0] {
+  title, baseServiceFee, beerPricePerServing, winePricePerGlass,
+  spiritsPricePerServing, cocktailPricePerServing, mocktailPricePerServing,
+  glasswarePerGuest, customBrandingFee, _updatedAt
+}`;
+
+export const testimonialsQuery = `*[_type == "testimonial" && visible != false] | order(_createdAt desc) {
+  _id, name, eventType, quote, rating, socialPlatform, socialHandle, socialUrl, avatar, featured, _updatedAt
+}`;
+

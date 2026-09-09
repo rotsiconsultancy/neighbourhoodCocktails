@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { BookingForm } from "@/components/BookingForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -44,7 +45,14 @@ export default async function BookingPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }} />
         <section className="booking-hero">
           <p className="eyebrow">Booking request</p>
+          <div className="subtle-calculator-banner">
+            <span>Want to get a rough estimate first?</span>{" "}
+            <Link href="/calculator" className="subtle-calculator-link">
+              Check our cost calculator &rarr;
+            </Link>
+          </div>
         </section>
+
 
         <section className="booking-layout" aria-label="Booking form and service promise">
           <BookingForm />
