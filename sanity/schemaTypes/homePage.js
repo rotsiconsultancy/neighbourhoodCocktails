@@ -2,10 +2,13 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 
 const orderedImage = defineArrayMember({
   name: "orderedImage",
-  title: "Image",
+  title: "Image / Video Slide",
   type: "object",
-  fields: [defineField({ name: "image", type: "managedImage", validation: (Rule) => Rule.required() })],
-  preview: { select: { media: "image", title: "image.alt" } },
+  fields: [
+    defineField({ name: "image", type: "managedImage" }),
+    defineField({ name: "videoUrl", title: "Video URL (MP4 / WebM)", description: "Optional video URL for carousel/hero slide video background", type: "url" }),
+  ],
+  preview: { select: { media: "image", title: "image.alt", subtitle: "videoUrl" } },
 });
 
 export const homePage = defineType({

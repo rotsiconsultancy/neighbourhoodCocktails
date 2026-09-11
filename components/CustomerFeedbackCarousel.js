@@ -120,6 +120,18 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
                   <FaQuoteLeft className="quote-watermark" />
                 </div>
 
+                {item.videoUrl ? (
+                  <div className="feedback-video-wrap" style={{ marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
+                    <video
+                      src={item.videoUrl}
+                      controls
+                      playsInline
+                      muted
+                      style={{ width: "100%", maxHeight: "240px", objectFit: "cover", borderRadius: "12px" }}
+                    />
+                  </div>
+                ) : null}
+
                 <p className="feedback-quote">{item.quote}</p>
 
                 <div className="feedback-card-footer">

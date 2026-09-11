@@ -61,6 +61,12 @@ export const testimonial = {
       type: "managedImage",
     },
     {
+      name: "videoUrl",
+      title: "Video Feedback URL (MP4 / WebM)",
+      type: "url",
+      description: "Optional URL to video testimonial clip",
+    },
+    {
       name: "featured",
       title: "Featured on Homepage / v2",
       type: "boolean",

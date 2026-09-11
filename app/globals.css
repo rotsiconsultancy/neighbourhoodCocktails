@@ -402,12 +402,7 @@ textarea {
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 2;
-  height: 180px;
-  background: linear-gradient(to bottom, transparent, var(--cream));
+  display: none;
 }
 
 .hero-slideshow,
@@ -419,6 +414,14 @@ textarea {
 .hero-slideshow {
   z-index: 0;
   background: var(--green);
+}
+
+.hero-video-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-slide {

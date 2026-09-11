@@ -23,9 +23,21 @@ export default async function HomePageV2() {
 
       <header className="hero">
         <div className="hero-slideshow" aria-hidden="true">
-          {pageData.heroSlides.map((slide) => (
-            <div key={slide.image} className="hero-slide" style={{ backgroundImage: `url('${slide.image}')` }} />
-          ))}
+          {pageData.heroSlides.map((slide, index) =>
+            slide.videoUrl ? (
+              <video
+                key={slide.videoUrl || index}
+                src={slide.videoUrl}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="hero-video-slide"
+              />
+            ) : (
+              <div key={slide.image || index} className="hero-slide" style={{ backgroundImage: `url('${slide.image}')` }} />
+            )
+          )}
         </div>
         <div className="hero-content">
           <h1>
