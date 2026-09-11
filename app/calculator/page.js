@@ -17,10 +17,10 @@ export default async function CalculatorPage() {
       <SiteHeader />
       <main className="calculator-page" style={{ paddingTop: "140px", paddingBottom: "80px" }}>
         <section className="calculator-hero" style={{ textAlign: "center", padding: "0 6vw 40px" }}>
-          <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "8px" }}>
+          <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "8px", textAlign: "center"  }}>
             Event Budget Estimator
           </p>
-          <h1 style={{ fontSize: "3.8rem", textTransform: "uppercase", justifyContent: "center" }}>Calculate Your Drinks Budget</h1>
+          <h1 style={{ fontSize: "3.8rem", textTransform: "uppercase", justifyContent: "center", textAlign: "center"  }}>Calculate Your Drinks Budget</h1>
           <p style={{ maxWidth: "640px", margin: "16px auto 0", opacity: 0.88, fontSize: "1.1rem", lineHeight: 1.6 }}>
             Customize your guest count, event duration, and preferred drink menus to get an instant estimate tailored for your Nairobi event.
           </p>
