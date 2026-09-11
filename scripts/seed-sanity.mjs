@@ -159,4 +159,75 @@ await client.createOrReplace({
   defaultShareImages: keyed(await Promise.all([["/images/green-cream.jpg", "The Neighbourhood Cocktails brand artwork"], ["/images/black.jpg", "The Neighbourhood Cocktails logo on black"]].map(([source, alt]) => uploadImage(source, alt)))),
 });
 
+await client.createOrReplace({
+  _id: "pricingConfig",
+  _type: "pricingConfig",
+  title: "Default Pricing Rates",
+  baseServiceFee: 3500,
+  beerPricePerServing: 400,
+  winePricePerGlass: 600,
+  spiritsPricePerServing: 750,
+  cocktailPricePerServing: 900,
+  mocktailPricePerServing: 500,
+  glasswarePerGuest: 200,
+  customBrandingFee: 12000,
+});
+
+const testimonialsData = [
+  {
+    id: "testimonial-1",
+    name: "Wanjiku & Mark K.",
+    eventType: "Wedding Reception in Lavington",
+    quote: "The Neighbourhood Cocktails team made our wedding reception unforgettable! The signature drinks were incredible and our guests couldn't stop raving about the service.",
+    rating: 5,
+    socialPlatform: "instagram",
+    socialHandle: "@wanjiku_m",
+    socialUrl: "https://instagram.com",
+    avatar: "/images/gallery/2.jpg",
+    featured: true,
+  },
+  {
+    id: "testimonial-2",
+    name: "Tech Hub Nairobi",
+    eventType: "Brand Activation in Westlands",
+    quote: "Sleek mobile bar setup, extremely professional mixologists, and lightning-fast service for 200+ guests. They elevated our brand launch entirely.",
+    rating: 5,
+    socialPlatform: "linkedin",
+    socialHandle: "Tech Hub Africa",
+    socialUrl: "https://linkedin.com",
+    avatar: "/images/gallery/6.png",
+    featured: true,
+  },
+  {
+    id: "testimonial-3",
+    name: "Amina O.",
+    eventType: "Private Birthday Party in Kilimani",
+    quote: "The Hibiscus & Ginger zero-proof drinks were just as popular as the craft cocktails! Absolute perfection from prep to cleanup.",
+    rating: 5,
+    socialPlatform: "instagram",
+    socialHandle: "@amina_drinks_craft",
+    socialUrl: "https://instagram.com",
+    avatar: "/images/gallery/1.png",
+    featured: true,
+  },
+];
+
+for (const item of testimonialsData) {
+  await client.createOrReplace({
+    _id: item.id,
+    _type: "testimonial",
+    name: item.name,
+    eventType: item.eventType,
+    quote: item.quote,
+    rating: item.rating,
+    socialPlatform: item.socialPlatform,
+    socialHandle: item.socialHandle,
+    socialUrl: item.socialUrl,
+    avatar: await uploadImage(item.avatar, item.name),
+    featured: item.featured,
+    visible: true,
+  });
+}
+
 console.log(`Seeded The Neighbourhood Cocktails content into ${projectId}/${dataset}.`);
+
