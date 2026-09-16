@@ -3,7 +3,13 @@ import { NextResponse } from "next/server";
 const BREVO_CONTACTS_URL = "https://api.brevo.com/v3/contacts";
 const BREVO_SMTP_URL = "https://api.brevo.com/v3/smtp/email";
 
-async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }) {
+async function sendBrevoEmail({
+  to,
+  subject,
+  htmlContent,
+  textContent,
+  replyTo,
+}) {
   const response = await fetch(BREVO_SMTP_URL, {
     method: "POST",
     headers: {
@@ -26,7 +32,9 @@ async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Brevo feedback email failed: ${response.status} ${errorText}`);
+    throw new Error(
+      `Brevo feedback email failed: ${response.status} ${errorText}`,
+    );
   }
 
   return response.json();
@@ -46,11 +54,15 @@ function isValidEmail(email) {
 export async function POST(request) {
   try {
     // 1. Check if running in Mock Mode (no Brevo API key provided or set to 'mock')
-    const isMockMode = !process.env.BREVO_API_KEY || process.env.BREVO_API_KEY === "mock";
+    const isMockMode =
+      !process.env.BREVO_API_KEY || process.env.BREVO_API_KEY === "mock";
 
     const body = await request.json().catch(() => null);
     if (!body) {
-      return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid request payload." },
+        { status: 400 },
+      );
     }
 
     // 2. Extract and clean inputs
@@ -68,33 +80,33 @@ export async function POST(request) {
     if (!name || !email || isNaN(drinkRating) || !recommend) {
       return NextResponse.json(
         { error: "Name, email, rating, and recommendation are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: "Please enter a valid email address." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // 4. Identify dynamic list buckets
     const listIds = [];
-    
+
     // Promoters List (Recommend Yes & Rating >= 4)
-    const promotersListId = process.env.BREVO_PROMOTERS_LIST_ID 
-      ? parseInt(process.env.BREVO_PROMOTERS_LIST_ID, 10) 
+    const promotersListId = process.env.BREVO_PROMOTERS_LIST_ID
+      ? parseInt(process.env.BREVO_PROMOTERS_LIST_ID, 10)
       : 101;
-      
+
     // Critique List (Recommend No OR Rating <= 2)
-    const critiquesListId = process.env.BREVO_CRITIQUES_LIST_ID 
-      ? parseInt(process.env.BREVO_CRITIQUES_LIST_ID, 10) 
+    const critiquesListId = process.env.BREVO_CRITIQUES_LIST_ID
+      ? parseInt(process.env.BREVO_CRITIQUES_LIST_ID, 10)
       : 102;
-      
+
     // Popup alerts list
-    const popupsListId = process.env.BREVO_POPUPS_LIST_ID 
-      ? parseInt(process.env.BREVO_POPUPS_LIST_ID, 10) 
+    const popupsListId = process.env.BREVO_POPUPS_LIST_ID
+      ? parseInt(process.env.BREVO_POPUPS_LIST_ID, 10)
       : 103;
 
     if (recommend === "Yes" && drinkRating >= 4) {
@@ -131,8 +143,8 @@ export async function POST(request) {
 
     // Attach Instagram if requested
     if (instagramHandle) {
-      attributes.INSTAGRAM = instagramHandle.startsWith("@") 
-        ? instagramHandle 
+      attributes.INSTAGRAM = instagramHandle.startsWith("@")
+        ? instagramHandle
         : `@${instagramHandle}`;
     }
 
@@ -146,20 +158,30 @@ export async function POST(request) {
       console.log("📁 LIST BUCKETS  :", listIds.filter(Boolean));
       console.log("📨 MOCK TRANSACTIONAL EMAIL (CUSTOMER):");
       console.log("   To     :", email);
-      console.log("   Subject: Thank you for your feedback! - The Neighbourhood Cocktails");
-      
+      console.log(
+        "   Subject: Thank you for your feedback! - The Neighbourhood Cocktails",
+      );
+
       const isCritique = recommend === "No" || drinkRating <= 2;
       if (isCritique) {
         console.log("🚨 MOCK TRANSACTIONAL EMAIL (ADMIN ALERT):");
-        console.log("   To     :", process.env.BOOKING_RECIPIENT_EMAIL || "bookings@example.com");
-        console.log("   Subject: 🚨 Critical Feedback Alert: " + name + " left a review");
+        console.log(
+          "   To     :",
+          process.env.BOOKING_RECIPIENT_EMAIL || "bookings@example.com",
+        );
+        console.log(
+          "   Subject: 🚨 Critical Feedback Alert: " + name + " left a review",
+        );
       }
       console.log("==========================================");
 
       // Simulate a standard 600ms network delay for fluid UI feedback
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      return NextResponse.json({ ok: true, message: "Mock success! Feedback and emails logged to console." });
+      return NextResponse.json({
+        ok: true,
+        message: "Mock success! Feedback and emails logged to console.",
+      });
     }
 
     // 7. Post to Brevo API (CRM)
@@ -180,10 +202,17 @@ export async function POST(request) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("Brevo API feedback post failed:", response.status, errorText);
+      console.error(
+        "Brevo API feedback post failed:",
+        response.status,
+        errorText,
+      );
       return NextResponse.json(
-        { error: "We could not record your feedback right now. Please try again." },
-        { status: 502 }
+        {
+          error:
+            "We could not record your feedback right now. Please try again.",
+        },
+        { status: 502 },
       );
     }
 
@@ -191,7 +220,7 @@ export async function POST(request) {
     try {
       if (process.env.BREVO_SENDER_EMAIL) {
         const customerName = name.trim().split(/\s+/)[0];
-        
+
         // Send a Thank-You Email to the Customer
         const customerHtml = `<!doctype html>
           <html>
@@ -205,16 +234,17 @@ export async function POST(request) {
               </main>
             </body>
           </html>`;
-        
+
         await sendBrevoEmail({
           to: [{ email, name }],
           replyTo: {
             email: process.env.BREVO_SENDER_EMAIL,
-            name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails"
+            name:
+              process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails",
           },
           subject: "Thank you for your feedback! - The Neighbourhood Cocktails",
           htmlContent: customerHtml,
-          textContent: `Hi ${customerName},\n\nWe appreciate your feedback on the ${drinkName} (rated ${drinkRating}/5). Thank you for helping us refine our craft!\n\nCheers,\nThe Neighbourhood Cocktails Team`
+          textContent: `Hi ${customerName},\n\nWe appreciate your feedback on the ${drinkName} (rated ${drinkRating}/5). Thank you for helping us refine our craft!\n\nCheers,\nThe Neighbourhood Cocktails Team`,
         });
 
         // Send a High-Priority Alert to Admin if it's a critique
@@ -241,24 +271,35 @@ export async function POST(request) {
             </html>`;
 
           await sendBrevoEmail({
-            to: [{ email: process.env.BOOKING_RECIPIENT_EMAIL, name: "The Neighbourhood Cocktails" }],
+            to: [
+              {
+                email: process.env.BOOKING_RECIPIENT_EMAIL,
+                name: "The Neighbourhood Cocktails",
+              },
+            ],
             replyTo: { email, name },
             subject: `🚨 Critical Feedback Alert: ${name} left a review`,
             htmlContent: adminHtml,
-            textContent: `Critical Feedback Alert\n\nName: ${name}\nEmail: ${email}\nDrink: ${drinkName}\nRating: ${drinkRating}/5\nRecommend: ${recommend}\nComments: ${improvements || "None"}`
+            textContent: `Critical Feedback Alert\n\nName: ${name}\nEmail: ${email}\nDrink: ${drinkName}\nRating: ${drinkRating}/5\nRecommend: ${recommend}\nComments: ${improvements || "None"}`,
           });
         }
       }
     } catch (emailError) {
-      console.warn("Transactional email dispatch failed during feedback post:", emailError);
+      console.warn(
+        "Transactional email dispatch failed during feedback post:",
+        emailError,
+      );
     }
 
-    return NextResponse.json({ ok: true, message: "Thank you for your feedback!" });
+    return NextResponse.json({
+      ok: true,
+      message: "Thank you for your feedback!",
+    });
   } catch (error) {
     console.error("Feedback route error:", error);
     return NextResponse.json(
       { error: "An unexpected error occurred. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

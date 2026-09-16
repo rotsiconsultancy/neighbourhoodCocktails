@@ -2,7 +2,15 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { FaBeer, FaCocktail, FaGlassMartiniAlt, FaLeaf, FaWineGlassAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {
+  FaBeer,
+  FaCocktail,
+  FaGlassMartiniAlt,
+  FaLeaf,
+  FaWineGlassAlt,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa";
 
 const costFaqs = [
   {
@@ -28,14 +36,19 @@ const costFaqs = [
 ];
 
 export function CostCalculator({ pricingConfig }) {
-  const rates = useMemo(() => ({
-    baseServiceFeePerDay: pricingConfig?.baseServiceFee ? pricingConfig.baseServiceFee * 4 : 14000,
-    beer: pricingConfig?.beerPricePerServing || 400,
-    wine: pricingConfig?.winePricePerGlass || 600,
-    spirits: pricingConfig?.spiritsPricePerServing || 750,
-    cocktails: pricingConfig?.cocktailPricePerServing || 900,
-    mocktail: pricingConfig?.mocktailPricePerServing || 500,
-  }), [pricingConfig]);
+  const rates = useMemo(
+    () => ({
+      baseServiceFeePerDay: pricingConfig?.baseServiceFee
+        ? pricingConfig.baseServiceFee * 4
+        : 14000,
+      beer: pricingConfig?.beerPricePerServing || 400,
+      wine: pricingConfig?.winePricePerGlass || 600,
+      spirits: pricingConfig?.spiritsPricePerServing || 750,
+      cocktails: pricingConfig?.cocktailPricePerServing || 900,
+      mocktail: pricingConfig?.mocktailPricePerServing || 500,
+    }),
+    [pricingConfig],
+  );
 
   const [guests, setGuests] = useState(50);
   const [eventDays, setEventDays] = useState(1);
@@ -63,7 +76,9 @@ export function CostCalculator({ pricingConfig }) {
     const drinksPerGuestPerDay = 3.5;
     const totalDrinks = Math.round(guests * drinksPerGuestPerDay * eventDays);
 
-    const activeKeys = Object.keys(selectedDrinks).filter((k) => selectedDrinks[k]);
+    const activeKeys = Object.keys(selectedDrinks).filter(
+      (k) => selectedDrinks[k],
+    );
     const numCategories = activeKeys.length || 1;
     const drinksPerCategory = Math.round(totalDrinks / numCategories);
 
@@ -73,7 +88,8 @@ export function CostCalculator({ pricingConfig }) {
       drinkCostTotal += unitRate * drinksPerCategory;
     });
 
-    const staffAndLogisticsFee = rates.baseServiceFeePerDay * eventDays * Math.ceil(guests / 40);
+    const staffAndLogisticsFee =
+      rates.baseServiceFeePerDay * eventDays * Math.ceil(guests / 40);
     const baseEstimate = drinkCostTotal + staffAndLogisticsFee;
     const lowEstimate = Math.round(baseEstimate * 0.9);
     const highEstimate = Math.round(baseEstimate * 1.1);
@@ -90,14 +106,18 @@ export function CostCalculator({ pricingConfig }) {
     <div className="calculator-container-wrap">
       <div className="calculator-card" id="calculator">
         <div className="calculator-header centered-header">
-          <div className="eyebrow" style={{ color: "var(--gold)", textAlign: "center" }}>
+          <div
+            className="eyebrow"
+            style={{ color: "var(--gold)", textAlign: "center" }}
+          >
             Event Budget Estimator
           </div>
           <h2 className="calc-title-compact" style={{ textAlign: "center" }}>
             Calculate Your Drinks Budget
           </h2>
           <p className="calculator-subtitle" style={{ textAlign: "center" }}>
-            Select guest count, event days, and drink categories to receive an instant estimate for your celebration.
+            Select guest count, event days, and drink categories to receive an
+            instant estimate for your celebration.
           </p>
         </div>
 
@@ -106,7 +126,7 @@ export function CostCalculator({ pricingConfig }) {
           <div className="calc-step">
             <div className="step-badge">Step 1</div>
             <h3>Event Size & Duration</h3>
-            
+
             <div className="input-group">
               <div className="label-row">
                 <label htmlFor="guest-slider">Number of Guests</label>
@@ -139,7 +159,9 @@ export function CostCalculator({ pricingConfig }) {
             <div className="input-group">
               <div className="label-row">
                 <label htmlFor="days-slider">Event Duration (Days)</label>
-                <span className="value-tag">{eventDays} {eventDays === 1 ? "Day" : "Days"}</span>
+                <span className="value-tag">
+                  {eventDays} {eventDays === 1 ? "Day" : "Days"}
+                </span>
               </div>
               <input
                 id="days-slider"
@@ -170,8 +192,10 @@ export function CostCalculator({ pricingConfig }) {
           <div className="calc-step">
             <div className="step-badge">Step 2</div>
             <h3>Select Included Drink Styles</h3>
-            <p className="step-hint">Choose which drink menus to feature on your bar:</p>
-            
+            <p className="step-hint">
+              Choose which drink menus to feature on your bar:
+            </p>
+
             <div className="drinks-toggle-grid">
               <button
                 type="button"
@@ -241,10 +265,13 @@ export function CostCalculator({ pricingConfig }) {
           <div className="result-headline">
             <span>Estimated Event Budget Range</span>
             <div className="total-amount">
-              KES {calculation.lowEstimate.toLocaleString()} – KES {calculation.highEstimate.toLocaleString()}
+              KES {calculation.lowEstimate.toLocaleString()} – KES{" "}
+              {calculation.highEstimate.toLocaleString()}
             </div>
             <p className="approx-note">
-              Approx. KES {calculation.avgPerGuest.toLocaleString()} per guest &bull; Covers ~{calculation.totalDrinks} drinks across {eventDays} {eventDays === 1 ? "day" : "days"}, shakers, ice & bar staff.
+              Approx. KES {calculation.avgPerGuest.toLocaleString()} per guest
+              &bull; Covers ~{calculation.totalDrinks} drinks across {eventDays}{" "}
+              {eventDays === 1 ? "day" : "days"}, shakers, ice & bar staff.
             </p>
           </div>
 
@@ -259,7 +286,12 @@ export function CostCalculator({ pricingConfig }) {
       {/* Cost FAQ Section below the calculator */}
       <div className="cost-faq-section">
         <div className="cost-faq-header">
-          <div className="eyebrow" style={{ color: "var(--gold)", textAlign: "center" }}>FAQ</div>
+          <div
+            className="eyebrow"
+            style={{ color: "var(--gold)", textAlign: "center" }}
+          >
+            FAQ
+          </div>
           <h3>Frequently Asked Questions About Event Pricing</h3>
         </div>
 

@@ -6,7 +6,7 @@ const page = getSeoLandingPage("mobile-bar-hire-westlands-kilimani");
 export const metadata = {
   title: page.metaTitle,
   description: page.description,
-  alternates: { canonical: "/mobile-bar-hire-westlands-kilimani" }
+  alternates: { canonical: "/mobile-bar-hire-westlands-kilimani" },
 };
 
 export default function Page() {

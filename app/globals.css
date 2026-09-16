@@ -161,8 +161,17 @@ textarea {
   overflow: hidden;
   border-radius: inherit;
   background:
-    radial-gradient(circle at var(--hero-scroll-position) 0%, rgba(200, 169, 106, 0.18), transparent 34%),
-    linear-gradient(105deg, transparent 30%, rgba(246, 239, 227, 0.08), transparent 68%);
+    radial-gradient(
+      circle at var(--hero-scroll-position) 0%,
+      rgba(200, 169, 106, 0.18),
+      transparent 34%
+    ),
+    linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(246, 239, 227, 0.08),
+      transparent 68%
+    );
   background-position: var(--hero-scroll-position) 0;
   opacity: 0;
   transition: opacity 450ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,7 +203,9 @@ textarea {
   border-radius: 28px;
   padding: 10px 4.5vw;
   background: rgba(16, 39, 30, 0.9);
-  box-shadow: 0 18px 50px rgba(16, 39, 30, 0.28), inset 0 1px 0 rgba(246, 239, 227, 0.1);
+  box-shadow:
+    0 18px 50px rgba(16, 39, 30, 0.28),
+    inset 0 1px 0 rgba(246, 239, 227, 0.1);
   backdrop-filter: blur(18px) saturate(1.12);
 }
 
@@ -220,7 +231,10 @@ textarea {
   max-width: 300px;
   border-radius: 14px;
   box-shadow: 0 10px 28px rgba(16, 39, 30, 0.22);
-  transition: height 500ms cubic-bezier(0.4, 0, 0.2, 1), max-width 500ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    height 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header.is-scrolled .brand-logo {
@@ -353,8 +367,13 @@ textarea {
   background:
     linear-gradient(145deg, rgba(31, 77, 58, 0.98), rgba(16, 39, 30, 0.98)),
     var(--green);
-  box-shadow: 0 18px 44px rgba(16, 39, 30, 0.34), 0 0 0 7px rgba(200, 169, 106, 0.16);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  box-shadow:
+    0 18px 44px rgba(16, 39, 30, 0.34),
+    0 0 0 7px rgba(200, 169, 106, 0.16);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
 }
 
 .floating-whatsapp svg {
@@ -365,7 +384,9 @@ textarea {
 .floating-whatsapp:hover {
   transform: translateY(-3px);
   color: var(--gold);
-  box-shadow: 0 22px 52px rgba(16, 39, 30, 0.42), 0 0 0 9px rgba(201, 106, 61, 0.18);
+  box-shadow:
+    0 22px 52px rgba(16, 39, 30, 0.42),
+    0 0 0 9px rgba(201, 106, 61, 0.18);
 }
 
 .floating-whatsapp:focus-visible {
@@ -396,7 +417,12 @@ textarea {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(16, 39, 30, 0.92), rgba(31, 77, 58, 0.68), rgba(16, 39, 30, 0.35)),
+    linear-gradient(
+      90deg,
+      rgba(16, 39, 30, 0.92),
+      rgba(31, 77, 58, 0.68),
+      rgba(16, 39, 30, 0.35)
+    ),
     linear-gradient(to bottom, rgba(16, 39, 30, 0.16), rgba(16, 39, 30, 0.32));
   pointer-events: none;
 }
@@ -497,7 +523,7 @@ h3 {
 
 h1 {
   max-width: 980px;
-  font-size: 7.0rem;
+  font-size: 7rem;
   line-height: 0.85;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -597,7 +623,11 @@ h1 {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to top, rgba(16, 39, 30, 0.94), rgba(16, 39, 30, 0.12));
+  background: linear-gradient(
+    to top,
+    rgba(16, 39, 30, 0.94),
+    rgba(16, 39, 30, 0.12)
+  );
 }
 
 .cocktail-card:hover img {
@@ -653,7 +683,8 @@ h1 {
   min-height: 620px;
   overflow: hidden;
   border-radius: 44px;
-  background: url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80") center/cover;
+  background: url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80")
+    center/cover;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
 }
 
@@ -714,7 +745,11 @@ h1 {
 
 .notes-section {
   background:
-    radial-gradient(circle at 12% 18%, rgba(200, 169, 106, 0.18), transparent 28%),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(200, 169, 106, 0.18),
+      transparent 28%
+    ),
     linear-gradient(180deg, rgba(255, 250, 242, 0.62), rgba(246, 239, 227, 1));
 }
 
@@ -821,7 +856,8 @@ h1 {
   color: var(--cream);
   background:
     linear-gradient(rgba(31, 77, 58, 0.88), rgba(31, 77, 58, 0.88)),
-    url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1800&q=80") center/cover;
+    url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1800&q=80")
+      center/cover;
   text-align: center;
 }
 
@@ -907,7 +943,10 @@ h1 {
   display: grid;
   max-width: 1320px;
   margin: 0 auto;
-  grid-template-columns: minmax(210px, 0.9fr) minmax(230px, 1.1fr) minmax(260px, 1.2fr) minmax(150px, 0.65fr);
+  grid-template-columns: minmax(210px, 0.9fr) minmax(230px, 1.1fr) minmax(
+      260px,
+      1.2fr
+    ) minmax(150px, 0.65fr);
   column-gap: clamp(48px, 5vw, 82px);
   row-gap: 48px;
   padding-bottom: 68px;
@@ -1058,8 +1097,14 @@ h1 {
   padding: 150px 6vw 90px;
   color: var(--cream);
   background:
-    linear-gradient(90deg, rgba(16, 39, 30, 0.94), rgba(31, 77, 58, 0.78), rgba(16, 39, 30, 0.46)),
-    url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    linear-gradient(
+      90deg,
+      rgba(16, 39, 30, 0.94),
+      rgba(31, 77, 58, 0.78),
+      rgba(16, 39, 30, 0.46)
+    ),
+    url("https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1800&q=80")
+      center/cover fixed;
 }
 
 .booking-hero {
@@ -1300,8 +1345,14 @@ h1 {
   padding: 160px 6vw 76px;
   color: var(--cream);
   background:
-    linear-gradient(90deg, rgba(16, 39, 30, 0.94), rgba(31, 77, 58, 0.76), rgba(16, 39, 30, 0.42)),
-    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1800&q=80") center/cover;
+    linear-gradient(
+      90deg,
+      rgba(16, 39, 30, 0.94),
+      rgba(31, 77, 58, 0.76),
+      rgba(16, 39, 30, 0.42)
+    ),
+    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1800&q=80")
+      center/cover;
 }
 
 .page-hero.compact {
@@ -1698,7 +1749,10 @@ h1 {
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
     opacity: 0;
     pointer-events: none;
-    transition: max-height 0.28s ease, opacity 0.22s ease, padding 0.28s ease;
+    transition:
+      max-height 0.28s ease,
+      opacity 0.22s ease,
+      padding 0.28s ease;
   }
 
   .site-header.is-open .mobile-menu {
@@ -2005,8 +2059,14 @@ h1 {
   padding: 150px 6vw 90px;
   color: var(--cream);
   background:
-    linear-gradient(90deg, rgba(16, 39, 30, 0.94), rgba(31, 77, 58, 0.78), rgba(16, 39, 30, 0.46)),
-    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    linear-gradient(
+      90deg,
+      rgba(16, 39, 30, 0.94),
+      rgba(31, 77, 58, 0.78),
+      rgba(16, 39, 30, 0.46)
+    ),
+    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1800&q=80")
+      center/cover fixed;
 }
 
 .feedback-hero {
@@ -2064,7 +2124,9 @@ h1 {
   font-size: 2.5rem;
   cursor: pointer;
   color: rgba(246, 239, 227, 0.2);
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s;
+  transition:
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color 0.2s;
 }
 
 .star-btn:hover {
@@ -2397,7 +2459,9 @@ h1 {
   border-radius: 999px;
   background: var(--green);
   z-index: 2;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.4s ease;
 }
 
 .pretty-toggle-bar.spirits-active .toggle-slider-bubble {
@@ -2969,7 +3033,7 @@ h1 {
     gap: 40px;
   }
   .pillar-copy-container h2 {
-    font-size: 2.30rem;
+    font-size: 2.3rem;
   }
   .cocktail-grid-showcase {
     grid-template-columns: repeat(2, 1fr);
@@ -3111,7 +3175,9 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 24px;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .service-back-link:hover {
@@ -3300,7 +3366,9 @@ h1 {
   border-radius: 24px;
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
   box-shadow: 0 10px 30px rgba(16, 39, 30, 0.04);
 }
 
@@ -3351,7 +3419,11 @@ h1 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(200, 169, 106, 0.15) 0%, transparent 60%);
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(200, 169, 106, 0.15) 0%,
+    transparent 60%
+  );
 }
 
 .service-cta-inner {
@@ -3377,7 +3449,6 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /* ──────────────────────────────────────────────────────────────────────────
    COCKTAIL DETAIL PAGE STYLES
@@ -3413,7 +3484,12 @@ h1 {
 .cocktail-detail-hero-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(16, 39, 30, 0.9) 0%, rgba(16, 39, 30, 0.3) 60%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(16, 39, 30, 0.9) 0%,
+    rgba(16, 39, 30, 0.3) 60%,
+    transparent 100%
+  );
   z-index: 2;
 }
 
@@ -3435,7 +3511,9 @@ h1 {
   cursor: pointer;
   background: none;
   padding: 0;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cocktail-thumb img {
@@ -3667,7 +3745,9 @@ h1 {
   border-radius: 24px;
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
   box-shadow: 0 10px 30px rgba(16, 39, 30, 0.04);
 }
 
@@ -4067,7 +4147,11 @@ h1 {
   border: 1px solid rgba(200, 169, 106, 0.35);
   border-radius: 36px;
   padding: 44px 48px;
-  background: linear-gradient(165deg, rgba(31, 77, 58, 0.98), rgba(16, 39, 30, 0.98));
+  background: linear-gradient(
+    165deg,
+    rgba(31, 77, 58, 0.98),
+    rgba(16, 39, 30, 0.98)
+  );
   color: var(--cream);
   box-shadow: 0 30px 80px rgba(16, 39, 30, 0.35);
 }
@@ -4226,7 +4310,6 @@ h1 {
 .drink-toggle-card strong {
   display: block;
   font-size: 0.95rem;
-
 }
 
 .drink-toggle-card span {
@@ -4313,7 +4396,11 @@ h1 {
 /* -------------------------------------------------------------------------- */
 .feedback-carousel-section {
   position: relative;
-  background: linear-gradient(180deg, rgba(246, 239, 227, 0.6), rgba(255, 250, 242, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(246, 239, 227, 0.6),
+    rgba(255, 250, 242, 0.9)
+  );
 }
 
 .carousel-controls {
@@ -4624,5 +4711,3 @@ h1 {
     flex-wrap: wrap;
   }
 }
-
-

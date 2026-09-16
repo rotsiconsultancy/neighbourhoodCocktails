@@ -34,9 +34,18 @@ export function SiteHeaderClient({ settings }) {
     function updateHeader() {
       frameId = 0;
       const heroHeight = Math.max(hero.getBoundingClientRect().height, 1);
-      const progress = Math.min(Math.max(window.scrollY / (heroHeight * 0.72), 0), 1);
-      headerRef.current?.style.setProperty("--hero-scroll-progress", progress.toFixed(3));
-      headerRef.current?.style.setProperty("--hero-scroll-position", `${12 + progress * 70}%`);
+      const progress = Math.min(
+        Math.max(window.scrollY / (heroHeight * 0.72), 0),
+        1,
+      );
+      headerRef.current?.style.setProperty(
+        "--hero-scroll-progress",
+        progress.toFixed(3),
+      );
+      headerRef.current?.style.setProperty(
+        "--hero-scroll-position",
+        `${12 + progress * 70}%`,
+      );
       setIsScrolled((current) => {
         const next = window.scrollY > 42;
         return current === next ? current : next;
@@ -58,30 +67,105 @@ export function SiteHeaderClient({ settings }) {
   }, []);
 
   return (
-    <header ref={headerRef} className={`site-header${isMenuOpen ? " is-open" : ""}${isScrolled ? " is-scrolled" : ""}`}>
-      <Link className="brand" href="/" aria-label="The Neighbourhood Cocktails home">
-        <Image className="brand-logo" src={settings.primaryLogo} width={814} height={446} alt="The Neighbourhood Cocktails" priority unoptimized={settings.primaryLogo.startsWith("http")} />
+    <header
+      ref={headerRef}
+      className={`site-header${isMenuOpen ? " is-open" : ""}${isScrolled ? " is-scrolled" : ""}`}
+    >
+      <Link
+        className="brand"
+        href="/"
+        aria-label="The Neighbourhood Cocktails home"
+      >
+        <Image
+          className="brand-logo"
+          src={settings.primaryLogo}
+          width={814}
+          height={446}
+          alt="The Neighbourhood Cocktails"
+          priority
+          unoptimized={settings.primaryLogo.startsWith("http")}
+        />
       </Link>
       <nav className="nav-links" aria-label="Primary navigation">
-        {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        {navItems.map((item) => (
+          <Link key={item.href} href={item.href}>
+            {item.label}
+          </Link>
+        ))}
       </nav>
       <div className="header-actions">
-        <nav className="social-links desktop-social-links" aria-label="Social links">
-          {socialItems.map(({ href, label, Icon }) => <Link key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon aria-hidden="true" /></Link>)}
+        <nav
+          className="social-links desktop-social-links"
+          aria-label="Social links"
+        >
+          {socialItems.map(({ href, label, Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
+              <Icon aria-hidden="true" />
+            </Link>
+          ))}
         </nav>
-        <Link className="nav-cta" href="/booking">Book Our Services</Link>
+        <Link className="nav-cta" href="/booking">
+          Book Our Services
+        </Link>
       </div>
       <div className="mobile-header-actions">
         <nav className="social-links" aria-label="Social links">
-          {socialItems.map(({ href, label, Icon }) => <Link key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon aria-hidden="true" /></Link>)}
+          {socialItems.map(({ href, label, Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
+              <Icon aria-hidden="true" />
+            </Link>
+          ))}
         </nav>
-        <button className="menu-toggle" type="button" aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isMenuOpen} aria-controls="mobile-menu" onClick={() => setIsMenuOpen((current) => !current)}>
-          {isMenuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          {isMenuOpen ? (
+            <FaTimes aria-hidden="true" />
+          ) : (
+            <FaBars aria-hidden="true" />
+          )}
         </button>
       </div>
-      <nav className="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-        {navItems.map((item) => <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)}>{item.label}</Link>)}
-        <Link className="mobile-menu-cta" href="/booking" onClick={() => setIsMenuOpen(false)}>Book Our Services</Link>
+      <nav
+        className="mobile-menu"
+        id="mobile-menu"
+        aria-label="Mobile navigation"
+      >
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {item.label}
+          </Link>
+        ))}
+        <Link
+          className="mobile-menu-cta"
+          href="/booking"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Book Our Services
+        </Link>
       </nav>
     </header>
   );

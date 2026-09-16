@@ -47,9 +47,11 @@ export function ConsentManager() {
         <h2 id="privacy-consent-title">Help us understand what works.</h2>
         <p id="privacy-consent-description">
           With your permission, we would like to measure visits and booking
-          enquiries, inorder to improve our offerings and services. We will also use this information to provide you with relevant offers and updates. You can change your mind at any time by clicking the privacy link in the footer.
-          Rejecting marketing tracking will not affect the website or your ability
-          to make a booking.
+          enquiries, inorder to improve our offerings and services. We will also
+          use this information to provide you with relevant offers and updates.
+          You can change your mind at any time by clicking the privacy link in
+          the footer. Rejecting marketing tracking will not affect the website
+          or your ability to make a booking.
         </p>
         <Link href="/privacy">Read our privacy notice</Link>
       </div>

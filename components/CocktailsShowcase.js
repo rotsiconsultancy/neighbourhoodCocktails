@@ -43,16 +43,15 @@ export function CocktailsShowcase({ cocktails }) {
   const updateSelectedCocktails = (newSelected) => {
     setSelectedCocktails(newSelected);
     if (typeof window !== "undefined") {
-      sessionStorage.setItem(
-        "selected_cocktails",
-        JSON.stringify(newSelected)
-      );
+      sessionStorage.setItem("selected_cocktails", JSON.stringify(newSelected));
     }
   };
 
   const handleToggleCocktail = (name) => {
     if (selectedCocktails.includes(name)) {
-      updateSelectedCocktails(selectedCocktails.filter((item) => item !== name));
+      updateSelectedCocktails(
+        selectedCocktails.filter((item) => item !== name),
+      );
     } else {
       updateSelectedCocktails([...selectedCocktails, name]);
     }
@@ -160,7 +159,10 @@ export function CocktailsShowcase({ cocktails }) {
         <div className="cocktail-grid-showcase">
           {filteredCocktails.length === 0 ? (
             <div className="no-results">
-              <p>No cocktails match this exact combination. Try another vibe filter!</p>
+              <p>
+                No cocktails match this exact combination. Try another vibe
+                filter!
+              </p>
               <button
                 className="btn"
                 onClick={() => {
@@ -194,7 +196,11 @@ export function CocktailsShowcase({ cocktails }) {
                           className="carousel-arrow prev"
                           aria-label="Previous image"
                           onClick={(e) =>
-                            handlePrevImage(cocktail.id, cocktail.images.length, e)
+                            handlePrevImage(
+                              cocktail.id,
+                              cocktail.images.length,
+                              e,
+                            )
                           }
                         >
                           <FaChevronLeft />
@@ -204,7 +210,11 @@ export function CocktailsShowcase({ cocktails }) {
                           className="carousel-arrow next"
                           aria-label="Next image"
                           onClick={(e) =>
-                            handleNextImage(cocktail.id, cocktail.images.length, e)
+                            handleNextImage(
+                              cocktail.id,
+                              cocktail.images.length,
+                              e,
+                            )
                           }
                         >
                           <FaChevronRight />

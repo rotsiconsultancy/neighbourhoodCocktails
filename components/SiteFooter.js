@@ -11,7 +11,11 @@ export async function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-logos">
-          <Link className="footer-logo-link" href="/" aria-label="The Neighbourhood Cocktails home">
+          <Link
+            className="footer-logo-link"
+            href="/"
+            aria-label="The Neighbourhood Cocktails home"
+          >
             <img
               className="footer-brand-logo"
               src={settings.primaryLogo}
@@ -21,7 +25,13 @@ export async function SiteFooter() {
             />
           </Link>
 
-          <Link className="footer-logo-link" href={settings.partnerUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit Qurative">
+          <Link
+            className="footer-logo-link"
+            href={settings.partnerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Qurative"
+          >
             <img
               className="footer-partner-logo"
               src={settings.partnerLogo}
@@ -35,8 +45,17 @@ export async function SiteFooter() {
         <div className="footer-about">
           <p>{settings.tagline}</p>
           <address className="footer-address">
-            {settings.addressLines.map((line) => <span key={line}>{line}<br /></span>)}
-            <a href={settings.directionsUrl} target="_blank" rel="noopener noreferrer">
+            {settings.addressLines.map((line) => (
+              <span key={line}>
+                {line}
+                <br />
+              </span>
+            ))}
+            <a
+              href={settings.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Get directions
             </a>
           </address>
@@ -45,13 +64,25 @@ export async function SiteFooter() {
         <div className="footer-discovery">
           <p className="footer-label">Plan your event</p>
           <nav aria-label="Event planning services">
-            <Link href="/mobile-bar-hire-westlands-kilimani">Westlands &amp; Kilimani mobile bar</Link>
+            <Link href="/mobile-bar-hire-westlands-kilimani">
+              Westlands &amp; Kilimani mobile bar
+            </Link>
             <Link href="/wedding-mobile-bar-nairobi">Wedding mobile bar</Link>
-            <Link href="/corporate-cocktail-catering-nairobi">Corporate cocktail catering</Link>
-            <Link href="/private-party-bartenders-nairobi">Private party bartenders</Link>
-            <Link href="/cocktail-masterclass-nairobi">Cocktail masterclasses</Link>
-            <Link href="/mocktail-bar-events-nairobi">Mocktail bar for events</Link>
-            <Link href="/brand-activation-bar-service">Brand activation bar service</Link>
+            <Link href="/corporate-cocktail-catering-nairobi">
+              Corporate cocktail catering
+            </Link>
+            <Link href="/private-party-bartenders-nairobi">
+              Private party bartenders
+            </Link>
+            <Link href="/cocktail-masterclass-nairobi">
+              Cocktail masterclasses
+            </Link>
+            <Link href="/mocktail-bar-events-nairobi">
+              Mocktail bar for events
+            </Link>
+            <Link href="/brand-activation-bar-service">
+              Brand activation bar service
+            </Link>
             <Link href="/event-drinks-packages">Event drinks packages</Link>
           </nav>
         </div>
@@ -67,13 +98,28 @@ export async function SiteFooter() {
           <div className="footer-social-block">
             <p className="footer-label">Follow us</p>
             <nav className="footer-social" aria-label="Social links">
-              <Link href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Link
+                href={settings.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <FaInstagram aria-hidden="true" />
               </Link>
-              <Link href={settings.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Link
+                href={settings.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
                 <FaLinkedin aria-hidden="true" />
               </Link>
-              <Link href={settings.substackUrl} target="_blank" rel="noopener noreferrer" aria-label="Substack">
+              <Link
+                href={settings.substackUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Substack"
+              >
                 <SiSubstack aria-hidden="true" />
               </Link>
             </nav>
@@ -82,12 +128,24 @@ export async function SiteFooter() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.</p>
+        <p>
+          &copy; {currentYear}. Neighbourhood Cocktails. All rights reserved.
+        </p>
         <p className="footer-legal-links">
           <Link href="/privacy">Privacy notice</Link>
           <PrivacyChoicesButton />
         </p>
-        <p>Built by <Link href="https://malaikastudios.rotsi.co.ke" target="_blank" rel="noopener noreferrer">Malaika Studios</Link>.</p>
+        <p>
+          Built by{" "}
+          <Link
+            href="https://malaikastudios.rotsi.co.ke"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Malaika Studios
+          </Link>
+          .
+        </p>
       </div>
     </footer>
   );

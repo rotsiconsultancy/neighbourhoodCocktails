@@ -7,11 +7,13 @@ import { getHomePage } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Request a Mobile Cocktail Bar Quote in Nairobi",
-  description: "Request a tailored quote for mobile bar hire, cocktail catering, bartenders, mocktails, or a cocktail masterclass in Nairobi.",
-  alternates: { canonical: "/booking" }
+  description:
+    "Request a tailored quote for mobile bar hire, cocktail catering, bartenders, mocktails, or a cocktail masterclass in Nairobi.",
+  alternates: { canonical: "/booking" },
 };
 
-const locationMapUrl = "https://www.google.com/maps/search/?api=1&query=Hackhouse+Africa%2C+124+Manyani+East+Road%2C+Nairobi";
+const locationMapUrl =
+  "https://www.google.com/maps/search/?api=1&query=Hackhouse+Africa%2C+124+Manyani+East+Road%2C+Nairobi";
 
 const locationSchema = {
   "@context": "https://schema.org",
@@ -22,7 +24,7 @@ const locationSchema = {
     "@type": "PostalAddress",
     streetAddress: "124 Manyani East Road",
     addressLocality: "Nairobi",
-    addressCountry: "KE"
+    addressCountry: "KE",
   },
   location: {
     "@type": "Place",
@@ -31,9 +33,9 @@ const locationSchema = {
       "@type": "PostalAddress",
       streetAddress: "124 Manyani East Road",
       addressLocality: "Nairobi",
-      addressCountry: "KE"
-    }
-  }
+      addressCountry: "KE",
+    },
+  },
 };
 
 export default async function BookingPage() {
@@ -42,7 +44,10 @@ export default async function BookingPage() {
     <>
       <SiteHeader />
       <main className="booking-page">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }}
+        />
         <section className="booking-hero">
           <p className="eyebrow">Booking request</p>
           <div className="subtle-calculator-banner">
@@ -53,8 +58,10 @@ export default async function BookingPage() {
           </div>
         </section>
 
-
-        <section className="booking-layout" aria-label="Booking form and service promise">
+        <section
+          className="booking-layout"
+          aria-label="Booking form and service promise"
+        >
           <BookingForm />
 
           <aside className="promise-panel">
@@ -68,7 +75,10 @@ export default async function BookingPage() {
             />
             <p className="eyebrow">Our promise</p>
             <h2>A bar that fits the room.</h2>
-            <p>We help translate the event into a drinks experience: polished enough for the occasion, relaxed enough for guests to enjoy.</p>
+            <p>
+              We help translate the event into a drinks experience: polished
+              enough for the occasion, relaxed enough for guests to enjoy.
+            </p>
             <div className="promise-list">
               <div>
                 <h3>Certified mixologists</h3>
@@ -76,29 +86,46 @@ export default async function BookingPage() {
               </div>
               <div>
                 <h3>Fresh ingredients</h3>
-                <p>Balanced drinks, thoughtful garnish, and alcohol-free options.</p>
+                <p>
+                  Balanced drinks, thoughtful garnish, and alcohol-free options.
+                </p>
               </div>
               <div>
                 <h3>Event-ready setup</h3>
-                <p>Menu guidance, bar tools, glassware planning, and service flow.</p>
+                <p>
+                  Menu guidance, bar tools, glassware planning, and service
+                  flow.
+                </p>
               </div>
             </div>
           </aside>
         </section>
 
-        <section className="booking-location" aria-labelledby="location-heading">
+        <section
+          className="booking-location"
+          aria-labelledby="location-heading"
+        >
           <div className="booking-location-copy">
             <p className="eyebrow">Find the bar</p>
             <h2 id="location-heading">Meet us at Hackhouse Africa.</h2>
             <p>
-              Our current bar is based at Hackhouse Africa on Manyani East Road in Nairobi. Visit for a conversation, a tasting, or to discuss the practical details of your event.
+              Our current bar is based at Hackhouse Africa on Manyani East Road
+              in Nairobi. Visit for a conversation, a tasting, or to discuss the
+              practical details of your event.
             </p>
             <address>
-              Hackhouse Africa<br />
-              124 Manyani East Road<br />
+              Hackhouse Africa
+              <br />
+              124 Manyani East Road
+              <br />
               Nairobi, Kenya
             </address>
-            <a className="btn secondary" href={locationMapUrl} target="_blank" rel="noopener noreferrer">
+            <a
+              className="btn secondary"
+              href={locationMapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Get directions
             </a>
           </div>

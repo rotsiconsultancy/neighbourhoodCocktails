@@ -78,7 +78,7 @@ export function MetaPixel() {
     setConsent(getMarketingConsent() || CONSENT_GRANTED);
 
     const handleConsent = (event) => {
-      setConsent(event.detail||CONSENT_GRANTED);
+      setConsent(event.detail || CONSENT_GRANTED);
       if (event.detail !== CONSENT_GRANTED) {
         trackedPath.current = null;
       }
@@ -102,7 +102,7 @@ export function MetaPixel() {
     trackedPath.current = pathname;
   }, [consent, pathname, pixelReady]);
 
-  if(consent !== CONSENT_GRANTED) {
+  if (consent !== CONSENT_GRANTED) {
     // return null;
     consent = CONSENT_GRANTED; // Force consent for testing purposes
   }

@@ -1,7 +1,17 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { FaStar, FaInstagram, FaLinkedin, FaTwitter, FaFacebook, FaGoogle, FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
+import {
+  FaStar,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook,
+  FaGoogle,
+  FaChevronLeft,
+  FaChevronRight,
+  FaQuoteLeft,
+} from "react-icons/fa";
 
 export function CustomerFeedbackCarousel({ testimonials = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,14 +73,18 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
   };
 
   return (
     <section className="section feedback-carousel-section" id="reviews">
       <div className="section-header">
         <div>
-          <div className="eyebrow" style={{ color: "var(--gold)" }}>What Our Guests Say</div>
+          <div className="eyebrow" style={{ color: "var(--gold)" }}>
+            What Our Guests Say
+          </div>
           <h2>Stories from the Neighbourhood</h2>
         </div>
         <div className="carousel-controls">
@@ -112,7 +126,10 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
             <div className="feedback-card-slide" key={item._id || item.name}>
               <div className="feedback-card-inner">
                 <div className="feedback-card-top">
-                  <div className="star-rating" aria-label={`${item.rating || 5} out of 5 stars`}>
+                  <div
+                    className="star-rating"
+                    aria-label={`${item.rating || 5} out of 5 stars`}
+                  >
                     {[...Array(item.rating || 5)].map((_, i) => (
                       <FaStar key={i} className="star-icon" />
                     ))}
@@ -121,13 +138,25 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
                 </div>
 
                 {item.videoUrl ? (
-                  <div className="feedback-video-wrap" style={{ marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
+                  <div
+                    className="feedback-video-wrap"
+                    style={{
+                      marginBottom: "16px",
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                    }}
+                  >
                     <video
                       src={item.videoUrl}
                       controls
                       playsInline
                       muted
-                      style={{ width: "100%", maxHeight: "240px", objectFit: "cover", borderRadius: "12px" }}
+                      style={{
+                        width: "100%",
+                        maxHeight: "240px",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                      }}
                     />
                   </div>
                 ) : null}
@@ -154,7 +183,9 @@ export function CustomerFeedbackCarousel({ testimonials = [] }) {
                         {getSocialIcon(item.socialPlatform)}
                       </span>
                       {item.socialHandle && (
-                        <span className="social-handle">{item.socialHandle}</span>
+                        <span className="social-handle">
+                          {item.socialHandle}
+                        </span>
                       )}
                     </a>
                   )}

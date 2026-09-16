@@ -2,14 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  CONSENT_GRANTED,
-  getMarketingConsent,
-} from "@/lib/marketingConsent";
-import {
-  readMetaCookie,
-  trackMetaEvent,
-} from "@/lib/metaPixel";
+import { CONSENT_GRANTED, getMarketingConsent } from "@/lib/marketingConsent";
+import { readMetaCookie, trackMetaEvent } from "@/lib/metaPixel";
 
 export function BookingForm() {
   const [status, setStatus] = useState("");
@@ -25,7 +19,9 @@ export function BookingForm() {
         try {
           const cocktails = JSON.parse(selected);
           if (cocktails && cocktails.length > 0) {
-            setNotesText(`Hello! I have pre-selected the following drinks for my event menu:\n- ${cocktails.join("\n- ")}\n\n`);
+            setNotesText(
+              `Hello! I have pre-selected the following drinks for my event menu:\n- ${cocktails.join("\n- ")}\n\n`,
+            );
           }
         } catch (e) {
           console.error(e);
@@ -53,7 +49,7 @@ export function BookingForm() {
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
         },
         body: JSON.stringify({
           name: formData.get("name"),
@@ -73,13 +69,15 @@ export function BookingForm() {
                 fbc: readMetaCookie("_fbc"),
               }
             : null,
-        })
+        }),
       });
 
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error || "We could not send your request. Please try again.");
+        throw new Error(
+          result.error || "We could not send your request. Please try again.",
+        );
       }
 
       trackMetaEvent(
@@ -88,14 +86,16 @@ export function BookingForm() {
           content_name: "Booking Request",
           content_category: eventType || "Event enquiry",
         },
-        metaEventId
+        metaEventId,
       );
 
       const customerName = formData.get("name") || "";
       setSubmittedName(customerName);
       form.reset();
       setSubmittedSuccessfully(true);
-      setStatus("Your booking request has been sent. We will get back to you within 24 hours.");
+      setStatus(
+        "Your booking request has been sent. We will get back to you within 24 hours.",
+      );
     } catch (error) {
       setStatus(error.message);
     } finally {
@@ -122,7 +122,9 @@ export function BookingForm() {
         </svg>
         <h2>Thank you, {submittedName.split(" ")[0]}!</h2>
         <p>
-          Your booking request has been successfully sent. We've received your details and our team will get back to you within 24 hours to shape the perfect experience for your event.
+          Your booking request has been successfully sent. We've received your
+          details and our team will get back to you within 24 hours to shape the
+          perfect experience for your event.
         </p>
         <Link href="/" className="btn-home">
           Back to home
@@ -138,11 +140,25 @@ export function BookingForm() {
         <div className="form-grid">
           <div className="field">
             <label htmlFor="name">Your name</label>
-            <input id="name" name="name" type="text" autoComplete="name" placeholder="Full name" required />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              placeholder="Full name"
+              required
+            />
           </div>
           <div className="field">
             <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="you@example.com"
+              required
+            />
           </div>
           <div className="field">
             <label htmlFor="date">Event date</label>
@@ -150,11 +166,22 @@ export function BookingForm() {
           </div>
           <div className="field">
             <label htmlFor="location">Location</label>
-            <input id="location" name="location" type="text" placeholder="Nairobi, Karen, Westlands..." />
+            <input
+              id="location"
+              name="location"
+              type="text"
+              placeholder="Nairobi, Karen, Westlands..."
+            />
           </div>
           <div className="field">
             <label htmlFor="guests">Guest count</label>
-            <input id="guests" name="guests" type="number" min="1" placeholder="Estimated attendance" />
+            <input
+              id="guests"
+              name="guests"
+              type="number"
+              min="1"
+              placeholder="Estimated attendance"
+            />
           </div>
           <div className="field">
             <label htmlFor="event-type">Event type</label>
@@ -174,7 +201,11 @@ export function BookingForm() {
         <div className="form-grid">
           <div className="field">
             <label htmlFor="service-style">Service style</label>
-            <select id="service-style" name="service-style" defaultValue="open-bar">
+            <select
+              id="service-style"
+              name="service-style"
+              defaultValue="open-bar"
+            >
               <option value="open-bar">Open bar</option>
               <option value="cash-bar">Cash bar</option>
               <option value="vouchers">Vouchers</option>
@@ -184,7 +215,11 @@ export function BookingForm() {
           </div>
           <div className="field">
             <label htmlFor="preferences">Drink preferences</label>
-            <select id="preferences" name="preferences" defaultValue="classic-cocktails">
+            <select
+              id="preferences"
+              name="preferences"
+              defaultValue="classic-cocktails"
+            >
               <option value="classic-cocktails">Classic cocktails</option>
               <option value="botanical">Botanical infusions</option>
               <option value="mocktails">Alcohol-free options</option>
@@ -206,7 +241,11 @@ export function BookingForm() {
       </div>
 
       <div className="submit-row">
-        <button className="button primary" type="submit" disabled={isSubmitting}>
+        <button
+          className="button primary"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Sending..." : "Send Booking Request"}
         </button>
         <p className="form-note">

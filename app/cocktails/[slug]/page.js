@@ -22,9 +22,18 @@ export async function generateMetadata({ params }) {
 
 export default async function CocktailDetailPage({ params }) {
   const { slug } = await params;
-  const [cocktail, cocktails] = await Promise.all([getCocktail(slug), getCocktails()]);
+  const [cocktail, cocktails] = await Promise.all([
+    getCocktail(slug),
+    getCocktails(),
+  ]);
   if (!cocktail) notFound();
   const related = cocktails.filter((item) => item.id !== slug).slice(0, 3);
 
-  return <><SiteHeader /><CocktailDetailClient cocktail={cocktail} related={related} /><SiteFooter /></>;
+  return (
+    <>
+      <SiteHeader />
+      <CocktailDetailClient cocktail={cocktail} related={related} />
+      <SiteFooter />
+    </>
+  );
 }

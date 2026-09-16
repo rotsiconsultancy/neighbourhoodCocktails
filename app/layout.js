@@ -10,7 +10,7 @@ const baseMetadata = {
   metadataBase: new URL("https://www.neighbourhoodcocktails.com"),
   title: {
     default: "The Neighbourhood Cocktails",
-    template: "%s | The Neighbourhood Cocktails"
+    template: "%s | The Neighbourhood Cocktails",
   },
   description:
     "Cocktail-led experiences for weddings, private events, corporate gatherings, and masterclasses.",
@@ -18,16 +18,16 @@ const baseMetadata = {
     title: "The Neighbourhood Cocktails",
     description:
       "Warm, polished cocktail service for hosts who want the drinks, setup, and atmosphere handled with care.",
-    images: ["/images/green-cream.jpg","/images/black.jpg"],
+    images: ["/images/green-cream.jpg", "/images/black.jpg"],
     url: "https://www.neighbourhoodcocktails.com",
     siteName: "The Neighbourhood Cocktails",
-    type: "website"
+    type: "website",
   },
   icons: {
     icon: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
     shortcut: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/images/logo.svg", type: "image/svg+xml" }]
-  }
+    apple: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
+  },
 };
 
 export async function generateMetadata() {
@@ -36,7 +36,9 @@ export async function generateMetadata() {
     ...baseMetadata,
     openGraph: {
       ...baseMetadata.openGraph,
-      images: settings.defaultShareImages?.length ? settings.defaultShareImages : baseMetadata.openGraph.images,
+      images: settings.defaultShareImages?.length
+        ? settings.defaultShareImages
+        : baseMetadata.openGraph.images,
     },
   };
 }
@@ -46,7 +48,11 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="cMTXt+R12kJEXx6AqZHyGA" async></script>
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="cMTXt+R12kJEXx6AqZHyGA"
+          async
+        ></script>
       </head>
       <body>
         <MetaPixel />

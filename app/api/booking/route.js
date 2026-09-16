@@ -5,8 +5,13 @@ const BREVO_SEND_EMAIL_URL = "https://api.brevo.com/v3/smtp/email";
 const BREVO_CONTACTS_URL = "https://api.brevo.com/v3/contacts";
 
 function getSmtpConfig() {
-  const host = process.env.BREVO_SMTP_HOST || process.env.SMTP_HOST || "smtp-relay.brevo.com";
-  const port = Number(process.env.BREVO_SMTP_PORT || process.env.SMTP_PORT || 587);
+  const host =
+    process.env.BREVO_SMTP_HOST ||
+    process.env.SMTP_HOST ||
+    "smtp-relay.brevo.com";
+  const port = Number(
+    process.env.BREVO_SMTP_PORT || process.env.SMTP_PORT || 587,
+  );
   const user = process.env.BREVO_SMTP_LOGIN || process.env.SMTP_USER;
   const pass = process.env.BREVO_SMTP_API_KEY || process.env.SMTP_PASS;
 
@@ -18,7 +23,7 @@ function getSmtpConfig() {
     host,
     port,
     secure: port === 465,
-    auth: { user, pass }
+    auth: { user, pass },
   };
 }
 
@@ -54,25 +59,31 @@ function detailRow(label, value) {
   </tr>`;
 }
 
-async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }) {
+async function sendBrevoEmail({
+  to,
+  subject,
+  htmlContent,
+  textContent,
+  replyTo,
+}) {
   const response = await fetch(BREVO_SEND_EMAIL_URL, {
     method: "POST",
     headers: {
       accept: "application/json",
       "api-key": process.env.BREVO_API_KEY,
-      "content-type": "application/json"
+      "content-type": "application/json",
     },
     body: JSON.stringify({
       sender: {
         name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails",
-        email: process.env.BREVO_SENDER_EMAIL
+        email: process.env.BREVO_SENDER_EMAIL,
       },
       to,
       replyTo,
       subject,
       htmlContent,
-      textContent
-    })
+      textContent,
+    }),
   });
 
   if (!response.ok) {
@@ -83,11 +94,19 @@ async function sendBrevoEmail({ to, subject, htmlContent, textContent, replyTo }
   return response.json();
 }
 
-async function sendSmtpEmail({ to, subject, htmlContent, textContent, replyTo }) {
+async function sendSmtpEmail({
+  to,
+  subject,
+  htmlContent,
+  textContent,
+  replyTo,
+}) {
   const smtpConfig = getSmtpConfig();
 
   if (!smtpConfig) {
-    throw new Error("SMTP is not configured. Set BREVO_SMTP_LOGIN and BREVO_SMTP_API_KEY.");
+    throw new Error(
+      "SMTP is not configured. Set BREVO_SMTP_LOGIN and BREVO_SMTP_API_KEY.",
+    );
   }
 
   const transporter = nodemailer.createTransport(smtpConfig);
@@ -95,21 +114,21 @@ async function sendSmtpEmail({ to, subject, htmlContent, textContent, replyTo })
   return transporter.sendMail({
     from: {
       name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails",
-      address: process.env.BREVO_SENDER_EMAIL
+      address: process.env.BREVO_SENDER_EMAIL,
     },
     to: to.map((recipient) => ({
       name: recipient.name,
-      address: recipient.email
+      address: recipient.email,
     })),
     replyTo: replyTo
       ? {
           name: replyTo.name,
-          address: replyTo.email
+          address: replyTo.email,
         }
       : undefined,
     subject,
     html: htmlContent,
-    text: textContent
+    text: textContent,
   });
 }
 
@@ -121,7 +140,17 @@ async function sendBookingEmail(message) {
   return sendBrevoEmail(message);
 }
 
-async function saveBrevoContact({ email, name, eventDate, location, guests, eventType, serviceStyle, preferences, notes }) {
+async function saveBrevoContact({
+  email,
+  name,
+  eventDate,
+  location,
+  guests,
+  eventType,
+  serviceStyle,
+  preferences,
+  notes,
+}) {
   const listId = Number(process.env.BREVO_CONTACT_LIST_ID);
 
   if (!listId) {
@@ -138,7 +167,7 @@ async function saveBrevoContact({ email, name, eventDate, location, guests, even
       headers: {
         accept: "application/json",
         "api-key": process.env.BREVO_API_KEY,
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
       body: JSON.stringify({
         email,
@@ -150,12 +179,14 @@ async function saveBrevoContact({ email, name, eventDate, location, guests, even
           GUEST_COUNT: guests ? parseInt(guests, 10) : null,
           EVENT_TYPE: eventType || "",
           SERVICE_STYLE: serviceStyle || "",
-          DRINK_PREFERENCES: Array.isArray(preferences) ? preferences.join(", ") : (preferences || ""),
-          SPECIAL_NOTES: notes || ""
+          DRINK_PREFERENCES: Array.isArray(preferences)
+            ? preferences.join(", ")
+            : preferences || "",
+          SPECIAL_NOTES: notes || "",
         },
         listIds: [listId],
-        updateEnabled: true
-      })
+        updateEnabled: true,
+      }),
     });
   } catch (error) {
     console.warn("Brevo contact save failed", error);
@@ -166,17 +197,29 @@ export async function POST(request) {
   const isEmailEnabled = process.env.BREVO_IS_EMAIL_ENABLED === "true";
 
   if (!process.env.BREVO_SENDER_EMAIL || !process.env.BOOKING_RECIPIENT_EMAIL) {
-    return Response.json({ error: "Email service is not configured." }, { status: 500 });
+    return Response.json(
+      { error: "Email service is not configured." },
+      { status: 500 },
+    );
   }
 
   if (isEmailEnabled && !getSmtpConfig() && !process.env.BREVO_API_KEY) {
-    return Response.json({ error: "Email service is not configured. Set SMTP credentials or BREVO_API_KEY." }, { status: 500 });
+    return Response.json(
+      {
+        error:
+          "Email service is not configured. Set SMTP credentials or BREVO_API_KEY.",
+      },
+      { status: 500 },
+    );
   }
 
   const body = await request.json().catch(() => null);
 
   if (!body) {
-    return Response.json({ error: "Invalid booking request." }, { status: 400 });
+    return Response.json(
+      { error: "Invalid booking request." },
+      { status: 400 },
+    );
   }
 
   const name = cleanValue(body.name, 120);
@@ -188,7 +231,9 @@ export async function POST(request) {
   const serviceStyle = cleanValue(body.serviceStyle, 120);
   const notes = cleanValue(body.notes, 1500);
   const preferences = Array.isArray(body.preferences)
-    ? body.preferences.map((preference) => cleanValue(preference, 80)).filter(Boolean)
+    ? body.preferences
+        .map((preference) => cleanValue(preference, 80))
+        .filter(Boolean)
     : [];
   const metaEventId = cleanValue(body.meta?.eventId, 120);
   const hasMarketingConsent = body.meta?.consent === true;
@@ -196,14 +241,22 @@ export async function POST(request) {
   const fbc = cleanValue(body.meta?.fbc, 255);
 
   if (!name || !email || !eventDate) {
-    return Response.json({ error: "Name, email, and event date are required." }, { status: 400 });
+    return Response.json(
+      { error: "Name, email, and event date are required." },
+      { status: 400 },
+    );
   }
 
   if (!isValidEmail(email)) {
-    return Response.json({ error: "Enter a valid email address." }, { status: 400 });
+    return Response.json(
+      { error: "Enter a valid email address." },
+      { status: 400 },
+    );
   }
 
-  const preferenceText = preferences.length ? preferences.join(", ") : "None selected";
+  const preferenceText = preferences.length
+    ? preferences.join(", ")
+    : "None selected";
   const adminHtml = `<!doctype html>
     <html>
       <body style="margin:0;padding:24px;background:#f6efe3;font-family:Arial,sans-serif;color:#10271e;">
@@ -240,7 +293,7 @@ export async function POST(request) {
     `Event type: ${eventType || "Not provided"}`,
     `Service style: ${serviceStyle || "Not provided"}`,
     `Drink preferences: ${preferenceText}`,
-    `Special requests: ${notes || "None provided"}`
+    `Special requests: ${notes || "None provided"}`,
   ].join("\n");
 
   const confirmationHtml = `<!doctype html>
@@ -256,14 +309,19 @@ export async function POST(request) {
     </html>`;
 
   try {
-    if(isEmailEnabled){
+    if (isEmailEnabled) {
       console.log("Sending booking request emails...");
       await sendBookingEmail({
-        to: [{ email: process.env.BOOKING_RECIPIENT_EMAIL, name: "The Neighbourhood Cocktails" }],
+        to: [
+          {
+            email: process.env.BOOKING_RECIPIENT_EMAIL,
+            name: "The Neighbourhood Cocktails",
+          },
+        ],
         replyTo: { email, name },
         subject: `New booking request from ${name}`,
         htmlContent: adminHtml,
-        textContent: adminText
+        textContent: adminText,
       });
 
       console.log("Sending booking confirmation email to user...");
@@ -272,11 +330,11 @@ export async function POST(request) {
         to: [{ email, name }],
         replyTo: {
           email: process.env.BOOKING_RECIPIENT_EMAIL,
-          name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails"
+          name: process.env.BREVO_SENDER_NAME || "The Neighbourhood Cocktails",
         },
         subject: "We received your booking request",
         htmlContent: confirmationHtml,
-        textContent: `Hi ${name},\n\nThanks for reaching out to The Neighbourhood Cocktails. We have your request for ${eventDate} and will get back to you within 24 hours.`
+        textContent: `Hi ${name},\n\nThanks for reaching out to The Neighbourhood Cocktails. We have your request for ${eventDate} and will get back to you within 24 hours.`,
       });
     }
 
@@ -290,12 +348,15 @@ export async function POST(request) {
       eventType,
       serviceStyle,
       preferences,
-      notes
+      notes,
     });
     console.log("Booking request processed successfully.");
   } catch (error) {
     console.error(error);
-    return Response.json({ error: "We could not send your request right now. Please try again." }, { status: 502 });
+    return Response.json(
+      { error: "We could not send your request right now. Please try again." },
+      { status: 502 },
+    );
   }
 
   if (hasMarketingConsent && metaEventId) {

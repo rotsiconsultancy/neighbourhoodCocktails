@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export function FeedbackForm() {
   const [name, setName] = useState("");
@@ -67,14 +67,19 @@ export function FeedbackForm() {
           recommend,
           notifyPref,
           whatsappPhone: notifyPref.includes("whatsapp") ? whatsappPhone : "",
-          instagramHandle: notifyPref.includes("instagram") ? instagramHandle : "",
+          instagramHandle: notifyPref.includes("instagram")
+            ? instagramHandle
+            : "",
         }),
       });
 
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error || "We could not submit your feedback. Please try again.");
+        throw new Error(
+          result.error ||
+            "We could not submit your feedback. Please try again.",
+        );
       }
 
       setSubmittedSuccessfully(true);
@@ -104,8 +109,9 @@ export function FeedbackForm() {
         </svg>
         <h2>Thank you, {name.split(" ")[0]}!</h2>
         <p>
-          Your feedback has been successfully recorded in our system. We appreciate your thoughts
-          and will use them to keep refining the neighbourhood experience.
+          Your feedback has been successfully recorded in our system. We
+          appreciate your thoughts and will use them to keep refining the
+          neighbourhood experience.
         </p>
         <Link href="/" className="btn-home">
           Back to home
@@ -115,7 +121,11 @@ export function FeedbackForm() {
   }
 
   return (
-    <form className="feedback-panel booking-panel" id="feedback-form" onSubmit={handleSubmit}>
+    <form
+      className="feedback-panel booking-panel"
+      id="feedback-form"
+      onSubmit={handleSubmit}
+    >
       <div className="form-section">
         <h2>Share Your Experience</h2>
         <div className="form-grid">
@@ -178,7 +188,9 @@ export function FeedbackForm() {
               </button>
             ))}
           </div>
-          <div className="rating-label">{starLabels[hoveredStar || drinkRating] || "Select a rating"}</div>
+          <div className="rating-label">
+            {starLabels[hoveredStar || drinkRating] || "Select a rating"}
+          </div>
         </div>
       </div>
 
@@ -217,11 +229,17 @@ export function FeedbackForm() {
 
       <div className="form-section">
         <h2>Notify me about next popups</h2>
-        <p className="form-note" style={{ color: "rgba(246, 239, 227, 0.7)", marginBottom: "12px" }}>
-          Get exclusive invites to our upcoming secret pop-up bars and private masterclasses.
+        <p
+          className="form-note"
+          style={{ color: "rgba(246, 239, 227, 0.7)", marginBottom: "12px" }}
+        >
+          Get exclusive invites to our upcoming secret pop-up bars and private
+          masterclasses.
         </p>
         <div className="pref-grid">
-          <label className={`pref-label ${notifyPref.includes("email") ? "checked" : ""}`}>
+          <label
+            className={`pref-label ${notifyPref.includes("email") ? "checked" : ""}`}
+          >
             <input
               type="checkbox"
               className="pref-checkbox"
@@ -230,28 +248,34 @@ export function FeedbackForm() {
             />
             ✉ Email
           </label>
-          <label className={`pref-label ${notifyPref.includes("whatsapp") ? "checked" : ""}`}>
+          <label
+            className={`pref-label ${notifyPref.includes("whatsapp") ? "checked" : ""}`}
+          >
             <input
               type="checkbox"
               className="pref-checkbox"
               checked={notifyPref.includes("whatsapp")}
               onChange={() => handleNotifyPrefChange("whatsapp")}
             />
-            <FaWhatsapp/> WhatsApp
+            <FaWhatsapp /> WhatsApp
           </label>
-          <label className={`pref-label ${notifyPref.includes("instagram") ? "checked" : ""}`}>
+          <label
+            className={`pref-label ${notifyPref.includes("instagram") ? "checked" : ""}`}
+          >
             <input
               type="checkbox"
               className="pref-checkbox"
               checked={notifyPref.includes("instagram")}
               onChange={() => handleNotifyPrefChange("instagram")}
             />
-            <FaInstagram/> Instagram
+            <FaInstagram /> Instagram
           </label>
         </div>
 
         <div className="subfields-container">
-          <div className={`slide-down-field ${notifyPref.includes("whatsapp") ? "visible" : ""}`}>
+          <div
+            className={`slide-down-field ${notifyPref.includes("whatsapp") ? "visible" : ""}`}
+          >
             <div className="field">
               <label htmlFor="whatsappPhone">WhatsApp Number</label>
               <input
@@ -266,7 +290,9 @@ export function FeedbackForm() {
             </div>
           </div>
 
-          <div className={`slide-down-field ${notifyPref.includes("instagram") ? "visible" : ""}`}>
+          <div
+            className={`slide-down-field ${notifyPref.includes("instagram") ? "visible" : ""}`}
+          >
             <div className="field">
               <label htmlFor="instagramHandle">Instagram Handle</label>
               <input
@@ -284,13 +310,22 @@ export function FeedbackForm() {
       </div>
 
       <div className="submit-row" style={{ marginTop: "24px" }}>
-        <button className="button primary" type="submit" disabled={isSubmitting}>
+        <button
+          className="button primary"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Submitting..." : "Submit Feedback"}
         </button>
       </div>
 
       {status && (
-        <p className="status-note" role="status" aria-live="polite" style={{ marginTop: "18px" }}>
+        <p
+          className="status-note"
+          role="status"
+          aria-live="polite"
+          style={{ marginTop: "18px" }}
+        >
           {status}
         </p>
       )}

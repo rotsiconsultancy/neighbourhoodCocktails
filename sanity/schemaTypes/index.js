@@ -8,5 +8,14 @@ import { siteSettings } from "@/sanity/schemaTypes/siteSettings";
 import { servicesPage } from "@/sanity/schemaTypes/servicesPage";
 import { testimonial } from "@/sanity/schemaTypes/testimonial";
 
-export const schemaTypes = [managedImage, siteSettings, homePage, galleryImage, service, cocktail, servicesPage, pricingConfig, testimonial];
-
+export const schemaTypes = [
+  managedImage,
+  siteSettings,
+  homePage,
+  galleryImage,
+  service,
+  cocktail,
+  servicesPage,
+  pricingConfig,
+  testimonial,
+];

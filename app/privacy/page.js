@@ -19,9 +19,9 @@ export default function PrivacyPage() {
           <p className="eyebrow">Your information</p>
           <h1>Privacy notice</h1>
           <p>
-            This notice explains how The Neighbourhood Cocktails handles personal
-            data when you visit our website, request a quote, contact us, or send
-            feedback.
+            This notice explains how The Neighbourhood Cocktails handles
+            personal data when you visit our website, request a quote, contact
+            us, or send feedback.
           </p>
           <p className="privacy-updated">Last updated: 29 July 2026</p>
         </header>
@@ -68,8 +68,8 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   Event details including the proposed date, location, guest
-                  count, event type, service style, drink preferences and special
-                  requests.
+                  count, event type, service style, drink preferences and
+                  special requests.
                 </li>
                 <li>
                   Feedback, ratings, comments and communication preferences that
@@ -82,8 +82,8 @@ export default function PrivacyPage() {
                   tracking is permitted.
                 </li>
                 <li>
-                  Our correspondence with you and operational records relating to
-                  an enquiry or booking.
+                  Our correspondence with you and operational records relating
+                  to an enquiry or booking.
                 </li>
               </ul>
             </section>
@@ -94,21 +94,24 @@ export default function PrivacyPage() {
               <ul>
                 <li>Respond to enquiries and prepare requested quotes.</li>
                 <li>Plan, administer and deliver event services.</li>
-                <li>Send transactional confirmations and service communications.</li>
+                <li>
+                  Send transactional confirmations and service communications.
+                </li>
                 <li>Record and respond to feedback.</li>
                 <li>Protect the website, prevent misuse and resolve faults.</li>
                 <li>Meet legal, accounting and regulatory obligations.</li>
                 <li>
-                  Measure advertising and build relevant audiences only where you
-                  have accepted marketing tracking.
+                  Measure advertising and build relevant audiences only where
+                  you have accepted marketing tracking.
                 </li>
               </ul>
               <p>
-                We process information where it is necessary to take steps at your
-                request, provide an agreed service, meet a legal obligation, pursue
-                a legitimate operational interest that does not override your
-                rights, or where you have given consent. You may withdraw consent
-                without affecting processing that was lawful before withdrawal.
+                We process information where it is necessary to take steps at
+                your request, provide an agreed service, meet a legal
+                obligation, pursue a legitimate operational interest that does
+                not override your rights, or where you have given consent. You
+                may withdraw consent without affecting processing that was
+                lawful before withdrawal.
               </p>
             </section>
 
@@ -141,12 +144,14 @@ export default function PrivacyPage() {
             <section id="sharing">
               <h2>Who receives information</h2>
               <p>
-                We share information only where needed with service providers that
-                help operate the website and business, including:
+                We share information only where needed with service providers
+                that help operate the website and business, including:
               </p>
               <ul>
                 <li>Our website hosting and infrastructure provider.</li>
-                <li>Brevo, which supports email delivery and contact management.</li>
+                <li>
+                  Brevo, which supports email delivery and contact management.
+                </li>
                 <li>Sanity, which supports website content management.</li>
                 <li>
                   Meta Platforms, only for consented advertising measurement and
@@ -169,17 +174,17 @@ export default function PrivacyPage() {
               <h2>Retention and security</h2>
               <p>
                 We retain personal data only for as long as reasonably necessary
-                for the purpose for which it was collected, including handling an
-                enquiry, delivering services, maintaining appropriate business
-                records, resolving disputes and satisfying legal obligations.
-                Retention periods vary according to the type of record and the
-                reason it is held.
+                for the purpose for which it was collected, including handling
+                an enquiry, delivering services, maintaining appropriate
+                business records, resolving disputes and satisfying legal
+                obligations. Retention periods vary according to the type of
+                record and the reason it is held.
               </p>
               <p>
-                We use reasonable organisational and technical safeguards designed
-                to prevent unauthorised access, loss, alteration or disclosure.
-                No internet transmission or storage system can be guaranteed to be
-                completely secure.
+                We use reasonable organisational and technical safeguards
+                designed to prevent unauthorised access, loss, alteration or
+                disclosure. No internet transmission or storage system can be
+                guaranteed to be completely secure.
               </p>
             </section>
 
@@ -193,9 +198,9 @@ export default function PrivacyPage() {
                 consent.
               </p>
               <p>
-                You may also object to direct marketing at any time. To exercise a
-                right, contact us using the details below. We may need to verify
-                your identity before completing a request.
+                You may also object to direct marketing at any time. To exercise
+                a right, contact us using the details below. We may need to
+                verify your identity before completing a request.
               </p>
               <p>
                 If you remain concerned about how your information has been
@@ -238,4 +243,3 @@ export default function PrivacyPage() {
     </>
   );
 }
-

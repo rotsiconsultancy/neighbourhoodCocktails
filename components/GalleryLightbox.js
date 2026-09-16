@@ -9,8 +9,11 @@ export function GalleryLightbox({ images }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const categories = useMemo(
-    () => ["All", ...Array.from(new Set(images.map((image) => image.category)))],
-    [images]
+    () => [
+      "All",
+      ...Array.from(new Set(images.map((image) => image.category))),
+    ],
+    [images],
   );
 
   const visibleImages = useMemo(
@@ -18,26 +21,30 @@ export function GalleryLightbox({ images }) {
       activeCategory === "All"
         ? images
         : images.filter((image) => image.category === activeCategory),
-    [activeCategory, images]
+    [activeCategory, images],
   );
 
   const activeImage = activeIndex === null ? null : visibleImages[activeIndex];
 
   function showPrevious() {
     setActiveIndex((currentIndex) =>
-      currentIndex === 0 ? visibleImages.length - 1 : currentIndex - 1
+      currentIndex === 0 ? visibleImages.length - 1 : currentIndex - 1,
     );
   }
 
   function showNext() {
     setActiveIndex((currentIndex) =>
-      currentIndex === visibleImages.length - 1 ? 0 : currentIndex + 1
+      currentIndex === visibleImages.length - 1 ? 0 : currentIndex + 1,
     );
   }
 
   return (
     <>
-      <div className="gallery-tabs" role="tablist" aria-label="Gallery categories">
+      <div
+        className="gallery-tabs"
+        role="tablist"
+        aria-label="Gallery categories"
+      >
         {categories.map((category) => (
           <button
             className={category === activeCategory ? "active" : ""}
@@ -62,7 +69,12 @@ export function GalleryLightbox({ images }) {
             onClick={() => setActiveIndex(index)}
             aria-label={`Open ${image.title}`}
           >
-            <Image src={image.src} alt={image.alt} width={image.width} height={image.height} />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+            />
             <span>
               <strong>{image.title}</strong>
               <small>{image.category}</small>
@@ -72,7 +84,12 @@ export function GalleryLightbox({ images }) {
       </div>
 
       {activeImage ? (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label={activeImage.title}>
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeImage.title}
+        >
           <button
             className="lightbox-close"
             type="button"
@@ -81,7 +98,12 @@ export function GalleryLightbox({ images }) {
           >
             <FaTimes aria-hidden="true" />
           </button>
-          <button className="lightbox-nav previous" type="button" onClick={showPrevious} aria-label="Previous image">
+          <button
+            className="lightbox-nav previous"
+            type="button"
+            onClick={showPrevious}
+            aria-label="Previous image"
+          >
             <FaChevronLeft aria-hidden="true" />
           </button>
           <figure className="lightbox-frame">
@@ -97,7 +119,12 @@ export function GalleryLightbox({ images }) {
               <span>{activeImage.caption}</span>
             </figcaption>
           </figure>
-          <button className="lightbox-nav next" type="button" onClick={showNext} aria-label="Next image">
+          <button
+            className="lightbox-nav next"
+            type="button"
+            onClick={showNext}
+            aria-label="Next image"
+          >
             <FaChevronRight aria-hidden="true" />
           </button>
         </div>

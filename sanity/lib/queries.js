@@ -61,4 +61,3 @@ export const pricingConfigQuery = `*[_type == "pricingConfig"][0] {
 export const testimonialsQuery = `*[_type == "testimonial" && visible != false] | order(_createdAt desc) {
   _id, name, eventType, quote, rating, socialPlatform, socialHandle, socialUrl, avatar, videoUrl, featured, _updatedAt
 }`;
-

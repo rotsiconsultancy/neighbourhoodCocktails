@@ -37,7 +37,6 @@ export default async function ServicePage({ params }) {
     <>
       <SiteHeader />
       <main className="inner-page service-detail-page">
-
         {/* ── Hero ─────────────────────────────────────────────────── */}
         <section
           className="service-detail-hero"
@@ -81,12 +80,25 @@ export default async function ServicePage({ params }) {
                 <ul className="service-highlights-list">
                   {service.highlights.map((h) => (
                     <li key={h}>
-                      <span className="highlight-check" style={{ color: service.accentColor }}>✓</span>
+                      <span
+                        className="highlight-check"
+                        style={{ color: service.accentColor }}
+                      >
+                        ✓
+                      </span>
                       {h}
                     </li>
                   ))}
                 </ul>
-                <Link href="/booking" className="btn secondary" style={{ marginTop: 32, width: "100%", justifyContent: "center" }}>
+                <Link
+                  href="/booking"
+                  className="btn secondary"
+                  style={{
+                    marginTop: 32,
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
                   Book Now
                 </Link>
               </div>
@@ -95,7 +107,10 @@ export default async function ServicePage({ params }) {
         </section>
 
         {/* ── Gallery Strip ─────────────────────────────────────────── */}
-        <section className="service-gallery-strip" aria-label="Service photo gallery">
+        <section
+          className="service-gallery-strip"
+          aria-label="Service photo gallery"
+        >
           {service.galleryImages.map((src, i) => (
             <div key={i} className="service-gallery-img">
               <img src={src} alt={`${service.title} gallery photo ${i + 1}`} />
@@ -133,13 +148,19 @@ export default async function ServicePage({ params }) {
           </div>
           <div className="service-related-grid">
             {otherServices.map((s) => (
-              <Link key={s.id} href={getServiceUrl(s.id)} className="service-related-card">
+              <Link
+                key={s.id}
+                href={getServiceUrl(s.id)}
+                className="service-related-card"
+              >
                 <div
                   className="service-related-img"
                   style={{ backgroundImage: `url('${s.image}')` }}
                 />
                 <div className="service-related-copy">
-                  <span className="eyebrow" style={{ color: "var(--gold)" }}>{s.eyebrow}</span>
+                  <span className="eyebrow" style={{ color: "var(--gold)" }}>
+                    {s.eyebrow}
+                  </span>
                   <h3>{s.title}</h3>
                   <span className="service-related-arrow">Explore →</span>
                 </div>
@@ -153,7 +174,10 @@ export default async function ServicePage({ params }) {
           <div className="service-cta-inner">
             <span className="eyebrow">Ready to get started?</span>
             <h2>Let's Build Your Event.</h2>
-            <p>Tell us the basics and we'll shape the right experience around your occasion.</p>
+            <p>
+              Tell us the basics and we'll shape the right experience around
+              your occasion.
+            </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
               <Link href="/booking" className="btn secondary">
                 Start Your Booking
@@ -164,7 +188,6 @@ export default async function ServicePage({ params }) {
             </div>
           </div>
         </section>
-
       </main>
       <SiteFooter />
     </>

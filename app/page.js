@@ -6,7 +6,8 @@ import { getHomePage, getTestimonials } from "@/sanity/lib/content";
 
 export const metadata = {
   title: "Mobile Bar Hire & Cocktail Catering in Nairobi (V2 Preview)",
-  description: "Preview version of The Neighbourhood Cocktails homepage featuring guest feedback.",
+  description:
+    "Preview version of The Neighbourhood Cocktails homepage featuring guest feedback.",
   alternates: { canonical: "/v2" },
 };
 
@@ -35,14 +36,20 @@ export default async function HomePageV2() {
                 className="hero-video-slide"
               />
             ) : (
-              <div key={slide.image || index} className="hero-slide" style={{ backgroundImage: `url('${slide.image}')` }} />
-            )
+              <div
+                key={slide.image || index}
+                className="hero-slide"
+                style={{ backgroundImage: `url('${slide.image}')` }}
+              />
+            ),
           )}
         </div>
         <div className="hero-content">
           <h1>
             {pageData.heroHeading || "You make the memories."}{" "}
-            <span className="script">{pageData.heroScriptSpan || "We bring the cocktails."}</span>
+            <span className="script">
+              {pageData.heroScriptSpan || "We bring the cocktails."}
+            </span>
           </h1>
           <p>
             {pageData.heroBody ||
@@ -65,7 +72,9 @@ export default async function HomePageV2() {
       <main>
         <section className="section" id="events">
           <div className="section-header">
-            <h2 style={{ color: "var(--orange)" }}>{pageData.eventsHeading || "Events made to feel personal."}</h2>
+            <h2 style={{ color: "var(--orange)" }}>
+              {pageData.eventsHeading || "Events made to feel personal."}
+            </h2>
             <p className="section-intro">
               {pageData.eventsIntro ||
                 "Whether you need full-service cocktail catering, a curated drinks experience, or an interactive class, we shape the setup around your people, your space, and your occasion."}
@@ -93,13 +102,24 @@ export default async function HomePageV2() {
           <div className="story-wrap">
             <div
               className="story-img"
-              style={pageData.storyImage ? { backgroundImage: `url('${pageData.storyImage}')` } : undefined}
+              style={
+                pageData.storyImage
+                  ? { backgroundImage: `url('${pageData.storyImage}')` }
+                  : undefined
+              }
             >
-              <div className="story-badge">{pageData.experienceBadge || "We bring the bar."}</div>
+              <div className="story-badge">
+                {pageData.experienceBadge || "We bring the bar."}
+              </div>
             </div>
             <div>
-              <div className="eyebrow">{pageData.experienceEyebrow || "The Neighbourhood Experience"}</div>
-              <h2>{pageData.experienceHeading || "Not just drinks. A full hosting experience."}</h2>
+              <div className="eyebrow">
+                {pageData.experienceEyebrow || "The Neighbourhood Experience"}
+              </div>
+              <h2>
+                {pageData.experienceHeading ||
+                  "Not just drinks. A full hosting experience."}
+              </h2>
               <p>
                 {pageData.experiencePara1 ||
                   "The Neighbourhood is built for moments where people gather - weddings, brand events, intimate dinners, team celebrations, and private parties that need a little more soul."}
@@ -123,7 +143,9 @@ export default async function HomePageV2() {
         {/* Gallery Section */}
         <section className="section" id="gallery">
           <div className="section-header">
-            <h2>{pageData.galleryHeading || "Built for beautiful gatherings."}</h2>
+            <h2>
+              {pageData.galleryHeading || "Built for beautiful gatherings."}
+            </h2>
             <p className="section-intro">
               {pageData.galleryIntro ||
                 "A taste of the setups, details, drinks, and atmosphere that shape every Neighbourhood experience."}
@@ -148,7 +170,9 @@ export default async function HomePageV2() {
         {/* Notes / Substack Section */}
         <section className="section notes-section" id="substack">
           <div className="section-header">
-            <h2>{pageData.substackHeading || "Tales from the neighbourhood"}</h2>
+            <h2>
+              {pageData.substackHeading || "Tales from the neighbourhood"}
+            </h2>
             <p className="section-intro">
               {pageData.substackIntro ||
                 "Actual Substack reads, hosting ideas, cocktail culture, event guides, and behind-the-scenes thoughts from the people behind the bar."}
@@ -173,9 +197,16 @@ export default async function HomePageV2() {
                     <div>
                       <h3>{post.title}</h3>
                       <p>{post.text}</p>
-                      {post.byline ? <p className="substack-post-embed">{post.byline}</p> : null}
+                      {post.byline ? (
+                        <p className="substack-post-embed">{post.byline}</p>
+                      ) : null}
                     </div>
-                    <Link className="substack-link" href={post.href} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      className="substack-link"
+                      href={post.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Read on Substack &rarr;
                     </Link>
                   </div>
@@ -187,7 +218,9 @@ export default async function HomePageV2() {
 
         {/* Booking Form Section */}
         <section className="section booking" id="book">
-          <div className="eyebrow">{pageData.bookingEyebrow || "Plan your event"}</div>
+          <div className="eyebrow">
+            {pageData.bookingEyebrow || "Plan your event"}
+          </div>
           <h2>{pageData.bookingHeading || "Tell us what you're hosting."}</h2>
           <p>
             {pageData.bookingBody ||

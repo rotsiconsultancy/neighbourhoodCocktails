@@ -23,7 +23,8 @@ export default async function ServicesPage() {
           <p className="eyebrow">{pageContent.heroEyebrow || "Our Services"}</p>
           <h1>{pageContent.heroHeading || "Bespoke Mobile Bar & Catering."}</h1>
           <p>
-            {pageContent.heroBody || "We bring a fully equipped craft cocktail bar, premium ingredients, and professional hospitality directly to your venue. Every detail is shaped around your event's vibe."}
+            {pageContent.heroBody ||
+              "We bring a fully equipped craft cocktail bar, premium ingredients, and professional hospitality directly to your venue. Every detail is shaped around your event's vibe."}
           </p>
           <div className="hero-actions">
             <Link href="/booking" className="btn secondary">
@@ -55,7 +56,10 @@ export default async function ServicesPage() {
                 <div className="pillar-copy-container">
                   <span className="eyebrow">{pillar.eyebrow}</span>
                   <h2>
-                    <Link href={getServiceUrl(pillar.id)} className="pillar-title-link">
+                    <Link
+                      href={getServiceUrl(pillar.id)}
+                      className="pillar-title-link"
+                    >
                       {pillar.title}
                     </Link>
                   </h2>
@@ -80,9 +84,12 @@ export default async function ServicesPage() {
         {/* Bar Aesthetics Gallery */}
         <section className="section bar-aesthetics-section">
           <div className="section-header center">
-            <h2>{pageContent.aestheticsHeading || "Mobile Bars That Fit The Room"}</h2>
+            <h2>
+              {pageContent.aestheticsHeading || "Mobile Bars That Fit The Room"}
+            </h2>
             <p className="section-intro center-intro">
-              {pageContent.aestheticsIntro || "Our mobile bar counters are designed to complement your venue's styling, not compromise it. Choose from our curated catalog of physical bar setups."}
+              {pageContent.aestheticsIntro ||
+                "Our mobile bar counters are designed to complement your venue's styling, not compromise it. Choose from our curated catalog of physical bar setups."}
             </p>
           </div>
 
@@ -105,10 +112,16 @@ export default async function ServicesPage() {
         <section className="section inclusions-section">
           <div className="inclusions-card">
             <div className="inclusions-copy">
-              <span className="eyebrow">{pageContent.inclusionsEyebrow || "The Full Package"}</span>
-              <h2>{pageContent.inclusionsHeading || "What is included in every setup?"}</h2>
+              <span className="eyebrow">
+                {pageContent.inclusionsEyebrow || "The Full Package"}
+              </span>
+              <h2>
+                {pageContent.inclusionsHeading ||
+                  "What is included in every setup?"}
+              </h2>
               <p>
-                {pageContent.inclusionsBody || "We handle the logistics so you can focus on your guests. Every Neighbourhood bar hire includes these standard premium inclusions:"}
+                {pageContent.inclusionsBody ||
+                  "We handle the logistics so you can focus on your guests. Every Neighbourhood bar hire includes these standard premium inclusions:"}
               </p>
 
               <div className="inclusions-grid">
