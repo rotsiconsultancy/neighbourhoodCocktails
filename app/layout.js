@@ -5,6 +5,7 @@ import { MetaPixel } from "@/components/MetaPixel";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { getSiteSettings } from "@/sanity/lib/content";
+import Script from "next/script";
 
 const baseMetadata = {
   metadataBase: new URL("https://www.neighbourhoodcocktails.com"),
@@ -48,11 +49,22 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <script
+        {/* Google Analytics GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-N6QD75E8H4"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-N6QD75E8H4');
+        `}</Script>
+        <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="cMTXt+R12kJEXx6AqZHyGA"
           async
-        ></script>
+        ></Script>
       </head>
       <body>
         <MetaPixel />
